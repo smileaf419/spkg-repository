@@ -1,0 +1,29 @@
+####
+## ISL build
+## Copyright 2023-2024 spkg developers, licensed under GPLv2
+HOMEPAGE="http://isl.gforge.inria.fr/ https://libisl.sourceforge.io/"
+DESCRIPTION="A library for manipulating integer points bounded by linear constraints"
+LICENSE="LGPLv2.1"
+SRC_URI=("https://libisl.sourceforge.io/isl-$PKG_VER.tar.xz")
+#"https://gcc.gnu.org/pub/gcc/infrastructure/isl-${PKG_VER}.tar.bz2")
+DEPS=""
+BDEPS=""
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=no
+ARCHS="~x86 ~x86_64"
+SLOT=0
+ABILIBS="64 x32 32"
+
+src_test() { :; }
+
+src_install() {
+	install_default
+
+	install -vd $D/usr/share/doc/isl-$PKG_VER
+	install -m644 doc/{CodingStyle,manual.pdf,SubmittingPatches,user.pod} \
+			$D/usr/share/doc/isl-$PKG_VER
+
+	mkdir -pv $D/usr/share/gdb/auto-load/$(libdir)
+	mv -v $D/$(libdir)/libisl*gdb.py $D/usr/share/gdb/auto-load/$(libdir)
+}
