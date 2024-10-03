@@ -13,10 +13,10 @@ SRC_URI=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_V
 ## Tools
 "https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/clang-${PKG_VER}.src.tar.xz"
 #"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/flang-${PKG_VER}.src.tar.xz"
-"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/lldb-${PKG_VER}.src.tar.xz"
+#"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/lldb-${PKG_VER}.src.tar.xz"
 "https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/lld-${PKG_VER}.src.tar.xz"
 ## clang tools
-"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/clang-tools-extra-${PKG_VER}.src.tar.xz"
+#"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/clang-tools-extra-${PKG_VER}.src.tar.xz"
 ## Projects
 "https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/compiler-rt-${PKG_VER}.src.tar.xz"
 #"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/openmp-${PKG_VER}.src.tar.xz"
@@ -32,7 +32,7 @@ PATCHES=(
 DEPS="apps/xz-utils apps/zstd devel/libffi devel/libxml2 system/ncurses system/zlib"
 BDEPS="devel/python"
 RDEPS=""
-ARCHS="x86 x86_64"
+ARCHS="~x86 ~x86_64"
 SLOT=0
 setBuildENV cmake ninja
 BUILD_SEPERATE_DIR=yes
@@ -76,6 +76,12 @@ src_unpack() {
 src_prepare() {
 	append-ldflags -lcursesw -lncursesw -ltinfow
 
+	## Ensure any script uses Python 3
+	grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'
+
+	## Ensure FileCheck gets installed which is required for some test suites
+	sed 's/utility/tool/' -i utils/FileCheck/CMakeLists.txt
+
 	## Copy this LLVM libunwind header or it won't be found:
 	mkdir -p include
 	cp -a projects/libunwind/include/mach-o include
@@ -88,7 +94,7 @@ src_configure() {
 		CC='clang'
 		CXX='clang++'
 		CONF_ADD_FLAGS=(
-			-DLLVM_USE_LINKER=lld
+#			-DLLVM_USE_LINKER=lld
 			-DCOMPILER_RT_BUILD_LIBFUZZER=OFF
 			-DLIBCXX_INCLUDE_BENCHMARKS=OFF
 			-DLIBCXX_ENABLE_ABI_LINKER_SCRIPT=ON
