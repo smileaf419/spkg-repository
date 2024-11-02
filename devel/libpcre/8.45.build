@@ -1,9 +1,9 @@
 ####
 ## libpcre build
 ## Copyright 2023-2024 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="http://www.pcre.org/"
+DESCRIPTION="Perl-compatible regular expression library"
+LICENSE="BSD"
 SRC_URI=("https://sourceforge.net/projects/pcre/files/pcre/${PKG_VER}/pcre-${PKG_VER}.tar.bz2")
 [[ $VERIFY_SIG == 1 ]] && SRC_URI+=("https://sourceforge.net/projects/pcre/files/pcre/${PKG_VER}/pcre-${PKG_VER}.tar.bz2.sig")
 DEPS="apps/bzip2 system/readline system/zlib"
