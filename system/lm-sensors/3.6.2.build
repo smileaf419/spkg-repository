@@ -9,7 +9,7 @@ SRC_URI="https://github.com/hramrach/lm-sensors/archive/refs/tags/V${PV}.tar.gz 
 DEPS=""
 BDEPS=""
 RDEPS="system/which"
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=0
 B=lm-sensors-$PV
 
