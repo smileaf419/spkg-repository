@@ -1,6 +1,5 @@
-eb3e7dfdc328aa1266ee8fa904da9cc1475ac47c  24.2.4.build
-832e19151cd888b47de05a6a211550b84c0668c1  mesa-24.2.4.tar.xz
-16cdbbf83dbd16450dd303814b3e5fd978579d29  mesa-add_xdemos-3.patch
-dfa165cdb8e331d5376ebd42d74192dd4442751e  24.2.6.build
+eb3e7dfdc328aa1266ee8fa904da9cc1475ac47c  24.2.6.build
 d9c30e0c70a4b7d239a7f7ebec7c3bd20b61f414  mesa-24.2.6.tar.xz
+16cdbbf83dbd16450dd303814b3e5fd978579d29  mesa-add_xdemos-3.patch
 dfa165cdb8e331d5376ebd42d74192dd4442751e  24.2.7.build
+da39a3ee5e6b4b0d3255bfef95601890afd80709  mesa-24.2.7.tar.xz
