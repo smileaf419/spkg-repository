@@ -14,3 +14,11 @@ b069aa09ec750b6e4393eedff948860ff91234b9  third-party-19.1.2.src.tar.xz
 534f4b68a85f54f78519c88adb7abb8069f460ad  lld-19.1.2.src.tar.xz
 568d27b694351e1d2ada3f63a5c1d97b517871b1  compiler-rt-19.1.2.src.tar.xz
 ff5980d3f2b3e0fb211826b180228373cf19c416  libunwind-19.1.2.src.tar.xz
+e512fb458747381cc0046967c80904abf3f2d0dc  19.1.4.build
+2624f06ad10507966c16631956d45f0e5457bf82  llvm-19.1.4.src.tar.xz
+d79ed80b949dd9b4e94c387ec304d00e3af77975  cmake-19.1.4.src.tar.xz
+74073f9a4a0f55d0946303ada761968385bfb43c  third-party-19.1.4.src.tar.xz
+43f770baa7b17454ffe3733d399d3ff0e711494e  clang-19.1.4.src.tar.xz
+c2ece0730dfe108d749133c2ceffc670743c4acb  lld-19.1.4.src.tar.xz
+3e1146ccf8456a85784f3a38f108288e78f87463  compiler-rt-19.1.4.src.tar.xz
+c8f80c2229ad2ec83e45cfd512bf9abedd2d4499  libunwind-19.1.4.src.tar.xz
