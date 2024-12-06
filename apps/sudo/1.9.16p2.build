@@ -1,0 +1,32 @@
+####
+## sudo build
+## Copyright 2023-2024 spkg developers, licensed under GPLv2
+HOMEPAGE="https://www.sudo.ws/"
+DESCRIPTION="Utility to allow users or groups to run commands as other users"
+LICENSE="ISC BSD"
+SRC_URI=("https://www.sudo.ws/dist/sudo-$PKG_VER.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="devel/openssl system/libxcrypt system/zlib"
+BDEPS=""
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=no
+ARCHS="~x86 ~x86_64"
+SLOT=0
+#B=
+
+src_configure() {
+	./configure --prefix=/usr              \
+				--libexecdir=/usr/lib      \
+				--with-secure-path         \
+				--with-env-editor          \
+				--docdir=/usr/share/doc/sudo-$PKG_VER \
+				--with-passprompt="[sudo] password for %p: "
+}
+
+src_test() {
+	env LC_ALL=C make check |& tee make-check.log
+	echo " * Checking for failures:"
+	grep failed make-check.log
+}
