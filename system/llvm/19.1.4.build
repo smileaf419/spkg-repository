@@ -14,7 +14,7 @@ SRC_URI=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_V
 "https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/clang-${PKG_VER}.src.tar.xz"
 #"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/flang-${PKG_VER}.src.tar.xz"
 #"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/lldb-${PKG_VER}.src.tar.xz"
-"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/lld-${PKG_VER}.src.tar.xz"
+#"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/lld-${PKG_VER}.src.tar.xz"
 ## clang tools
 #"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/clang-tools-extra-${PKG_VER}.src.tar.xz"
 ## Projects
@@ -23,7 +23,7 @@ SRC_URI=("https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_V
 #"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/libcxx-${PKG_VER}.src.tar.xz"
 #"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/libcxxabi-${PKG_VER}.src.tar.xz"
 #"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/polly-${PKG_VER}.src.tar.xz"
-"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/libunwind-${PKG_VER}.src.tar.xz"
+#"https://github.com/llvm/llvm-project/releases/download/llvmorg-${PKG_VER}/libunwind-${PKG_VER}.src.tar.xz"
 )
 
 PATCHES=(
