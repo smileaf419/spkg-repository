@@ -1,0 +1,25 @@
+####
+## Wine-Mono build
+## Copyright 2023-2024 spkg developers, licensed under GPLv2
+HOMEPAGE="https://gitlab.winehq.org/wine/wine/-/wikis/Wine-Mono"
+DESCRIPTION="Open-source and cross-platform implementation of the .NET Framework"
+LICENSE="BSDv2 GPLv2 LGPLv2.1 MIT MPL-1.1"
+SRC_URI=("https://dl.winehq.org/wine/wine-mono/${PKG_VER}/wine-mono-${PKG_VER}-src.tar.xz")
+DEPS=""
+BDEPS=""
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=no
+ARCHS="~x86 ~x86_64"
+SLOT=0
+#B=
+
+src_configure() { :; }
+
+src_compile() {
+	make dev
+}
+
+src_test() { :; }
+
+#src_install() { :; }

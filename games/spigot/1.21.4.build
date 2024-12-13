@@ -4,14 +4,14 @@
 HOMEPAGE="https://www.minecraft.net/ https://www.spigotmc.org"
 DESCRIPTION="Modded Java edition of Minecraft"
 LICENSE="Mojang"
-SRC_URI=("https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar")
+SRC_URI=("https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar => BuildTools-$PKG_VER.jar")
 ## FIXME: As with all packages which depend on java, this needs to be set to a virtual that supplies the java binary, not a specific package.
 RDEPS="devel/sun-jdk accounts/games"
 BDEPS="devel/sun-jdk"
 DEPS=""
 setBuildENV auto make
 BUILD_SEPERATE_DIR=no
-ARCHS="x86 x86_64"
+ARCHS="~x86 ~x86_64"
 SLOT=0
 B=
 
@@ -20,7 +20,7 @@ src_configure() { :; }
 src_compile() {
 	source /etc/profile.d/openjdk.sh
 
-	java -jar $DISTFILES/BuildTools.jar --rev $PKG_VER
+	java -jar $DISTFILES/BuildTools-$PKG_VER.jar --rev $PKG_VER
 }
 
 src_test() { :; }
