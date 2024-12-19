@@ -1,4 +1,6 @@
 2f96804d1ef790ad7409f23e22dbbd264ca764c8  2.46.3.build
 110e2c2ac964f207a8f2fecf6e2e61f0ed4bee00  webkitgtk-2.46.3.tar.xz
-b82f960d53e6d9d08e574dc8e1f414cda394871f  2.46.4.build
+620cbcaf03a9ce0b2955fd3aae28cc7aa95c29fe  2.46.4.build
 10d4dbd222acec30b1d20ee3b7d02c0d9727c5a9  webkitgtk-2.46.4.tar.xz
+14db9b5248f68c12e0e4c543d4d4e828dffff073  2.46.4-r1.build
+2975326427c35531cbf477a7f5ea39ba6b1899ae  webkitgtk-2.46.4-gbm.patch

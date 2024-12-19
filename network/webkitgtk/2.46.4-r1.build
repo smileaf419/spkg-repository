@@ -2,10 +2,10 @@
 ## WebKitGTK build
 ## Copyright 2023-2024 spkg developers, licensed under GPLv2
 HOMEPAGE="https://webkitgtk.org"
-DESCRIPTION="GTK port of the WebKit Rendering Engine"
+DESCRIPTION="GTK port of the WebKit Rendering Engin"
 LICENSE="LGPLv2+ BSD"
 SRC_URI=("https://webkitgtk.org/releases/webkitgtk-${PKG_VER}.tar.xz")
-PATCHES=()
+PATCHES=("https://github.com/WebKit/WebKit/commit/1cfbdd74e97ea29636ce442322b5399b43937401.patch => webkitgtk-2.46.4-gbm.patch")
 DEPS="apps/libsecret apps/enchant devel/sqlite devel/glib devel/icu devel/libgcrypt devel/libgpg-error devel/libtasn1 devel/libxml2 devel/libxslt devel/wayland x11/libwpe x11/wpebackend-fdo media/fontconfig media/freetype media/gst-plugins-bad media/gst-plugins-base media/gstreamer media/harfbuzz media/lcms media/libavif media/libepoxy media/libjpeg-turbo media/libjxl media/libpng media/libwebp media/mesa media/openjpeg network/libsoup:3 system/zlib x11/cairo x11/gdk-pixbuf x11/gtk+:4 x11/libdrm x11/libX11 x11/libXcomposite x11/libXdamage x11/libXrender x11/libXt x11/pango"
 BDEPS="devel/ruby devel/unifdef network/libsoup:3"
 RDEPS=""
