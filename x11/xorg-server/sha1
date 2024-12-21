@@ -3,3 +3,5 @@ c3f64c675aaedfe90b193c071b248671039090fb  xorg-server-21.1.13.tar.xz
 7d074f439a21eeffdd52c5dfd7510fd33a5cc15e  xorg-server-21.1.13-tearfree_backport-2.patch
 f2f8013630f50882262669ad855e6a2ee76af4f1  21.1.14.build
 63326488b63a1f584f8dc3084d2a52dba93d4e72  xorg-server-21.1.14.tar.xz
+332ff093e1b4022e00b9c596c6dfb01e53879314  21.1.15.build
+553bfa842a1c23a641ed7344fb75ba37974443c8  xorg-server-21.1.15.tar.xz
