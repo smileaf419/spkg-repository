@@ -10,7 +10,7 @@ PATCHES=("https://git.savannah.gnu.org/gitweb/?p=gettext.git;a=patch;h=adfbe2ee7
 DEPS="devel/libunistring devel/libxml2 system/acl system/attr"
 BDEPS=""
 RDEPS=""
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=0
 
 src_test() {
