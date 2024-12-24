@@ -1,7 +1,7 @@
 ####
 ## debianutils build
 ## Copyright 2023-2024 spkg developers, licensed under GPLv2
-HOMEPAGE="https://packages.qa.debian.org/d/debianutils.html"
+HOMEPAGE="https://tracker.debian.org/pkg/debianutils"
 DESCRIPTION="A selection of tools from Debian"
 LICENSE="BSD GPLv2 SMAIL"
 SRC_URI=("http://deb.debian.org/debian/pool/main/d/debianutils/debianutils_${PKG_VER}.tar.xz")
