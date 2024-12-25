@@ -1,11 +1,9 @@
 ####
 ## libgudev build
 ## Copyright 2023-2024 spkg developers, licensed under GPLv2
-# Start versioning at -r1 if patches are used.
-# non-patched packages may omit a revision, until a modification is made.
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://wiki.gnome.org/Projects/libgudev"
+DESCRIPTION="GObject bindings for libudev"
+LICENSE="LGPLv2.1+"
 SRC_URI=("https://download.gnome.org/sources/libgudev/${PKG_VER}/libgudev-${PKG_VER}.tar.xz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
@@ -15,3 +13,4 @@ RDEPS=""
 setBuildENV meson ninja
 ARCHS="x86 x86_64"
 SLOT=0
+ABILIBS="64 x32 32"

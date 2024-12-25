@@ -1,11 +1,9 @@
 ####
 ## libyaml build
 ## Copyright 2023-2024 spkg developers, licensed under GPLv2
-# Start versioning at -r1 if patches are used.
-# non-patched packages may omit a revision, until a modification is made.
-HOMEPAGE=""
+HOMEPAGE="https://github.com/yaml/libyaml"
 DESCRIPTION="Library for parsing and emitting YAML (YAML Ain't Markup Language) code"
-LICENSE=""
+LICENSE="MIT"
 SRC_URI=("https://github.com/yaml/libyaml/releases/download/${PKG_VER}/yaml-${PKG_VER}.tar.gz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()

@@ -1,9 +1,9 @@
 ####
 ## git build
 ## Copyright 2023-2024 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://git-scm.com/"
+DESCRIPTION="Version Control Manager"
+LICENSE="GPLv2"
 SRC_URI="https://www.kernel.org/pub/software/scm/git/git-${PKG_VER}.tar.xz"
 DEPS="devel/libpcre2 system/zlib"
 BDEPS="network/curl"
