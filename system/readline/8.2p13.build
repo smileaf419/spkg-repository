@@ -11,6 +11,7 @@ BDEPS=""
 RDEPS=""
 ARCHS="x86 x86_64"
 SLOT=0
+## http://git.savannah.gnu.org/cgit/readline.git/log/
 PATCH_LEVEL=${PKG_VER#*p}
 PV=${PKG_VER%p*}
 PATCHES=
@@ -48,7 +49,7 @@ src_configure() {
 }
 
 src_compile() {
-	make SHLIB_LIBS="-lncursesw"
+	compile_default SHLIB_LIBS="-lncursesw"
 }
 
 src_test() { :; }
@@ -59,9 +60,6 @@ src_install() {
 		mkdir -p "${D}"/usr/share/doc/readline-${PV}
 		install -v -m644 doc/*.{ps,pdf,html,dvi} "${D}"/usr/share/doc/readline-${PV}
 	else
-		make SHLIB_LIBS="-lncursesw" DESTDIR=$PWD/DESTDIR install
-		mkdir -p $D/$(libdir)
-		cp -Rv DESTDIR/$(libdir)/* $D/$(libdir)
-		rm -rf DESTDIR
+		install_default SHLIB_LIBS="-lncursesw"
 	fi
 }

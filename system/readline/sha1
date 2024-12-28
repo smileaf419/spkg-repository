@@ -10,7 +10,7 @@ dcb3bd883f13596ba1fc31e5c1b42b7286c49019  readline-8.2-005.patch
 5c872ed5a7e80dcf9eaa21f66299b98be82dba67  readline-8.2-008.patch
 ddbf1c3be319c106795acb35aa54a62c58093942  readline-8.2-009.patch
 bf08fc0a29d87212b0b37af5c2d39d4e486c1b15  readline-8.2-010.patch
-fc87e3e0a01f5a9d9491c0e26a16a27c12c4d972  8.2p13.build
+1cf5ad5e454f0f1233db0ad117e67c39cc8b5f24  8.2p13.build
 69fd6147697405de058fa9791f7d368f0c8aecbc  readline-8.2-011.patch
 c56ddf3fe6afeb19937267f797102c8a134d8c6b  readline-8.2-012.patch
 3bc96d2659bca37d7c55ce5bd9dc37823a9a07ae  readline-8.2-013.patch
