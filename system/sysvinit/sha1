@@ -1,3 +1,5 @@
 7906c2f6bb5cbac674331d29637da38306a7a002  3.11.build
 5233def1b63e17b877b4746c437fc56dec5d2d91  sysvinit-3.11.tar.xz
 615ea87cc9734232e56fb9942a3ecd6edcd85640  sysvinit-3.11-consolidated-1.patch
+dc7124ec8db6f81fd23cf9b8841b8faca62cf9b6  3.12.build
+d4ef3a8821f48228ffeadcc520b9f5103111063d  sysvinit-3.12.tar.xz
