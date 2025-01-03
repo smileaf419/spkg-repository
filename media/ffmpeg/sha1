@@ -1,6 +1,5 @@
-c7651d30126a2a77029994b1ae3ebffd4786350f  7.0.2.build
-69e11a56def9ac7073aca9d6602fa9d51a6ed6b6  ffmpeg-7.0.2.tar.xz
-bc5493cc0d7b2ea84ef2deecef453724c7b0dc31  ffmpeg-7.0.2-chromium_method-1.patch
-c7651d30126a2a77029994b1ae3ebffd4786350f  7.1.build
+322b7555a56b827bca277bea9a8c67d25b93a3c9  7.1.build
 299e7790544f380d0472b406c9b5ce82efeb8f48  ffmpeg-7.1.tar.xz
 bc5493cc0d7b2ea84ef2deecef453724c7b0dc31  ffmpeg-7.1-chromium_method-1.patch
+322bb0db1f63041b6e2e4d612b529301c865ffff  ffmpeg-7.1-texinfo-1.patch
+9b7b3bc11fecb681fdde244c12dd7aaecf626f04  ffmpeg-7.1-texinfo-2.patch

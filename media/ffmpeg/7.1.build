@@ -1,11 +1,13 @@
 ####
 ## ffmpeg build
 ## Copyright 2023-2024 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://ffmpeg.org/"
+DESCRIPTION="A complete, cross-platform solution to record, convert and stream audio and video."
+LICENSE="GPLv2 GPLv3 LGPLv2.1 LGPLv3"
 SRC_URI=("https://ffmpeg.org/releases/ffmpeg-${PKG_VER}.tar.xz")
-PATCHES=("https://www.linuxfromscratch.org/patches/blfs/svn/ffmpeg-${PKG_VER}-chromium_method-1.patch")
+PATCHES=("https://www.linuxfromscratch.org/patches/blfs/svn/ffmpeg-${PKG_VER}-chromium_method-1.patch"
+"https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/c980dd7a976635426f129417836251740e19b54b => $PKG_NAME-$PKG_VER-texinfo-1.patch"
+"https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/bfbd5954e50e407693932b3900ca77c3daee26d7 => $PKG_NAME-$PKG_VER-texinfo-2.patch")
 DEPS="apps/bzip2 apps/xz-utils devel/fribidi devel/libxml2 devel/openssl media/alsa-lib media/fdk-aac media/freetype media/libass media/libbluray media/libsdl2 media/libtheora media/libva media/libvorbis media/libvpx media/libwebp media/opus media/x264 media/x265 media/xvid media/lame system/zlib"
 BDEPS="devel/fribidi"
 RDEPS="media/pulseaudio"
