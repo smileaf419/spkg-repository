@@ -19,36 +19,31 @@ src_configure() {
 	configure_default \
 				-Druntime_dir=/run \
 				-Duser_session=true \
-				-Dsystemd_system_unitdir=no \
-				-Dsystemd_user_unitdir=no \
 				-Dsystem_socket=/run/dbus/system_bus_socket \
 				-Dmodular_tests=disabled \
+				--wrap-mode=nofallback \
+				-D systemd=disabled \
 				$(use-enable X || echo -Dx11_autolaunch=disabled)
-## autotools seems to be broken in this version.
-#				--sysconfdir=/etc \
-#				--localstatedir=/var \
-#				--runstatedir=/run \
-#				--enable-user-session \
-#				--disable-doxygen-docs \
-#				--disable-xml-docs \
-#				--with-systemduserunitdir=no \
-#				--with-systemdsystemunitdir=no \
-#				--with-system-socket=/run/dbus/system_bus_socket \
-#				$(use-enable X || echo "--without-x")
 }
 
-src_test() { :; }
+src_test() {
+	meson configure -D asserts=true -D intrusive_tests=true
+	ninja test
+}
 
 src_install() {
 	install_default
 
-	chmod -v 4750 ${D}/usr/libexec/dbus-daemon-launch-helper
+	chown -v root:messagebus $D/usr/libexec/dbus-daemon-launch-helper
+	chmod -v      4750       $D/usr/libexec/dbus-daemon-launch-helper
+
+	## Fix Documentation location
+	[ -e $D/usr/share/doc/dbus ] &&
+		mv -v $D/usr/share/doc/dbus{,-$PKG_VER}
 
 	# if elogind is installed
 	# mkdir ${D}/etc
 	# ln -sv ${D}/var/lib/dbus/machine-id ${D}/etc
-
-	rm -r ${D}/no
 
 	mkdir ${D}/etc/dbus-1
 cat > ${D}/etc/dbus-1/session-local.conf << "EOF"
@@ -67,6 +62,5 @@ EOF
 }
 
 post_install() {
-	chown -v root:messagebus /usr/libexec/dbus-daemon-launch-helper
 	dbus-uuidgen --ensure
 }
