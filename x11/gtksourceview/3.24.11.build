@@ -1,11 +1,11 @@
 ####
 ## gtksourceview build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://wiki.gnome.org/Projects/GtkSourceView"
+DESCRIPTION="A text widget implementing syntax highlighting and other features"
+LICENSE="GPLv2+ LGPLv2.1+"
 SRC_URI=("https://download.gnome.org/sources/gtksourceview/${PKG_VER%.*}/gtksourceview-${PKG_VER}.tar.xz")
-PATCHES=()
+PATCHES=("https://cgit.gentoo.org/repo/gentoo.git/plain/x11-libs/gtksourceview/files/3.24.11-gcc14.patch")
 DEPS="apps/at-spi2-core  devel/glib devel/libxml2 media/harfbuzz system/zlib x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/pango"
 BDEPS=""
 RDEPS=""

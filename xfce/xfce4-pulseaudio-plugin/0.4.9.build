@@ -1,6 +1,6 @@
 ####
 ## xfce4-pulseaudio-plugin build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.xfce.org https://docs.xfce.org/panel-plugins/xfce4-pulseaudio-plugin/start https://gitlab.xfce.org/panel-plugins/xfce4-pulseaudio-plugin/"
 DESCRIPTION="PulseAudio Multimedia plugin for XFCE's panel"
 LICENSE="GPLv2+"

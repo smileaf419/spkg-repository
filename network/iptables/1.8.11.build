@@ -1,6 +1,6 @@
 ####
 ## iptables build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.netfilter.org/projects/iptables/"
 DESCRIPTION="Linux kernel (2.4+) firewall, NAT and packet mangling tools"
 LICENSE="GPLv2"

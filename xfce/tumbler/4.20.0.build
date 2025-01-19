@@ -1,6 +1,6 @@
 ####
 ## tumbler build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.xfce.org https://docs.xfce.org/xfce/tumbler/start https://gitlab.xfce.org/xfce/tumbler/"
 DESCRIPTION="A thumbnail service for Thunar"
 LICENSE="GPLv2"

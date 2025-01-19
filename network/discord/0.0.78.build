@@ -1,6 +1,6 @@
 ####
 ## discord build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://discord.com/"
 DESCRIPTION="Chat and voice program"
 LICENSE="all-rights-reserved"

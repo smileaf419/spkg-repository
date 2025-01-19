@@ -1,6 +1,6 @@
 ####
 ## thunar build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.xfce.org https://docs.xfce.org/xfce/thunar/start https://gitlab.xfce.org/xfce/thunar/"
 DESCRIPTION="File manager for the Xfce desktop environment"
 LICENSE="GPLv2 LGPLv2.1"

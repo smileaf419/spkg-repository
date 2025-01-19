@@ -1,6 +1,6 @@
 ####
 ## SPIRV-LLVM-Translator build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
 DESCRIPTION="Bi-directional translator between SPIR-V and LLVM IR"
 LICENSE="UoI-NCSA"

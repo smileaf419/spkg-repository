@@ -1,10 +1,10 @@
 ####
 ## expat build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://libexpat.github.io/"
 DESCRIPTION="Stream-oriented XML parser library"
 LICENSE="MIT"
-SRC_URI="https://prdownloads.sourceforge.net/expat/expat-${PKG_VER}.tar.xz"
+SRC_URI=("https://github.com/libexpat/libexpat/releases/download/R_${PKG_VER//./_}/expat-$PKG_VER.tar.bz2")
 DEPS=""
 BDEPS=""
 RDEPS=""

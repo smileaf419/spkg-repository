@@ -1,6 +1,6 @@
 ####
 ## libsoup build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://wiki.gnome.org/Projects/libsoup"
 DESCRIPTION="HTTP client/server library for GNOME"
 LICENSE="LGPLv2.1+"

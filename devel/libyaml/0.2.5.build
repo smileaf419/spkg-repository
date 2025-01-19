@@ -1,6 +1,6 @@
 ####
 ## libyaml build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://github.com/yaml/libyaml"
 DESCRIPTION="Library for parsing and emitting YAML (YAML Ain't Markup Language) code"
 LICENSE="MIT"

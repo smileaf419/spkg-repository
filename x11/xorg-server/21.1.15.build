@@ -1,11 +1,11 @@
 ####
 ## xorg-server build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.x.org/wiki/"
 DESCRIPTION="The X.org Server"
 LICENSE="MIT"
 SRC_URI=("https://www.x.org/pub/individual/xserver/xorg-server-${PKG_VER}.tar.xz")
-PATCHES=("https://www.linuxfromscratch.org/patches/blfs/svn/xorg-server-21.1.13-tearfree_backport-2.patch")
+PATCHES=("https://www.linuxfromscratch.org/patches/blfs/svn/xorg-server-$PKG_VER-tearfree_backport-2.patch")
 DEPS="devel/nettle media/libepoxy media/mesa network/libtirpc system/eudev x11/libdrm x11/libX11 x11/libXau x11/libXdmcp x11/libXext x11/libXfont2 x11/pixman"
 BDEPS="x11/libxcvt x11/libxkbfile x11/xkbcomp media/font-util x11/xkeyboard-config x11/xterm x11/xauth"
 RDEPS="x11/xf86-video-fbdev"

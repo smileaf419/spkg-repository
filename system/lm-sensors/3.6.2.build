@@ -1,6 +1,6 @@
 ####
 ## lm-sensors build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://github.com/hramrach/lm-sensors (hramrach's fork)"
 DESCRIPTION="Hardware Monitoring user-space utilities"
 LICENSE="GPLv2+ LGPLv2.1"

@@ -1,6 +1,6 @@
 ####
 ## xfce4-dev-tools build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.xfce.org https://docs.xfce.org/xfce/xfce4-dev-tools/start https://gitlab.xfce.org/xfce/xfce4-dev-tools/"
 DESCRIPTION="A set of scripts and m4/autoconf macros that ease build system maintenance"
 LICENSE="GPLv2"

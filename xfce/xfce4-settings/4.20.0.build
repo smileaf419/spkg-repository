@@ -1,6 +1,6 @@
 ####
 ## xfce4-settings build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.xfce.org https://docs.xfce.org/xfce/xfce4-settings/start https://gitlab.xfce.org/xfce/xfce4-settings/"
 DESCRIPTION="Configuration system for the Xfce desktop environment"
 LICENSE="GPLv2+"

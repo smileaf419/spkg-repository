@@ -1,6 +1,6 @@
 ####
 ## linux-firmware build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/"
 DESCRIPTION="Firmware files for Linux"
 LICENSE="GPL GPLv2 GPLv3 BSD BSD-2 BSD-4 ISC MIT MPL-1.1"

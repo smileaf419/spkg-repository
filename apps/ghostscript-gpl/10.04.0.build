@@ -1,6 +1,6 @@
 ####
 ## ghostscript-gpl build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.ghostscript.com/"
 DESCRIPTION="Ghostscript is an interpreter for the PostScript language and PDF files"
 LICENSE="AGPL-3 CPL-1.0"

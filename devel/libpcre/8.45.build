@@ -1,6 +1,6 @@
 ####
 ## libpcre build
-## Copyright 2023-2024 spkg developers, licensed under GPLv2
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="http://www.pcre.org/"
 DESCRIPTION="Perl-compatible regular expression library"
 LICENSE="BSD"
