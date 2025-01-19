@@ -94,7 +94,7 @@ src_install() {
 		mv -v "${D}"/usr/lib/*gdb.py "${D}"/usr/share/gdb/auto-load/usr/lib
 
 		## Fix ownerships
-		chown -v -R root:root /usr/lib/gcc/*linux-gnu/14.2.0/include{,-fixed}
+		chown -v -R root:root $D/usr/lib/gcc/*linux-gnu/14.2.0/include{,-fixed}
 	fi
 }
 
