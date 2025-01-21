@@ -55,7 +55,7 @@ src_unpack() {
 			cmake)             dir=$BUILD_PATH ;;
 			third-party)       dir=$BUILD_PATH ;;
 			clang)             dir=$B/tools ;;
-#			flang)             dir=$B/tools ;;
+			flang)             dir=$B/tools ;;
 			lldb)              dir=$B/tools ;;
 			lld)               dir=$B/tools ;;
 			clang-tools-extra) dir=$B/tools/clang/tools ;;
@@ -106,11 +106,17 @@ src_configure() {
 	fi
 
 	## If we have a 32bit arch enabled within our BUILD_ABI set this flag.
-#	if [[ $BUILD_ABI == *32* ]]; then
-#		CONF_ADD_FLAGS+=(
-#			-DLLVM_BUILD_32_BITS=ON
-#		)
-#	fi
+	if [[ $ABILIB == 32 ]]; then
+		CONF_ADD_FLAGS+=(
+			-D CMAKE_C_FLAGS:STRING=-m32
+			-D CMAKE_CXX_FLAGS:STRING=-m32
+			-D LLVM_TARGET_ARCH:STRING=i686
+			-D LLVM_LIBDIR_SUFFIX=32
+			-D LLVM_DEFAULT_TARGET_TRIPLE="i686-pc-linux-gnu"
+			-D LLVM_HOST_TRIPLE="x86_64-pc-linux-gnu"
+			-DLLVM_BUILD_32_BITS=ON
+		)
+	fi
 	configure_default                          \
 		-D CMAKE_INSTALL_PREFIX=/usr           \
 		-D CMAKE_SKIP_INSTALL_RPATH=ON         \
@@ -119,12 +125,12 @@ src_configure() {
 		-D LLVM_BUILD_LLVM_DYLIB=ON            \
 		-D LLVM_LINK_LLVM_DYLIB=ON             \
 		-D LLVM_ENABLE_RTTI=ON                 \
-		-D LLVM_TARGETS_TO_BUILD="host;AMDGPU" \
+		-D LLVM_TARGETS_TO_BUILD="X86;host;AMDGPU" \
 		-D LLVM_BINUTILS_INCDIR=/usr/include   \
 		-D LLVM_INCLUDE_BENCHMARKS=OFF         \
 		-D CLANG_DEFAULT_PIE_ON_LINUX=ON       \
 		-D CLANG_CONFIG_FILE_SYSTEM_DIR=/etc/clang \
-		-W no-dev -G Ninja ..
+		-W no-dev -G Ninja
 
 	## Remove a testcase known to hang indefinite on some systems.
 	rm -f ../projects/compiler-rt/test/tsan/getline_nohang.cpp
@@ -149,6 +155,7 @@ src_test() {
 
 src_install() {
 	install_default
+	cp bin/FileCheck $D/usr/bin
 
 	mkdir -pv $D/etc/clang &&
 	for i in clang clang++; do

@@ -1,0 +1,19 @@
+####
+## libglvnd build
+## Copyright 2023-2024 spkg developers, licensed under GPLv2
+HOMEPAGE=""
+DESCRIPTION=""
+LICENSE=""
+SRC_URI=("https://gitlab.freedesktop.org/glvnd/libglvnd/-/archive/v$PKG_VER/libglvnd-v$PKG_VER.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="x11/libX11"
+BDEPS=""
+RDEPS=""
+setBuildENV meson ninja
+BUILD_SEPERATE_DIR=yes
+ARCHS="x86 x86_64"
+SLOT=0
+B=libglvnd-v$PKG_VER
+
+src_test() { :; }

@@ -8,7 +8,7 @@ LICENSE="MIT"
 SRC_URI=("https://mesa.freedesktop.org/archive/mesa-${PKG_VER}.tar.xz")
 ## Using a slackware mirror for the time being
 #SRC_URI=("https://mirrors.slackware.com/slackware/slackware-current/source/x/mesa/mesa-${PKG_VER}.tar.xz")
-PATCHES=("https://www.linuxfromscratch.org/patches/blfs/svn/mesa-add_xdemos-4.patch")
+#PATCHES=("https://www.linuxfromscratch.org/patches/blfs/svn/mesa-add_xdemos-4.patch")
 DEPS="apps/zstd devel/elfutils devel/expat devel/wayland system/lm-sensors system/llvm system/zlib x11/libdrm x11/libX11 x11/libxcb x11/libXext x11/libXfixes x11/libxshmfence x11/libXxf86vm devel/libclc"
 BDEPS="x11/xrandr python/mako devel/wayland-protocols python/PyYAML"
 RDEPS=""
@@ -25,18 +25,37 @@ SLOT=0
 setBuildENV meson ninja
 
 src_configure() {
+	if [[ $ABILIB == 32 ]]; then
+		CONF_ADD_FLAGS="--cross-file lib32"
+		sed -i 's,/usr/lib,/usr/lib32,g' ./build.ninja
+	fi
 	configure_default \
 		  -Dplatforms=x11,wayland \
 		  -Dgallium-drivers=$(use-enable gallium && echo auto) \
 		  -Dvulkan-drivers=$(use-enable vulkan && echo auto)   \
-		  -Dglx=dri               \
+		  -Dglvnd=enabled         \
 		  -Dvalgrind=disabled     \
 		  -Dlibunwind=disabled    \
+		  -Dosmesa=true           \
+		  -Dvideo-codecs=all      \
 		  $([[ $ENABLE_TESTS == 1 ]] && echo -Dbuild-tests=true)
 }
 
 src_install() {
-	install_default
-	install -v -dm755 "${D}"/usr/share/doc/mesa-${PKG_VER}
-	cp -rfv ../docs/* "${D}"/usr/share/doc/mesa-${PKG_VER}
+	if [[ $ABILIB == 32 ]]; then
+		install_tool
+		mkdir -p $D/$ROOT/$(libdir)
+		cp -Rv DESTDIR/$(libdir)/* $D/$ROOT/$(libdir)
+		if [ -d DESTDIR/usr/share/vulkan ]; then
+			mkdir -p $D/usr/share
+			cp -vR DESTDIR/usr/share/vulkan $D/usr/share
+		fi
+		rm -rf DESTDIR
+	else
+		install_default
+	fi
+	if [[ $INSTALL_DOCS == 1 ]]; then
+		install -v -dm755 "${D}"/usr/share/doc/mesa-${PKG_VER}
+		cp -rfv ../docs/* "${D}"/usr/share/doc/mesa-${PKG_VER}
+	fi
 }

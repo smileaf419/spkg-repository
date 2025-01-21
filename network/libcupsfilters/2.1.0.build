@@ -1,0 +1,17 @@
+####
+## * build
+## Copyright 2023-2024 spkg developers, licensed under GPLv2
+HOMEPAGE=""
+DESCRIPTION=""
+LICENSE=""
+SRC_URI=("https://github.com/OpenPrinting/libcupsfilters/releases/download/$PKG_VER/libcupsfilters-$PKG_VER.tar.xz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="apps/poppler apps/qpdf media/fontconfig media/freetype media/lcms media/libexif media/libjpeg-turbo media/libpng media/tiff network/cups system/dbus"
+BDEPS=""
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=no
+ARCHS="x86 x86_64"
+SLOT=0
+#B=
