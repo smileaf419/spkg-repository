@@ -1,0 +1,17 @@
+####
+## Vulkan Headers build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE=""
+DESCRIPTION=""
+LICENSE=""
+SRC_URI=("https://github.com/KhronosGroup/Vulkan-Headers/archive/v$PKG_VER/Vulkan-Headers-$PKG_VER.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS=""
+BDEPS=""
+RDEPS=""
+setBuildENV cmake ninja
+BUILD_SEPERATE_DIR=no
+ARCHS="x86 x86_64"
+SLOT=0
+#B=
