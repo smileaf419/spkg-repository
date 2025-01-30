@@ -16,6 +16,12 @@ ARCHS="~x86 ~x86_64"
 SLOT=0
 B="rustc-${PKG_VER}-src"
 
+src_prepare() {
+	sed '/MirOpt/d' -i src/bootstrap/src/core/builder/mod.rs
+	[ ! -e /usr/include/libssh2.h ] || export LIBSSH2_SYS_USE_PKG_CONFIG=1
+	[ ! -e /usr/include/sqlite3.h ] || export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+}
+
 src_configure() {
 	mkdir -pv $D/opt/rustc-${PKG_VER}
 	ln -svfn rustc-${PKG_VER} $D/opt/rustc
@@ -25,15 +31,22 @@ src_configure() {
 # See the 8.4 book for an old example using shipped LLVM
 # e.g. if not installing clang, or using a version before 13.0
 
-# tell x.py to not keep printing an annoying warning
-changelog-seen = 2
+# Tell x.py the editors have reviewed the content of this file
+# and updated it to follow the major changes of the building system,
+# so x.py will not warn us to do such a review.
+change-id = 133207
 
 [llvm]
-# by default, rust will build for a myriad of architectures
-targets = "X86"
-
 # When using system llvm prefer shared libraries
 link-shared = true
+
+# Do not download pre-built LLVM, instead either use the system
+# LLVM or build LLVM from the shipped source.
+download-ci-llvm = false
+
+# If building the shipped LLVM source, only enable the x86 target
+# instead of all the targets supported by LLVM.
+targets = "X86"
 
 [build]
 # omit docs to save time and space (default is to build them)
@@ -46,7 +59,7 @@ extended = true
 locked-deps = true
 
 # Specify which extended tools (those from the default install).
-tools = ["cargo", "clippy", "rustfmt"]
+tools = ["cargo", "clippy", "rustdoc", "rustfmt"]
 
 # Use the source code shipped in the tarball for the dependencies.
 # The combination of this and the "locked-deps" entry avoids downloading
@@ -59,29 +72,27 @@ docdir = "share/doc/rustc-$PKG_VER"
 
 [rust]
 channel = "stable"
-description = "for spkg"
+description = ""
 
-# BLFS used to not install the FileCheck executable from llvm,
-# so disabled codegen tests.  The assembly tests rely on FileCheck
-# and cannot easily be disabled, so those will anyway fail if
-# FileCheck has not been installed.
-#codegen-tests = false
+# Enable the same optimizations as the official upstream build.
+lto = "thin"
+codegen-units = 1
+
+# Don't download compiler components from the upstream CI:
+# it's only intended for developers working on standard library
+# and tools, and it only works with the Rust Git repository.
+download-rustc = false
 
 [target.x86_64-unknown-linux-gnu]
-# NB the output of llvm-config (i.e. help options) may be
-# dumped to the screen when config.toml is parsed.
 llvm-config = "/usr/bin/llvm-config"
 
 [target.i686-unknown-linux-gnu]
-# NB the output of llvm-config (i.e. help options) may be
-# dumped to the screen when config.toml is parsed.
 llvm-config = "/usr/bin/llvm-config"
 EOF
 }
 
 src_compile() {
-	{ [ ! -e /usr/include/libssh2.h ] || export LIBSSH2_SYS_USE_PKG_CONFIG=1; } &&
-		RUST_BACKTRACE=1 python3 ./x.py build
+	./x.py build
 }
 
 src_test() {
@@ -91,11 +102,24 @@ src_test() {
 }
 
 src_install() {
-	{ [ ! -e /usr/include/libssh2.h ] || export LIBSSH2_SYS_USE_PKG_CONFIG=1; } &&
-		DESTDIR="$D" python3 ./x.py -vv install
+	DESTDIR="$D" ./x.py install rustc std
+	DESTDIR="$D" ./x.py install --stage=1 cargo clippy rustfmt
 
-	mkdir -p $D/usr/bin
-	for l in $(ls -1 $D/opt/rustc/bin/); do
-		ln -svf /opt/rustc/bin/$l $D/usr/bin/$l
-	done
+	rm -fv $D/opt/rustc-$PKG_VER/share/doc/rustc-$PKG_VER/*.old
+	install -vm644 README.md $D/opt/rustc-$PKG_VER/share/doc/rustc-$PKG_VER
+
+	install -vdm755 $D/usr/share/zsh/site-functions
+	ln -sfv /opt/rustc/share/zsh/site-functions/_cargo $D/usr/share/zsh/site-functions
+
+	mkdir -p $D/usr/share/bash-completion/completions
+	mv -v $D/etc/bash_completion.d/cargo $D/usr/share/bash-completion/completions
+
+	mkdir -p $D/etc/profile.d
+	cat > $D/etc/profile.d/rustc.sh << "EOF"
+pathprepend /opt/rustc/bin           PATH
+EOF
+}
+
+post_install() {
+	source /etc/profile
 }
