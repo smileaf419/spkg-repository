@@ -13,7 +13,7 @@ DEPS="devel/glib devel/libgudev x11/gtk+:3 x11/libnotify x11/pango xfce/libxfce4
 BDEPS="devel/glib xfce/libxfce4ui xfce/libxfce4util xfce/xfconf x11/libnotify devel/libgudev"
 RDEPS="xfce/thunar"
 setBuildENV auto make
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=0
 
 src_configure() {
