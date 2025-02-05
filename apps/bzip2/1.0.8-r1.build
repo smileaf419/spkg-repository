@@ -31,6 +31,9 @@ src_prepare() {
 		-e '/^DOCDIR/s,share,usr/share,' \
 		-i Makefile
 
+	## From Upstream: Initialize the fave and cost arrays fully
+	sed -e '324s/nGroups/BZ_N_GROUPS/' -e '356s/nGroups/BZ_N_GROUPS/' -i compress.c
+
 	append-cflags -fPIC
 }
 
