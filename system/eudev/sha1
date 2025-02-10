@@ -1,3 +1,5 @@
 d2b7396e3a4d11efeba38d048b69c8044f41445c  3.2.14.build
 242801bd31ff45a3fdc4a3b9d078ffa69ccae3c9  eudev-3.2.14.tar.gz
 89a00900c2081ecc69f9405d93663b6bb7d9eca9  udev-lfs-20230818.tar.xz
+88ce0865dc2ee7c48ca3bbc3226b340b0acc6be7  3.2.14-r1.build
+73e3a4a4cb3c6c685af9a7876e9361756aa61021  eudev-3.2.14-random.patch
