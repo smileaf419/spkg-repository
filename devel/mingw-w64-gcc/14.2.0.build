@@ -1,0 +1,39 @@
+####
+## MinGW-w64-GCC build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE=""
+DESCRIPTION=""
+LICENSE=""
+SRC_URI=("https://ftp.gnu.org/gnu/gcc/gcc-$PKG_VER/gcc-$PKG_VER.tar.xz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="devel/mingw-w64-headers"
+BDEPS="devel/mingw-w64-binutils"
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=yes
+ARCHS="x86 x86_64"
+ABILIBS="32 64"
+SLOT=0
+B=gcc-$PKG_VER
+
+src_configure() {
+	local abi=i686
+	[[ $ABILIB == 64 ]] && abi=x86_64
+	configure_default --prefix=/usr               \
+					  --target=$abi-w64-mingw32   \
+					  --disable-shared            \
+					  --disable-multilib          \
+					  --disable-threads           \
+					  --enable-languages=c,c++
+}
+
+src_compile() {
+	compile_default all-gcc
+}
+
+src_test() { :; }
+
+src_install() {
+	install_default install-gcc
+}

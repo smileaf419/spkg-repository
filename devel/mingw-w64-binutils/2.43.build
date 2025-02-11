@@ -1,0 +1,39 @@
+####
+## MinGW-w64-binutils build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE=""
+DESCRIPTION=""
+LICENSE=""
+SRC_URI=("https://sourceware.org/pub/binutils/releases/binutils-$PKG_VER.tar.xz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="apps/zstd system/binutils system/flex"
+BDEPS="devel/mingw-w64-headers"
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=yes
+ARCHS="x86 x86_64"
+ABILIBS="32 64"
+SLOT=0
+B=binutils-$PKG_VER
+
+src_configure() {
+	local abi=i686
+	[[ $ABILIB == 64 ]] && abi=x86_64
+	configure_default --prefix=/usr                              \
+					  --target=$abi-w64-mingw32                  \
+					  --infodir=/usr/share/info/$abi-w64-mingw32 \
+					  --disable-multilib                         \
+					  --disable-nls                              \
+					  --disable-werror
+}
+
+src_test() { :; }
+
+src_install() {
+	make   DESTDIR=$PWD/DESTDIR install
+	rm -v  DESTDIR/usr/lib*/bfd-plugins/libdep.so
+	mkdir -p $D/usr
+	cp -Rv DESTDIR/usr/* $D/usr
+	rm -rf DESTDIR
+}
