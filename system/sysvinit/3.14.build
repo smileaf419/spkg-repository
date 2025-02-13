@@ -1,0 +1,42 @@
+####
+## sysvinit build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://savannah.nongnu.org/projects/sysvinit"
+DESCRIPTION="The Systemp V init system"
+LICENSE="GPLv2+"
+SRC_URI=("https://github.com/slicer69/sysvinit/releases/download/${PKG_VER}/sysvinit-${PKG_VER}.tar.xz")
+[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("https://github.com/slicer69/sysvinit/releases/download/${PKG_VER}/sysvinit-${PKG_VER}.tar.xz.sig")
+PATCHES=()
+DEPS="system/libxcrypt"
+BDEPS=""
+RDEPS=""
+ARCHS="~x86 ~x86_64"
+SLOT=0
+append-ldflags -lcrypt
+
+src_prepare() {
+	sed -e "s/pidof.8//"         \
+		-e "/pidof/d"             \
+		-e "/USRBIN  = last/d"     \
+		-e "/last/d"                \
+		-e "s/logsave\(.8 \| \)*//"  \
+		-e "/mesg:/d"                 \
+		-e "s/mesg\(.[0-9]\| \)*//g"   \
+		-e "/sulogin:/d"                \
+		-e "s/sulogin\(.[0-9] \| \)*//g" \
+		-e "/utmpdump:/d"                 \
+		-e "s/utmpdump\(.[0-9] \| \)*//g" \
+		-e "222d;37d"                     \
+		-e "/wall:/d"                     \
+		-e "s/ wall\(.1 \| \)*//g"        \
+		-i src/Makefile
+}
+
+src_configure() { :; }
+
+src_test() { :; }
+
+src_install() {
+	install_default ROOT="${D}"
+	touch $D/etc/inittab.d/.keep
+}
