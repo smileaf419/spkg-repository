@@ -26,7 +26,7 @@ src_test() { :; }
 
 src_install() {
 	mkdir -p $D/usr/bin
-	install -Dm755 target/release/bindgen $D/usr/bin/
+	install -m755 target/release/bindgen $D/usr/bin/
 
 	mkdir -p $D/usr/share/bash-completion/completions \
 			 $D/usr/share/zsh/site-functions
