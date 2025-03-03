@@ -14,6 +14,8 @@ ARCHS="~x86 ~x86_64"
 SLOT=0
 TEST=test
 
+[[ $ENABLE_TESTS == 1 ]] && PATCHES=("https://git.samba.org/samba.git/?p=samba.git;a=commitdiff_plain;h=2c44022c512e302e8a3787ca17188213f112e182;hp=9aa5c43315d83c19514251a11c4fba5a137f2821 => samba-4.21.4-testfix.patch")
+
 src_configure() {
 	append-ldflags -ltirpc -ltinfow -Wl,--no-as-needed
 	append-cppflags -I/usr/include/tirpc
