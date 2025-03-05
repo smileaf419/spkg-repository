@@ -9,7 +9,7 @@ SRC_URI=("https://mirrors.edge.kernel.org/pub/linux/utils/usb/usbutils/usbutils-
 PATCHES=()
 DEPS="devel/libusb system/eudev"
 BDEPS=""
-RDEPS=""
+RDEPS="system/hwdata"
 setBuildENV meson ninja
 BUILD_SEPERATE_DIR=yes
 ARCHS="x86 x86_64"
