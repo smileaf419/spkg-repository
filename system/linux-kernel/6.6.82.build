@@ -7,8 +7,8 @@ LICENSE="GPLv2"
 DEPS=""
 BDEPS="system/gcc"
 RDEPS=""
-ARCHS="x86 x86_64"
-SLOT=6.13
+ARCHS="~x86 ~x86_64"
+SLOT=6.6
 RESTRICT="strip nobin"
 ## if INSTALL_DOCS == 0 this will be removed.
 DOC_LIST+=("/usr/src/linux-${PKG_VER}/Documentation")

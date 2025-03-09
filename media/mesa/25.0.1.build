@@ -12,12 +12,13 @@ SRC_URI=("https://mesa.freedesktop.org/archive/mesa-${PKG_VER}.tar.xz")
 DEPS="apps/zstd devel/elfutils devel/expat devel/wayland system/lm-sensors system/llvm system/zlib x11/libdrm x11/libX11 x11/libxcb x11/libXext x11/libXfixes x11/libxshmfence x11/libXxf86vm devel/libclc"
 BDEPS="x11/xrandr python/mako devel/wayland-protocols python/PyYAML"
 RDEPS=""
-use-enable X && UDEPS="x11/libXv x11/libXvMC"
-use-enable vulkan && UDEPS+=" media/vulkan-loader"
 
+use-enable X && UDEPS="x11/libXv x11/libXvMC"
+use-enable vulkan && UDEPS+=" media/vulkan-loader devel/glslang devel/rust devel/rust-bindgen python/ply devel/cbindgen"
 use-enable gallium && CDEPS="media/libva"
+
 IUSE="X gallium vulkan"
-ARCHS="x86 x86_64"
+ARCHS="~x86 ~x86_64"
 SLOT=0
 ## Requires LLVM to be built with 32bit libraries as well.
 #ABILIBS="64 x32 32"
