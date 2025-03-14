@@ -1,13 +1,17 @@
 ####
 ## unzip build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE="https://infozip.sourceforge.net/UnZip.html"
+HOMEPAGE="https://github.com/madler/unzip https://infozip.sourceforge.net/UnZip.html"
 DESCRIPTION="unzipper for pkzip-compressed files"
 LICENSE="Info-ZIP"
-SRC_URI=("https://downloads.sourceforge.net/infozip/unzip${PKG_VER/./}.tar.gz")
+SRC_URI=(
+"https://github.com/madler/unzip/archive/refs/tags/v6.00b1.tar.gz => $PKG_NV.tar.gz"
+)
 PATCHES=(
-"https://www.linuxfromscratch.org/patches/blfs/svn/unzip-6.0-consolidated_fixes-1.patch"
-"https://www.linuxfromscratch.org/patches/blfs/svn/unzip-6.0-gcc14-1.patch"
+"https://github.com/madler/unzip/commit/122050bac16fae82a460ff739fb1ca0f106e9d85.patch => $PKG_NV-zip64.patch"
+"https://github.com/madler/unzip/commit/af0d07f95809653b669d88aa0f424c6d5aa48ba0.patch => $PKG_NV-data-descriptors.patch"
+"https://github.com/madler/unzip/commit/3bee0689f7dc6afb88bda09ffb71b6b15623ff92.patch => $PKG_NV-zip-bomb.patch"
+"https://github.com/madler/unzip/commit/0b82c20ac7375b522215b567174f370be89a4b12 => $PKG_NV-length-integrity.patch"
 )
 DEPS="apps/bzip2"
 BDEPS=""
