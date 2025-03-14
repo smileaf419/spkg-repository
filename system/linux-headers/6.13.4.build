@@ -70,6 +70,6 @@ src_test() { :; }
 src_install() {
 	unset ARCH
 	find usr/include -type f ! -name '*.h' -delete
-	mkdir -pv "${D}/${ROOT}/usr"
-	cp -rv usr/include "${D}/${ROOT}/usr"
+	mkdir -pv "$D/usr"
+	cp -rv usr/include "$D/usr"
 }

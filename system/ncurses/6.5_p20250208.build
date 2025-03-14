@@ -155,20 +155,20 @@ bootstrap() {
 					--enable-widec
 		compile_default
 		if [[ $ABILIB == 64 ]]; then
-			mkdir -p $D/$ROOT/usr/{lib,share}
+			mkdir -p $D/usr/{lib,share}
 			install_default TIC_PATH=$(pwd)/build/progs/tic
-			echo "INPUT(-lncursesw)" > $D/$ROOT/$(libdir)/libncurses.so
+			echo "INPUT(-lncursesw)" > $D/$(libdir)/libncurses.so
 		else
 			mkdir -p $PWD/DESTDIR/usr/lib
 			make DESTDIR=$PWD/DESTDIR TIC_PATH=$(pwd)/build/progs/tic install
 			ln -s libncursesw.so DESTDIR/$(libdir)/libcursesw.so
-			mkdir -p $D/$ROOT/$(libdir)
-			cp -Rv DESTDIR/$(libdir)/* $D/$ROOT/$(libdir)
+			mkdir -p $D/$(libdir)
+			cp -Rv DESTDIR/$(libdir)/* $D/$(libdir)
 			rm -rf DESTDIR
 		fi
 		## Only use wide-character definitions
 		sed -e 's/^#if.*XOPEN.*$/#if 1/' \
-			-i $D/$ROOT/usr/include/curses.h
+			-i $D/usr/include/curses.h
 		make distclean
 	done
 }

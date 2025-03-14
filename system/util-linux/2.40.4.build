@@ -45,7 +45,7 @@ src_configure() {
 src_test() { :; }
 
 src_install() {
-	mkdir -pv $D/$ROOT/var/lib/hwclock
+	mkdir -pv $D/var/lib/hwclock
 	if [[ $ABILIB == 64 ]]; then
 		install_default
 	else

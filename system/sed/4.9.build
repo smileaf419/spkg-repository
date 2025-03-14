@@ -28,8 +28,8 @@ src_compile() {
 src_install() {
 	install_default
 
-	mkdir -p "$D/$ROOT/usr/bin"
-	ln -s "$D/$ROOT"/{,usr/}bin/sed
+	mkdir -p "$D/usr/bin"
+	ln -s "$D"/{,usr/}bin/sed
 
 	if [ -e doc/sed.html ]; then
 		install -d -m755           "${D}"/usr/share/doc/sed-${PKG_VER}

@@ -25,9 +25,9 @@ src_configure() {
 	echo "rootsbindir=/sbin" > ../configparms
 
 	if [[ $ABILIB == 64 ]]; then
-		mkdir -pv $D/$ROOT/lib{,64}
-		ln -sfv ../lib/ld-linux-x86-64.so.2 $D/$ROOT/lib64
-		ln -sfv ../lib/ld-linux-x86-64.so.2 $D/$ROOT/lib64/ld-lsb-x86-64.so.3
+		mkdir -pv $D/lib{,64}
+		ln -sfv ../lib/ld-linux-x86-64.so.2 $D/lib64
+		ln -sfv ../lib/ld-linux-x86-64.so.2 $D/lib64/ld-lsb-x86-64.so.3
 		unset CC CXX
 	else
 		export CC="gcc -m$ABILIB"
@@ -61,21 +61,21 @@ src_install() {
 		install_default
 
 		## Fix a hardcoded path
-		sed '/RTLDLIST=/s@/usr@@g' -i "${D}/$ROOT"/bin/ldd
+		sed '/RTLDLIST=/s@/usr@@g' -i "$D"/bin/ldd
 
-#		cp -v ../nscd/nscd.conf "${D}/$ROOT"/etc/nscd.conf
-#		mkdir -pv "${D}/$ROOT"/var/cache/nscd
-#		touch $D/$ROOT/var/cache/nscd/.keep
+#		cp -v ../nscd/nscd.conf "$D"/etc/nscd.conf
+#		mkdir -pv "$D"/var/cache/nscd
+#		touch $D/var/cache/nscd/.keep
 	else
 		make DESTDIR=$PWD/DESTDIR install &&
-		mkdir -p $D/$ROOT/{lib,usr/include/gnu} &&
-		cp -a DESTDIR/$(libdir 1) $D/$ROOT &&
+		mkdir -p $D/{lib,usr/include/gnu} &&
+		cp -a DESTDIR/$(libdir 1) $D &&
 		install -vm644 DESTDIR/usr/include/gnu/{lib-names,stubs}-$ABILIB.h \
-					   $D/$ROOT/usr/include/gnu/ || die " $ERROR_DIALOG Failed to install $ABILIB"
+					   $D/usr/include/gnu/ || die " $ERROR_DIALOG Failed to install $ABILIB"
 		if [[ $ABILIB == 32 ]]; then
-			ln -svf ../lib32/ld-linux.so.2 $D/$ROOT/lib/ld-linux.so.2 || die " $ERROR_DIALOG Error building glibc 32bit"
+			ln -svf ../lib32/ld-linux.so.2 $D/lib/ld-linux.so.2 || die " $ERROR_DIALOG Error building glibc 32bit"
 		else
-			ln -svf ../libx32/ld-linux-x32.so.2 $D/$ROOT/lib/ld-linux-x32.so.2 || die " $ERROR_DIALOG Error building glibc x32bit"
+			ln -svf ../libx32/ld-linux-x32.so.2 $D/lib/ld-linux-x32.so.2 || die " $ERROR_DIALOG Error building glibc x32bit"
 		fi
 	fi
 }
@@ -124,9 +124,9 @@ bootstrap() {
 		echo " * Building for $ABILIB"
 		if [[ $ABILIB == 64 ]]; then
 			unset CC CXX
-			mkdir -pv $D/$ROOT/lib{,64}
-			ln -sfv ../lib/ld-linux-x86-64.so.2 $D/$ROOT/lib64
-			ln -sfv ../lib/ld-linux-x86-64.so.2 $D/$ROOT/lib64/ld-lsb-x86-64.so.3
+			mkdir -pv $D/lib{,64}
+			ln -sfv ../lib/ld-linux-x86-64.so.2 $D/lib64
+			ln -sfv ../lib/ld-linux-x86-64.so.2 $D/lib64/ld-lsb-x86-64.so.3
 			echo "rootsbindir=/sbin" > configparms
 			local TGT=$HOST_TGT
 		else

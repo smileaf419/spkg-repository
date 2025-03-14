@@ -93,7 +93,7 @@ bootstrap() {
 		    --enable-new-dtags         \
 		    --enable-default-hash-style=gnu &&
 		compile_default V=1 && install_default
-		rm -v $D/$ROOT/usr/lib*/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la} || true
+		rm -v $D/usr/lib*/lib{bfd,ctf,ctf-nobfd,opcodes,sframe}.{a,la} || true
 		;;
 	esac
 }

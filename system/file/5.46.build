@@ -25,12 +25,12 @@ src_configure() {
 src_install() {
 	if [[ -z $ABILIB || $ABILIB == 64 ]]; then
 		install_default
-		mkdir -p "$D/$ROOT"/usr/bin
-		ln -sf /bin/file "$D/$ROOT"/usr/bin/file
+		mkdir -p "$D"/usr/bin
+		ln -sf /bin/file "$D"/usr/bin/file
 	else
 		make DESTDIR=$PWD/DESTDIR install
-		mkdir -p $D/$ROOT/$(libdir)
-		cp -Rv DESTDIR/$(libdir)/* $D/$ROOT/$(libdir)
+		mkdir -p $D/$(libdir)
+		cp -Rv DESTDIR/$(libdir)/* $D/$(libdir)
 		rm -rf DESTDIR
 	fi
 }
@@ -49,5 +49,5 @@ bootstrap() {
 	configure_default --build=$(./config.guess) --bindir=/bin
 	compile_default FILE_COMPILE=$(pwd)/build/src/file
 	src_install
-	rm -v $D/$ROOT/lib*/libmagic.la
+	rm -v $D/lib*/libmagic.la
 }

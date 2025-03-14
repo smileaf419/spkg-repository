@@ -48,12 +48,12 @@ src_configure() {
 src_install() {
 	install_default
 
-	mkdir -p "${D}/$ROOT/bin"
+	mkdir -p "$D/bin"
 	# compatibility link
-	ln -sv bash "${D}/$ROOT/bin/sh"
+	ln -sv bash "$D/bin/sh"
 	# some scripts look for bash here.
-	mkdir -p "${D}/$ROOT/usr/bin"
-	ln -sv bash "${D}/$ROOT/usr/bin/bash"
+	mkdir -p "$D/usr/bin"
+	ln -sv bash "$D/usr/bin/bash"
 	inform " !! You should update your running terminal via:"
 	inform "	exec /bin/sh --login"
 }

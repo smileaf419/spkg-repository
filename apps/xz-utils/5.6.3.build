@@ -29,8 +29,8 @@ src_install() {
 		install_default
 	else
 		make DESTDIR=$PWD/DESTDIR install
-		mkdir -p $D/$ROOT/$(libdir)
-		cp -Rv DESTDIR/$(libdir)/* $D/$ROOT/$(libdir)
+		mkdir -p $D/$(libdir)
+		cp -Rv DESTDIR/$(libdir)/* $D/$(libdir)
 		rm -rf DESTDIR
 	fi
 }
@@ -41,5 +41,5 @@ bootstrap() {
 				--build=$(build-aux/config.guess) \
 				--disable-doc
 	compile_default && src_install
-	rm -v $D/$ROOT/$(libdir)/liblzma.la
+	rm -v $D/$(libdir)/liblzma.la
 }

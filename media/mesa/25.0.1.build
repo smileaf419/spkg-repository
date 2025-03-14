@@ -45,8 +45,8 @@ src_configure() {
 src_install() {
 	if [[ $ABILIB == 32 ]]; then
 		install_tool
-		mkdir -p $D/$ROOT/$(libdir)
-		cp -Rv DESTDIR/$(libdir)/* $D/$ROOT/$(libdir)
+		mkdir -p $D/$(libdir)
+		cp -Rv DESTDIR/$(libdir)/* $D/$(libdir)
 		if [ -d DESTDIR/usr/share/vulkan ]; then
 			mkdir -p $D/usr/share
 			cp -vR DESTDIR/usr/share/vulkan $D/usr/share

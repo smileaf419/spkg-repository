@@ -124,8 +124,7 @@ bootstrap() {
 #	local mlist=m64,mx32,m32
 	local mlist="m"$(echo $BUILD_ABI | sed "s/ /,m/g")
 	echo " * Using Multilib List: $mlist"
-	case $PKG_FLAGS in
-		pass1)
+	if pkg-has-flag pass1; then
 			../configure                    \
 			    --target=$HOST_TGT          \
 			    --prefix=$ROOT/tools        \
@@ -152,8 +151,7 @@ bootstrap() {
 			## As we set a ROOT/tools, we cannot use install_default or it'd install into ROOT/ROOT/tools
 			## But we require the prefix to be the actual install.
 			compile_default && make DESTDIR="$D" install
-		;;
-		libstdc++)
+	elif pkg-has-flag libstdc++; then
 			../libstdc++-v3/configure           \
 			    --host=$HOST_TGT                \
 			    --build=$(../config.guess)      \
@@ -163,9 +161,8 @@ bootstrap() {
 			    --disable-libstdcxx-pch         \
 				--with-gxx-include-dir=/tools/$HOST_TGT/include/c++/${PKG_VER} &&
 			compile_default && install_default &&
-			rm -v $D/$ROOT/usr/lib*/lib{stdc++{,exp,fs},supc++}.la || die
-		;;
-		pass2)
+			rm -v $D/usr/lib*/lib{stdc++{,exp,fs},supc++}.la || die
+	elif pkg-has-flag pass2; then
 			## Override the building rule of libgcc and libstdc++ headers, to allow building these libraries with POSIX threads suppor
 			sed '/thread_header =/s/@.*@/gthr-posix.h/' -i ../libgcc/Makefile.in ../libstdc++-v3/include/Makefile.in
 			../configure                                       \
@@ -188,9 +185,8 @@ bootstrap() {
 				--enable-languages=c,c++
 			compile_default
 			install_default
-			ln -sv gcc "$D/$ROOT"/usr/bin/cc
-		;;
-	esac
+			ln -sv gcc "$D"/usr/bin/cc
+	fi
 }
 
 post_install() {
