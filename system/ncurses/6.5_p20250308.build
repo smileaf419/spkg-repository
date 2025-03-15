@@ -112,14 +112,12 @@ src_install() {
 
 	mkdir -p $t_D/$(libdir)/pkgconfig
 	for lib in ncurses form panel menu ; do
-	    rm -vf                    "${t_D}"/$(libdir)/lib${lib}.so
-	    echo "INPUT(-l${lib}w)" > "${t_D}"/$(libdir)/lib${lib}.so
-	    ln -sfv ${lib}w.pc        "${t_D}"/$(libdir)/pkgconfig/${lib}.pc
+		ln -sfv lib${lib}w.so $t_D/usr/lib/lib${lib}.so
+	    ln -sfv ${lib}w.pc    $t_D/$(libdir)/pkgconfig/${lib}.pc
 	done
 
-	rm -vf                     "${t_D}"/$(libdir)/libcursesw.so
-	echo "INPUT(-lncursesw)" > "${t_D}"/$(libdir)/libcursesw.so
-	ln -sfv libncurses.so      "${t_D}"/$(libdir)/libcurses.so
+	ln -sfv libncursesw.so $t_D/usr/lib/libcurses.so
+	ln -sfv libncurses.so  $t_D/$(libdir)/libcurses.so
 
 	if [[ $ABILIB != 64 ]]; then
 		mkdir -p $D/$(libdir)
@@ -156,13 +154,12 @@ bootstrap() {
 		            --with-cxx-shared         \
 		            --without-debug           \
 		            --without-ada             \
-		            --disable-stripping       \
-					--enable-widec
+		            --disable-stripping
 		compile_default
 		if [[ $ABILIB == 64 ]]; then
 			mkdir -p $D/usr/{lib,share}
 			install_default TIC_PATH=$(pwd)/build/progs/tic
-			echo "INPUT(-lncursesw)" > $D/$(libdir)/libncurses.so
+			ln -sv libncursesw.so $D/usr/lib/libncurses.so
 		else
 			mkdir -p $PWD/DESTDIR/usr/lib
 			make DESTDIR=$PWD/DESTDIR TIC_PATH=$(pwd)/build/progs/tic install
