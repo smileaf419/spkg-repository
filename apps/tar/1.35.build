@@ -19,14 +19,18 @@ src_configure() {
 src_install() {
 	install_default
 
-	make -C doc install-html docdir="${D}"/usr/share/doc/tar-${PKG_VER}
+	make -C doc install-html docdir=$D/usr/share/doc/tar-$PKG_VER
 }
 
 bootstrap() {
+set -x
 	FORCE_UNSAFE_CONFIGURE=1   \
 	./configure --prefix=/usr   \
 				--bindir=/bin    \
 				--host=$HOST_TGT  \
+				--disable-acl      \
+				--without-xattrs    \
 				--build=$(build-aux/config.guess)
+set +x
 	compile_default && install_default
 }
