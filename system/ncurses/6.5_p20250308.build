@@ -118,6 +118,7 @@ src_install() {
 
 	ln -sfv libncursesw.so $t_D/usr/lib/libcurses.so
 	ln -sfv libncurses.so  $t_D/$(libdir)/libcurses.so
+	ln -sfv libtinfow.so.6.5 $t_D/$(libdir)/libtinfo.so
 
 	if [[ $ABILIB != 64 ]]; then
 		mkdir -p $D/$(libdir)
@@ -154,6 +155,7 @@ bootstrap() {
 		            --with-cxx-shared         \
 		            --without-debug           \
 		            --without-ada             \
+		            --with-termlib            \
 		            --disable-stripping
 		compile_default
 		if [[ $ABILIB == 64 ]]; then
