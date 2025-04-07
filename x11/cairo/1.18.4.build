@@ -6,7 +6,7 @@ DESCRIPTION="2D graphics library with support for multiple output devices"
 LICENSE="LGPLv2.1 MPL"
 SRC_URI=("https://cairographics.org/releases/cairo-${PKG_VER}.tar.xz")
 #https://download.gnome.org/sources/cairo/${PKG_VER%.*}/cairo-${PKG_VER}.tar.xz")
-PATCHES=("https://gitlab.freedesktop.org/cairo/cairo/-/commit/f19e2fe080ddcfce93c8234a919fd882f3d63362.patch => cairo-1.18.2-pdf-fix.patch")
+PATCHES=()
 DEPS="devel/glib devel/lzo media/fontconfig media/freetype media/libpng system/zlib x11/libX11 x11/libxcb x11/libXext x11/libXrender x11/pixman"
 BDEPS=""
 RDEPS=""
