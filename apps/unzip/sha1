@@ -1,6 +1,5 @@
-c12b9a208390ac50f58887e9d0648849eb3f3236  6.0-r3.build
+3519926d2f5e75e9e1b48adfdccb639f86a91e7b  6.0-r3.build
 31fe304cb729a75735dc77b5d02a26f7ac8edd9c  unzip-6.0.tar.gz
 ab0a8913d0aa0f01148fe297d3b26988f4bc377e  unzip-6.0-zip64.patch
 21ec2509c4c3ef82b889e7dadd31e0e191e228df  unzip-6.0-data-descriptors.patch
 8a3c7e15cf00f933931ed35cacd6d0c946d52b9e  unzip-6.0-zip-bomb.patch
-c04920eec496334ea37c2286ee77f2ab081044ab  unzip-6.0-length-integrity.patch

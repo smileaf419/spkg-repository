@@ -11,14 +11,15 @@ PATCHES=(
 "https://github.com/madler/unzip/commit/122050bac16fae82a460ff739fb1ca0f106e9d85.patch => $PKG_NV-zip64.patch"
 "https://github.com/madler/unzip/commit/af0d07f95809653b669d88aa0f424c6d5aa48ba0.patch => $PKG_NV-data-descriptors.patch"
 "https://github.com/madler/unzip/commit/3bee0689f7dc6afb88bda09ffb71b6b15623ff92.patch => $PKG_NV-zip-bomb.patch"
-"https://github.com/madler/unzip/commit/0b82c20ac7375b522215b567174f370be89a4b12 => $PKG_NV-length-integrity.patch"
+"https://github.com/madler/unzip/commit/0b82c20ac7375b522215b567174f370be89a4b12.patch => $PKG_NV-length-integrity.patch"
 )
 DEPS="apps/bzip2"
 BDEPS=""
 RDEPS=""
 ARCHS="x86 x86_64"
 SLOT=0
-B=unzip${PKG_VER/./}
+B=unzip-6.00b1
+#unzip${PKG_VER/./}
 
 src_patch() {
 	convmv -f cp936 -t utf-8 -r --nosmart --notest .
