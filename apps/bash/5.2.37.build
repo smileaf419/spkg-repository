@@ -62,8 +62,7 @@ bootstrap() {
 	configure_default \
 				--bindir=/bin                      \
 	            --build=$(sh support/config.guess) \
-	            --without-bash-malloc              \
-	            bash_cv_strtold_broken=no &&
-	compile_default &&
+	            --without-bash-malloc
+	compile_default
 	src_install
 }
