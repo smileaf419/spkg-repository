@@ -27,6 +27,9 @@ src_prepare() {
 	sed -i /_PATH_NSCD_/s,db,cache, nscd/nscd.h
 	sed -i /_PATH_VARDB/s,db,lib/nss_db, sysdeps/generic/paths.h \
 										 sysdeps/unix/sysv/linux/paths.h
+
+	## This test fails in a partial LFS environment
+	sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile
 }
 
 src_configure() {
@@ -55,13 +58,6 @@ src_configure() {
 				 --enable-stack-protector=strong    \
 				 --disable-nscd                      \
 				 $(use-enable gd || echo --with-gd=no)
-}
-
-src_compile() {
-	compile_default
-
-	## This test fails in a partial LFS environment
-	sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile
 }
 
 src_install() {
