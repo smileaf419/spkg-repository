@@ -34,10 +34,16 @@ ARCHS="x86 x86_64"
 SLOT=0
 BUILD_SEPERATE_DIR=yes
 
-src_configure() {
+src_prepare() {
 	sed -e '/m64=/s/lib64/lib/' \
 		-e '/m32=/s/m32=.*/m32=..\/lib32$(call if_multiarch,:i386-linux-gnu)/' \
 		-i.orig ../gcc/config/i386/t-linux64
+
+	## Make -mstackrealign a default for 32bit objects
+	sed '/STACK_REALIGN_DEFAULT/s/0/(!TARGET_64BIT \&\& TARGET_SSE)/' -i gcc/config/i386/i386.h
+}
+
+src_configure() {
 #	local mlist="m64,mx32,m32"
 	local mlist="m"$(echo $BUILD_ABI | sed "s/ /,m/g")
 	echo " * Using Multilib List: $mlist"
@@ -83,11 +89,11 @@ gcc_test() {
 src_install() {
 	install_default
 
-	ln -svfr /usr/bin/cpp "$ROOT/${D}"/usr/lib
-	mkdir -p "$ROOT/${D}"/usr/lib/bfd-plugins
+	ln -svfr /usr/bin/cpp "$D"/usr/lib
+	mkdir -p "$D"/usr/lib/bfd-plugins
 	ln -sfv ../../libexec/gcc/$(gcc -dumpmachine)/${PKG_VER}/liblto_plugin.so \
-        "$ROOT/${D}"/usr/lib/bfd-plugins/
-	ln -sfv gcc "$ROOT/${D}"/usr/bin/cc
+        "$D"/usr/lib/bfd-plugins/
+	ln -sfv gcc "$D"/usr/bin/cc
 
 	if [[ $MODE != 'bootstrap' ]]; then
 		mkdir -pv "${D}"/usr/share/gdb/auto-load/usr/lib
@@ -108,7 +114,7 @@ bootstrap() {
 		echo " $IMPORTANT Defaulting to $glibc"
 	fi
 	echo " * Using glibc: $glibc"
-	if [[ $PKG_FLAGS == pass* ]]; then
+	if pkg-has-flag pass1 || pkg-has-flag pass2; then
 		cd ..
 		unpack $DISTFILES/gmp-$GMP_VER.tar.xz
 		mv gmp{-$GMP_VER,}
@@ -117,80 +123,76 @@ bootstrap() {
 		unpack $DISTFILES/mpc-$MPC_VER.tar.gz
 		mv mpc{-$MPC_VER,}
 		cd -
-		sed -e '/m64=/s/lib64/lib/' \
-			-e '/m32=/s/m32=.*/m32=..\/lib32$(call if_multiarch,:i386-linux-gnu)/' \
-			-i.orig ../gcc/config/i386/t-linux64
 	fi
 #	local mlist=m64,mx32,m32
 	local mlist="m"$(echo $BUILD_ABI | sed "s/ /,m/g")
 	echo " * Using Multilib List: $mlist"
 	if pkg-has-flag pass1; then
-			../configure                    \
-			    --target=$HOST_TGT          \
-			    --prefix=$ROOT/tools        \
-			    --with-glibc-version=$glibc \
-				--with-sysroot=$ROOT        \
-			    --with-newlib               \
-				--without-headers           \
-			    --enable-default-pie        \
-			    --enable-default-ssp        \
-			    --disable-nls               \
-			    --disable-shared            \
-				--enable-multilib           \
-				--with-multilib-list=$mlist \
-			    --enable-initfini-array     \
-				--disable-decimal-float     \
-			    --disable-threads           \
-			    --disable-libatomic         \
-			    --disable-libgomp           \
-			    --disable-libquadmath       \
-			    --disable-libssp            \
-			    --disable-libvtv            \
-			    --disable-libstdcxx         \
-			    --enable-languages=c,c++ &&
-			## As we set a ROOT/tools, we cannot use install_default or it'd install into ROOT/ROOT/tools
-			## But we require the prefix to be the actual install.
-			compile_default && make DESTDIR="$D" install
+		../configure                    \
+		    --target=$HOST_TGT          \
+		    --prefix=$ROOT/tools        \
+		    --with-glibc-version=$glibc \
+			--with-sysroot=$ROOT        \
+		    --with-newlib               \
+			--without-headers           \
+		    --enable-default-pie        \
+		    --enable-default-ssp        \
+		    --disable-nls               \
+		    --disable-shared            \
+			--enable-multilib           \
+			--with-multilib-list=$mlist \
+			--disable-decimal-float     \
+		    --disable-threads           \
+		    --disable-libatomic         \
+		    --disable-libgomp           \
+		    --disable-libquadmath       \
+		    --disable-libssp            \
+		    --disable-libvtv            \
+		    --disable-libstdcxx         \
+		    --enable-languages=c,c++ &&
+		## As we set a ROOT/tools, we cannot use install_default or it'd install into ROOT/ROOT/tools
+		## But we require the prefix to be the actual install.
+		compile_default && make DESTDIR="$INSTALL_ROOT_BASE" install
 	elif pkg-has-flag libstdc++; then
-			../libstdc++-v3/configure           \
-			    --host=$HOST_TGT                \
-			    --build=$(../config.guess)      \
-			    --prefix=/usr                   \
-			    --enable-multilib               \
-			    --disable-nls                   \
-			    --disable-libstdcxx-pch         \
-				--with-gxx-include-dir=/tools/$HOST_TGT/include/c++/${PKG_VER} &&
-			compile_default && install_default &&
-			rm -v $D/usr/lib*/lib{stdc++{,exp,fs},supc++}.la || die
+		../libstdc++-v3/configure           \
+		    --host=$HOST_TGT                \
+		    --build=$(../config.guess)      \
+		    --prefix=/usr                   \
+		    --enable-multilib               \
+		    --disable-nls                   \
+		    --disable-libstdcxx-pch         \
+			--with-gxx-include-dir=/tools/$HOST_TGT/include/c++/${PKG_VER} &&
+		compile_default && install_default &&
+		rm -v $D/usr/lib*/lib{stdc++{,exp,fs},supc++}.la || die
 	elif pkg-has-flag pass2; then
-			## Override the building rule of libgcc and libstdc++ headers, to allow building these libraries with POSIX threads suppor
-			sed '/thread_header =/s/@.*@/gthr-posix.h/' -i ../libgcc/Makefile.in ../libstdc++-v3/include/Makefile.in
-			../configure                                       \
-				--build=$(../config.guess)                     \
-				--host=$HOST_TGT                               \
-				--target=$HOST_TGT                             \
-				LDFLAGS_FOR_TARGET=-L$PWD/$HOST_TGT/libgcc     \
-				--prefix=/usr                                  \
-				--with-build-sysroot=$ROOT                     \
-				--enable-default-pie                           \
-				--enable-default-ssp                           \
-				--disable-nls                                  \
-				--enable-multilib --with-multilib-list=$mlist  \
-				--disable-libatomic                            \
-				--disable-libgomp                              \
-				--disable-libquadmath                          \
-				--disable-libsanitizer                         \
-				--disable-libssp                               \
-				--disable-libvtv                               \
-				--enable-languages=c,c++
-			compile_default
-			install_default
-			ln -sv gcc "$D"/usr/bin/cc
+		## Override the building rule of libgcc and libstdc++ headers, to allow building these libraries with POSIX threads support
+		sed '/thread_header =/s/@.*@/gthr-posix.h/' -i ../libgcc/Makefile.in ../libstdc++-v3/include/Makefile.in
+		../configure                                       \
+			--build=$(../config.guess)                     \
+			--host=$HOST_TGT                               \
+			--target=$HOST_TGT                             \
+			LDFLAGS_FOR_TARGET=-L$PWD/$HOST_TGT/libgcc     \
+			--prefix=/usr                                  \
+			--with-build-sysroot=$ROOT                     \
+			--enable-default-pie                           \
+			--enable-default-ssp                           \
+			--disable-nls                                  \
+			--enable-multilib --with-multilib-list=$mlist  \
+			--disable-libatomic                            \
+			--disable-libgomp                              \
+			--disable-libquadmath                          \
+			--disable-libsanitizer                         \
+			--disable-libssp                               \
+			--disable-libvtv                               \
+			--enable-languages=c,c++
+		compile_default
+		install_default
+		ln -sv gcc "$D"/usr/bin/cc
 	fi
 }
 
 post_install() {
-	if [[ $PKG_FLAGS == "pass1" ]]; then
+	if pkg-has-flag pass1; then
 		echo " * Generating limits.h ($HOST_TGT)"
 		cd $BUILD_PATH/$B &&
 		cat gcc/limitx.h gcc/glimits.h gcc/limity.h > \
