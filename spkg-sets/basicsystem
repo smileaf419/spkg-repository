@@ -1,4 +1,6 @@
 # Basic System
+devel/perl[nodep]
+devel/python[nodep]
 system/man-pages
 network/iana-etc
 system/glibc
@@ -38,7 +40,6 @@ devel/gperf
 devel/expat
 network/inetutils
 system/less
-devel/perl
 perl/XML-Parser
 devel/intltool
 system/autoconf
@@ -48,7 +49,6 @@ network/wget
 system/kmod
 devel/elfutils
 devel/libffi
-devel/python
 ## Avoid a Circular Dependency with nodep
 python/flit_core[nodep]
 python/wheel[nodep]
