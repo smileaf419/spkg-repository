@@ -7,7 +7,7 @@ LICENSE="GPLv3"
 SRC_URI=("https://ftp.gnu.org/gnu/dejagnu/dejagnu-${PKG_VER}.tar.gz")
 [[ $VERIFY_SIG == 1 ]] && SRC_URI+=("https://ftp.gnu.org/gnu/dejagnu/dejagnu-${PKG_VER}.tar.gz.sig")
 DEPS=""
-BDEPS=""
+BDEPS="system/texinfo"
 RDEPS=""
 ARCHS="x86 x86_64"
 SLOT=0
