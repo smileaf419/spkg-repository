@@ -23,8 +23,6 @@ src_prepare() {
 }
 
 src_configure() {
-	autoreconf -fiv
-
 	if [[ $ABILIB == 64 ]]; then
 		CONF_ADD_FLAGS="PYTHON=/usr/bin/python3"
 	else
