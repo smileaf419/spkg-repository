@@ -1,30 +1,33 @@
 ####
 ## unzip build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE="https://github.com/madler/unzip https://infozip.sourceforge.net/UnZip.html"
+HOMEPAGE="https://infozip.sourceforge.net/UnZip.html"
 DESCRIPTION="unzipper for pkzip-compressed files"
 LICENSE="Info-ZIP"
-SRC_URI=(
-"https://github.com/madler/unzip/archive/refs/tags/v6.00b1.tar.gz => $PKG_NV.tar.gz"
-)
+SRC_URI=("https://downloads.sourceforge.net/infozip/unzip${PKG_VER/./}.tar.gz")
 PATCHES=(
-"https://github.com/madler/unzip/commit/122050bac16fae82a460ff739fb1ca0f106e9d85.patch => $PKG_NV-zip64.patch"
-"https://github.com/madler/unzip/commit/af0d07f95809653b669d88aa0f424c6d5aa48ba0.patch => $PKG_NV-data-descriptors.patch"
-"https://github.com/madler/unzip/commit/3bee0689f7dc6afb88bda09ffb71b6b15623ff92.patch => $PKG_NV-zip-bomb.patch"
-"https://github.com/madler/unzip/commit/0b82c20ac7375b522215b567174f370be89a4b12.patch => $PKG_NV-length-integrity.patch"
+#"https://gentoo.osuosl.org/distfiles/unzip_6.0-27.debian.tar.xz"
+"https://www.linuxfromscratch.org/patches/blfs/svn/unzip-6.0-consolidated_fixes-1.patch"
+#"https://cgit.gentoo.org/repo/gentoo.git/plain/app-arch/unzip/files/unzip-6.0-fix-false-overlap-detection-on-32bit-systems.patch"
+#"https://cgit.gentoo.org/repo/gentoo.git/plain/app-arch/unzip/files/unzip-6.0-format-security.patch"
+#"https://cgit.gentoo.org/repo/gentoo.git/plain/app-arch/unzip/files/unzip-6.0-no-exec-stack.patch"
+#"https://we.need.a.good.domain.com/unzip-6.0-use-system-bzip2.patch"
 )
+# system bzip2 patch is the applied patches from the consolidated_fixes patch from LFS, without the failed files.
 DEPS="apps/bzip2"
 BDEPS=""
 RDEPS=""
 ARCHS="x86 x86_64"
 SLOT=0
-B=unzip-6.00b1
-#unzip${PKG_VER/./}
+B=unzip${PKG_VER/./}
 
-src_patch() {
-	convmv -f cp936 -t utf-8 -r --nosmart --notest .
-	patch_default
-}
+#src_patch() {
+#	unpack ${DISTFILES}/${PATCHES[0]##*/}
+	# Remove debian's branding patch
+#	rm $BUILD_PATH/$B/debian/patches/02*
+#	PATCHES[0]=$BUILD_PATH/$B/debian/patches
+#	spatches ${PATCHES[@]}
+#}
 
 src_configure() { :; }
 
