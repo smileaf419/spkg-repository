@@ -14,11 +14,11 @@ BDEPS=""
 RDEPS=""
 ARCHS="x86 x86_64"
 SLOT=0
-B=unzip-6.00b1
+B=unzip60
 #unzip${PKG_VER/./}
 
 src_patch() {
-	convmv -f cp936 -t utf-8 -r --nosmart --notest .
+#	convmv -f cp936 -t utf-8 -r --nosmart --notest .
 	patch_default
 }
 
