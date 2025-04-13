@@ -6,28 +6,23 @@ DESCRIPTION="unzipper for pkzip-compressed files"
 LICENSE="Info-ZIP"
 SRC_URI=("https://downloads.sourceforge.net/infozip/unzip${PKG_VER/./}.tar.gz")
 PATCHES=(
-#"https://gentoo.osuosl.org/distfiles/unzip_6.0-27.debian.tar.xz"
-"https://www.linuxfromscratch.org/patches/blfs/svn/unzip-6.0-consolidated_fixes-1.patch"
-#"https://cgit.gentoo.org/repo/gentoo.git/plain/app-arch/unzip/files/unzip-6.0-fix-false-overlap-detection-on-32bit-systems.patch"
-#"https://cgit.gentoo.org/repo/gentoo.git/plain/app-arch/unzip/files/unzip-6.0-format-security.patch"
-#"https://cgit.gentoo.org/repo/gentoo.git/plain/app-arch/unzip/files/unzip-6.0-no-exec-stack.patch"
-#"https://we.need.a.good.domain.com/unzip-6.0-use-system-bzip2.patch"
+"http://deb.debian.org/debian/pool/main/u/unzip/unzip_6.0-28.debian.tar.xz"
+"https://www.linuxfromscratch.org/patches/blfs/svn/unzip-6.0-gcc14-1.patch"
 )
-# system bzip2 patch is the applied patches from the consolidated_fixes patch from LFS, without the failed files.
 DEPS="apps/bzip2"
 BDEPS=""
 RDEPS=""
 ARCHS="x86 x86_64"
 SLOT=0
-B=unzip${PKG_VER/./}
+B=unzip60
+#unzip${PKG_VER/./}
 
-#src_patch() {
-#	unpack ${DISTFILES}/${PATCHES[0]##*/}
-	# Remove debian's branding patch
-#	rm $BUILD_PATH/$B/debian/patches/02*
-#	PATCHES[0]=$BUILD_PATH/$B/debian/patches
-#	spatches ${PATCHES[@]}
-#}
+src_patch() {
+#	convmv -f cp936 -t utf-8 -r --nosmart --notest .
+	patch_default
+	rm debian/patches/02-this-is-debian-unzip.patch
+	spatches debian/patches
+}
 
 src_configure() { :; }
 
@@ -40,6 +35,8 @@ src_compile() {
 	append-cppflags -DUSE_BZIP2
 	# Unicode
 	append-cppflags -DUNICODE_SUPPORT -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE -DUSE_ICONV_MAPPING
+	# Large File support
+	append-cppflags -DLARGE_FILE_SUPPORT
 	export CPPFLAGS=${CXXFLAGS}
 
 	sed -i -r \
