@@ -16,7 +16,7 @@ e988cb761373f79315a791f1c03dda2cb362ccca  llvm-20.1.0.src.tar.xz
 aa2ae46362952b80e0f088f5a9a6b925baad0a00  third-party-20.1.0.src.tar.xz
 76a19e4757a378ddb8df4dc0d5794624b04cdbe1  clang-20.1.0.src.tar.xz
 8bd2c5000c8b22f76d2c04a50af531af7483771c  compiler-rt-20.1.0.src.tar.xz
-8a0a95a1e1a70bececb1e47f84dfe55e34c59dd8  20.1.1.build
+94b0537aa74152e0447ac4b566cf1d3cb4596f69  20.1.1.build
 42b8a34a1d2688d32afbddf0a131cc872d91983f  llvm-20.1.1.src.tar.xz
 c2991a540d8828abb5d888ba621ecf75a838fc61  cmake-20.1.1.src.tar.xz
 d29dac0c2734ad2c8e9f2ac9140818cdbb6541fd  third-party-20.1.1.src.tar.xz

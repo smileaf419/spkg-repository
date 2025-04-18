@@ -74,7 +74,7 @@ src_unpack() {
 }
 
 src_prepare() {
-	append-ldflags -lcursesw -lncursesw -ltinfow
+	append-ldflags -lncursesw -ltinfow
 
 	## Ensure any script uses Python 3
 	grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'
