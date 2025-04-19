@@ -1,6 +1,3 @@
-864ba5548a9beae3d5e77a314a92dcd5baa63d53  0.23-r1.build
-150efc2f9922cd4bb7fbb9d5c72ed3b2d1b60e3e  gettext-0.23.tar.xz
-8599e5674b901811f6db185c8006649ded9511ed  gettext-0.23-libxml2.patch
 676f05d9dce52338e5263cefef27bb2dde59a281  0.23.1.build
 21e0c340de0c79f9d93f970f4a6bdafaa7dc8fe7  gettext-0.23.1.tar.xz
 676f05d9dce52338e5263cefef27bb2dde59a281  0.24.build
