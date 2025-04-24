@@ -3,5 +3,5 @@ bf0e768c378c5c30389aa916d6728da96e5dc668  libical-3.0.18.tar.gz
 c9a45ff52bf359e802950b4bbb67bedc6e932194  libical-3.0.11-pkgconfig-libdir.patch
 297a00d6afc81ccb9552bf61039d6b85a6b4b48d  3.0.19.build
 eed1c346e2705cf96e4651342cc2011427b57b60  libical-3.0.19.tar.gz
-dfad5cdd76a5eeea3064459860483534bfe4f294  3.0.20.build
+297a00d6afc81ccb9552bf61039d6b85a6b4b48d  3.0.20.build
 ecd1fa3864fd70171d154dcbc79d1ceccd9d3709  libical-3.0.20.tar.gz

@@ -8,7 +8,7 @@ SRC_URI=("https://github.com/libexpat/libexpat/releases/download/R_${PKG_VER//./
 DEPS=""
 BDEPS=""
 RDEPS=""
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=0
 ABILIBS="64 x32 32"
 
