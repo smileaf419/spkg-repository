@@ -10,7 +10,7 @@ SRC_URI=("https://github.com/lfs-book/make-ca/archive/v${PKG_VER}/make-ca-${PKG_
 DEPS=""
 BDEPS="apps/p11-kit"
 RDEPS="devel/openssl"
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=0
 CFG_PROTECT=false
 
