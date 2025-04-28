@@ -4,15 +4,15 @@
 HOMEPAGE="https://gstreamer.freedesktop.org/"
 DESCRIPTION="Open source multimedia framework"
 LICENSE="LGPLv2+"
-SRC_URI=("https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-${PKG_VER}.tar.xz")
+SRC_URI=("https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-${PKG_VER}.tar.xz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
-DEPS="devel/glib media/gst-plugins-base media/gstreamer"
+DEPS="apps/bzip2 devel/glib devel/libgudev devel/libxml2 devel/nettle devel/openssl devel/wayland media/fdk-aac media/gst-plugins-base media/gstreamer media/lcms media/libaom media/libass media/libopenmpt media/libsndfile media/libva media/libwebp media/openal media/openjpeg media/opus media/sbc network/neon network/curl x11/cairo x11/gtk+:3 x11/libdrm x11/libX11 x11/pango"
 BDEPS=""
 RDEPS=""
 setBuildENV meson ninja
 BUILD_SEPERATE_DIR=yes
-ARCHS="x86 x86_64"
+ARCHS="~x86 ~x86_64"
 SLOT=0
 #B=
 
