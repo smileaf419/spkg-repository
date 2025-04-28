@@ -1,9 +1,9 @@
 ####
 ## gptfdisk build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://www.rodsbooks.com/gdisk/"
+DESCRIPTION="GPT partition table manipulator for Linux"
+LICENSE="GPLv2"
 SRC_URI=("https://downloads.sourceforge.net/gptfdisk/gptfdisk-${PKG_VER}.tar.gz")
 PATCHES=("https://www.linuxfromscratch.org/patches/blfs/svn/gptfdisk-1.0.10-convenience-1.patch")
 DEPS="devel/popt system/ncurses"

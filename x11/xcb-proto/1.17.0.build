@@ -1,9 +1,9 @@
 ####
 ## xcb-proto build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE="https://wiki.x.org/wiki/"
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://gitlab.freedesktop.org/xorg/proto/xcbproto https://xcb.freedesktop.org/"
+DESCRIPTION="The X protocol C-language Binding (XCB) is a replacement for Xlib featuring a small footprint, latency hiding, direct access to the protocol, improved threading support, and extensibility."
+LICENSE="MIT"
 SRC_URI=("https://xorg.freedesktop.org/archive/individual/proto/xcb-proto-${PKG_VER}.tar.xz")
 PATCHES=()
 DEPS=""

@@ -1,9 +1,9 @@
 ####
 ## xauth build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE="https://www.x.org/wiki/"
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/app/xauth"
+DESCRIPTION="X authority file utility"
+LICENSE="MIT"
 SRC_URI=("https://www.x.org/pub/individual/app/${PKG_NAME}-${PKG_VER}.tar.xz")
 PATCHES=()
 DEPS="x11/libX11 x11/libXau x11/libXext x11/libXmu"

@@ -2,8 +2,8 @@
 ## file build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.darwinsys.com/file/"
-DESCRIPTION=""
-LICENSE=""
+DESCRIPTION="Identify a file's format by scanning binary data for patterns"
+LICENSE="BSD-2"
 SRC_URI="https://astron.com/pub/file/file-${PKG_VER}.tar.gz"
 DEPS="apps/bzip2 apps/xz-utils apps/zstd system/zlib"
 BDEPS=""

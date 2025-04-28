@@ -1,9 +1,9 @@
 ####
 ## XML-Parser build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE="https://github.com/chorny/XML-Parser"
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://metacpan.org/dist/XML-Parser"
+DESCRIPTION="Perl module for parsing XML documents"
+LICENSE="perl_5"
 SRC_URI="https://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-${PKG_VER}.tar.gz"
 B=XML-Parser-${PKG_VER}
 DEPS="devel/expat"

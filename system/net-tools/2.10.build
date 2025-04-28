@@ -1,9 +1,9 @@
 ####
 ## net-tools build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://net-tools.sourceforge.io/"
+DESCRIPTION="Standard Linux networking tools"
+LICENSE="GPLv2"
 SRC_URI="https://downloads.sourceforge.net/project/net-tools/net-tools-${PKG_VER}.tar.xz"
 DEPS=""
 BDEPS=""

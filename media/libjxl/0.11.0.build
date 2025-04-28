@@ -2,8 +2,8 @@
 ## libjxl build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://github.com/libjxl/libjxl"
-DESCRIPTION=""
-LICENSE=""
+DESCRIPTION="JPEG XL image format reference implementation"
+LICENSE="BSD-3"
 SRC_URI=("https://github.com/libjxl/libjxl/archive/refs/tags/v${PKG_VER}.tar.gz => libjxl-$PKG_VER.tar.gz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()

@@ -2,14 +2,14 @@
 ## groff build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.gnu.org/software/groff/"
-DESCRIPTION=""
-LICENSE=""
+DESCRIPTION="A typesetting system that reads plain text input that includes formatting commands to produce output in PostScript, PDF, HTML, or DVI formats or for display to a terminal."
+LICENSE="GPLv2"
 SRC_URI=("https://ftp.gnu.org/gnu/groff/groff-${PKG_VER}.tar.gz")
 [[ $VERIFY_SIG == 1 ]] && SRC_URI+=("https://ftp.gnu.org/gnu/groff/groff-${PKG_VER}.tar.gz.sig")
 DEPS=""
 BDEPS="devel/perl"
 RDEPS=""
-IUSE="X"
+IUSE="X PAGE_A4 PAGE_LETTER"
 use-enable X && UDEPS="x11/libICE x11/libSM x11/libX11 x11/libXau x11/libXaw x11/libxcb x11/libXext x11/libXmu x11/libXpm x11/libXt"
 ARCHS="x86 x86_64"
 SLOT=0
@@ -29,5 +29,5 @@ src_install() {
 	install_default
 
 	mkdir ${D}/etc
-	echo $PAGE > ${D}/etc/papersize
+	(use-enable PAGE_A4 && echo A4 || echo letter) > $D/etc/papersize
 }

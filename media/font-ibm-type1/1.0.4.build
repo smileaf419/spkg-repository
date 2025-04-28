@@ -1,9 +1,9 @@
 ####
 ## font-ibm-type1 build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://gitlab.freedesktop.org/xorg/font/ibm-type1"
+DESCRIPTION="X.Org IBM Courier font"
+LICENSE="MIT"
 SRC_URI=("https://www.x.org/pub/individual/font/${PKG_NAME}-${PKG_VER}.tar.xz")
 PATCHES=()
 DEPS=""
