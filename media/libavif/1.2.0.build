@@ -1,9 +1,9 @@
 ####
 ## libavif build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://github.com/AOMediaCodec/libavif"
+DESCRIPTION="Library for encoding and decoding .avif files"
+LICENSE="BSD-2"
 SRC_URI=("https://github.com/AOMediaCodec/libavif/archive/v${PKG_VER}/libavif-${PKG_VER}.tar.gz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()

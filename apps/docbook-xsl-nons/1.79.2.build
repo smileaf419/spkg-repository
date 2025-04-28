@@ -1,9 +1,9 @@
 ####
 ## docbook-xsl-nons build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://github.com/docbook/wiki/wiki https://github.com/docbook/xslt10-stylesheets"
+DESCRIPTION="XSLT 1.0 Stylesheets for DocBook"
+LICENSE="BSD"
 SRC_URI=("https://github.com/docbook/xslt10-stylesheets/releases/download/release/${PKG_VER}/docbook-xsl-nons-${PKG_VER}.tar.bz2")
 PATCHES=("https://www.linuxfromscratch.org/patches/blfs/svn/docbook-xsl-nons-1.79.2-stack_fix-1.patch")
 DEPS=""

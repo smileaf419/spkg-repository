@@ -1,9 +1,9 @@
 ####
 ## libppd build
 ## Copyright 2023-2024 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://github.com/OpenPrinting/libppd/"
+DESCRIPTION="CUPS library for reading legacy PPD files"
+LICENSE="Apache-2.0-with-GPL2-LGPL2-Exception"
 SRC_URI=("https://github.com/OpenPrinting/libppd/releases/download/$PKG_VER/libppd-$PKG_VER.tar.xz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()

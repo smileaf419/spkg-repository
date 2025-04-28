@@ -1,9 +1,9 @@
 ####
 ## DOSFStools build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://github.com/dosfstools/dosfstools"
+DESCRIPTION="dosfstools consists of the programs mkfs.fat, fsck.fat and fatlabel to create, check and label file systems of the FAT family."
+LICENSE="GPLv3"
 SRC_URI=("https://github.com/dosfstools/dosfstools/releases/download/v${PKG_VER}/dosfstools-${PKG_VER}.tar.gz")
 DEPS=""
 BDEPS=""
