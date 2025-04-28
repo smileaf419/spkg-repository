@@ -1,9 +1,9 @@
 ####
 ## libdrm build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://dri.freedesktop.org/ https://gitlab.freedesktop.org/mesa/drm"
+DESCRIPTION="X.Org libdrm library"
+LICENSE="MIT"
 SRC_URI=("https://dri.freedesktop.org/libdrm/libdrm-${PKG_VER}.tar.xz")
 PATCHES=()
 DEPS="x11/libpciaccess"

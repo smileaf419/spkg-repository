@@ -1,9 +1,9 @@
 ####
 ## MuPDF build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://mupdf.com/ https://git.ghostscript.com/?p=mupdf.git"
+DESCRIPTION="A lightweight PDF viewer and toolkit written in portable C"
+LICENSE="AGPL-3"
 SRC_URI=("https://www.mupdf.com/downloads/archive/mupdf-$PKG_VER-source.tar.gz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()

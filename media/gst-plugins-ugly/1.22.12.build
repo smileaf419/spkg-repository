@@ -1,9 +1,9 @@
 ####
 ## GStreamer Base Plugins build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://gstreamer.freedesktop.org/"
+DESCRIPTION="Open source multimedia framework"
+LICENSE="LGPLv2+"
 SRC_URI=("https://gstreamer.freedesktop.org/src/gst-plugins-ugly/gst-plugins-ugly-${PKG_VER}.tar.xz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()

@@ -2,8 +2,8 @@
 ## slang build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.jedsoft.org/slang/"
-DESCRIPTION=""
-LICENSE=""
+DESCRIPTION="Multi-platform library designed to allow a developer to create robust software"
+LICENSE="GPLv2"
 SRC_URI=("https://www.jedsoft.org/releases/slang/slang-${PKG_VER}.tar.bz2")
 PATCHES=()
 BDEPS="devel/libpcre media/libpng system/zlib"

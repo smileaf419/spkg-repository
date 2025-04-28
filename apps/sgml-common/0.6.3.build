@@ -1,9 +1,9 @@
 ####
 ## sgml-common build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://www.iso.org/standard/16387.html"
+DESCRIPTION="Base ISO character entities and utilities for SGML"
+LICENSE="FDL-1.1+ MIT"
 SRC_URI=("https://sourceware.org/ftp/docbook-tools/new-trials/SOURCES/sgml-common-${PKG_VER}.tgz")
 PATCHES=("https://www.linuxfromscratch.org/patches/blfs/svn/sgml-common-0.6.3-manpage-1.patch")
 DEPS=""
