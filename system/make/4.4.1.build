@@ -2,8 +2,8 @@
 ## make build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.gnu.org/software/make/"
-DESCRIPTION=""
-LICENSE=""
+DESCRIPTION="GNU Make is a tool which controls the generation of executables and other non-source files of a program from the program's source files."
+LICENSE="GPLv3+"
 SRC_URI=("https://ftp.gnu.org/gnu/make/make-${PKG_VER}.tar.gz")
 [[ $VERIFY_SIG == 1 ]] && SRC_URI+=("https://ftp.gnu.org/gnu/make/make-${PKG_VER}.tar.gz.sig")
 DEPS=""
