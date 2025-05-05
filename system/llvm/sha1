@@ -1,9 +1,3 @@
-24d4bbf1f3bddf27dfe39a608b5ded989c9dca7f  19.1.7.build
-a3fe674659932187ca1e252f2daf547a8fbb7411  llvm-19.1.7.src.tar.xz
-e81389c3439b4a549419ccfa730fc3c729ea54c5  cmake-19.1.7.src.tar.xz
-d7bf4c882976fa7a7f3ae2d6ffb130014b0f3ed5  third-party-19.1.7.src.tar.xz
-90cfb378e0722dbe5e46d739faa1375f34e9afe9  clang-19.1.7.src.tar.xz
-5e6424956f5033708b98b795e5ea12a952320446  compiler-rt-19.1.7.src.tar.xz
 24d4bbf1f3bddf27dfe39a608b5ded989c9dca7f  20.1.0.build
 e988cb761373f79315a791f1c03dda2cb362ccca  llvm-20.1.0.src.tar.xz
 27a54dc6ce9fdc212e748bd2ae344152c4dacaf1  cmake-20.1.0.src.tar.xz
