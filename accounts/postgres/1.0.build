@@ -1,0 +1,36 @@
+####
+## Postgres build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://github.com/smileaf419/spkg"
+DESCRIPTION="Postgres User and Group"
+LICENSE="none"
+SRC_URI=""
+DEPS=""
+BDEPS=""
+RDEPS=""
+ARCHS="x86 x86_64"
+SLOT=0
+B=""
+RESTRICT="nostrip nobin"
+
+src_configure() { :; }
+
+src_compile() { :; }
+
+src_test() { :; }
+
+src_install() { :; }
+
+post_install() {
+	addGroup postgres -g 41
+	addUser postgres            \
+		-d /srv/pgsql/data      \
+		-u 41                   \
+		-c "PostgreSQL Server" \
+		-g postgres
+}
+
+src_uninstall() {
+	delUser postgres
+	delGroup postgres
+}
