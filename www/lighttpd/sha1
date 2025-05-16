@@ -1,7 +1,5 @@
-4fb7be24fa539916c2fd6be32cda9e7480fd0422  1.4.77.build
-b99dbd3861a810a237fd3bd072e1057c29047fd7  lighttpd-1.4.77.tar.xz
-d33fd6f0802f9ab2188dbabd4ce50c62d97840a3  lighttpd.conf
 4fb7be24fa539916c2fd6be32cda9e7480fd0422  1.4.78.build
 9f92446dcd5a27484e89f92e592cf1824257b217  lighttpd-1.4.78.tar.xz
+d33fd6f0802f9ab2188dbabd4ce50c62d97840a3  lighttpd.conf
 4fb7be24fa539916c2fd6be32cda9e7480fd0422  1.4.79.build
 62a08221abc199be6b64a48be89c865dda9b2293  lighttpd-1.4.79.tar.xz

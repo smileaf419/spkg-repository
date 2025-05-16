@@ -1,12 +1,3 @@
-1eddea05e07f0a0d3ed497d190c4c74d6ebf8c70  6.13.7.build
-aac8d37ef1a05208d92cc7214932a03cacce6d47  linux-6.13.tar.xz
-5cdfa0724722f5dddbeddc2cf07da1906b06090d  patch-6.13.1.xz
-b4d159aad39f970be139c4abf33eade95c532dfc  patch-6.13.1-2.xz
-94939e037f8089814271ae2f45abf6d8aba42bd4  patch-6.13.2-3.xz
-a2cea8d381e42f259f11e0f8d272f20599da4fd2  patch-6.13.3-4.xz
-af8288d795ec3c2ddcfbbc52f9264050dc420a0b  patch-6.13.4-5.xz
-df5565ecc75d0b3fbcdd5f0aec029e27963795b9  patch-6.13.5-6.xz
-f1b99476dcc3d03a7d6b81e347999f7e3466d374  patch-6.13.6-7.xz
 1eddea05e07f0a0d3ed497d190c4c74d6ebf8c70  6.14.build
 eb12c4d17f6756a33e58373089af85d5cbc03ead  linux-6.14.tar.xz
 1eddea05e07f0a0d3ed497d190c4c74d6ebf8c70  6.14.4.build
