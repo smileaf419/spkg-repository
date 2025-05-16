@@ -9,7 +9,7 @@ PATCHES=()
 DEPS="apps/bzip2 media/fontconfig media/freetype media/libpng system/zlib x11/libX11 x11/libXrender"
 BDEPS=""
 RDEPS=""
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=0
 ABILIBS="64 x32 32"
 
