@@ -7,13 +7,13 @@ LICENSE="LGPLv2.1+"
 SRC_URI=("https://download.gnome.org/sources/glib/${PKG_VER%.*}/glib-${PKG_VER}.tar.xz")
 PATCHES=(
 "https://www.linuxfromscratch.org/patches/blfs/svn/glib-skip_warnings-1.patch"
-"https://gitlab.gnome.org/GNOME/glib/-/commit/55a7660f180d8d4640add5fcae8492240dc7391b.patch => $PKG_NV-introspection.patch"
 )
 DEPS="devel/elfutils devel/libffi devel/libpcre2 system/zlib"
-BDEPS="devel/libxslt python/packaging python/docutils devel/gobject-introspection"
+BDEPS="devel/libxslt python/packaging python/docutils"
 RDEPS="apps/docbook-xml:4.5 apps/docbook-xsl-nons"
 IUSE="doc introspection"
 UDEPS="python/gi-docgen"
+use-enable introspection && DEPS+=" devel/gobject-introspection"
 ARCHS="x86 x86_64"
 SLOT=0
 ABILIBS="64 x32 32"
@@ -21,6 +21,7 @@ _SPKG_CLEAN=distclean
 setBuildENV meson ninja
 
 src_prepare() {
+        append-cflags -std=gnu17
 	sed -e "/docs_dir =/s|$| / 'glib-' + meson.project_version()|" \
 		-e 's/glib-2.0/glib-'$PKG_VER'/' \
 		-i docs/reference/meson.build

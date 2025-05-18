@@ -15,6 +15,10 @@ ABILIBS="64 x32 32"
 _SPKG_CLEAN=distclean
 _LIB_ROOT_INSTALL=1
 
+src_prepare() {
+	sed '/long long t1;/,+1s/()/(...)/' -i configure
+}
+
 src_configure() {
 	if [[ $ABILIB != 64 ]]; then
 		cp -v configfsf.guess config.guess

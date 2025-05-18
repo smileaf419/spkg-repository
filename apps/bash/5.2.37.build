@@ -32,6 +32,11 @@ if [[ $MODE != "search" ]]; then
 	done
 fi
 
+## Required for building with GCC 15
+src_prepare() {
+        append-cflags -std=gnu17
+}
+
 src_configure() {
 	# Fix a hard-coded path in a test.
 	sed -i 's,/usr/bin/printf,/bin/printf,' tests/intl2.sub

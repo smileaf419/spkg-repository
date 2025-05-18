@@ -12,6 +12,11 @@ RDEPS=""
 ARCHS="x86 x86_64"
 SLOT=0
 
+## Required for building with GCC 15
+src_prepare() {
+        append-cflags -std=gnu17
+}
+
 src_configure() {
 	filter-flags "-O."
 	# Only add -G if bc isn't installed. this omits certain tests that won't work until after bc is installed.

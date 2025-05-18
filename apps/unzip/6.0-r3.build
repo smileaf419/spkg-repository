@@ -6,7 +6,7 @@ DESCRIPTION="unzipper for pkzip-compressed files"
 LICENSE="Info-ZIP"
 SRC_URI=("https://downloads.sourceforge.net/infozip/unzip${PKG_VER/./}.tar.gz")
 PATCHES=(
-"http://deb.debian.org/debian/pool/main/u/unzip/unzip_6.0-28.debian.tar.xz"
+"http://deb.debian.org/debian/pool/main/u/unzip/unzip_6.0-29.debian.tar.xz"
 "https://www.linuxfromscratch.org/patches/blfs/svn/unzip-6.0-gcc14-1.patch"
 )
 DEPS="apps/bzip2"
@@ -22,6 +22,11 @@ src_patch() {
 	patch_default
 	rm debian/patches/02-this-is-debian-unzip.patch
 	spatches debian/patches
+}
+
+## Required for building with GCC 15
+src_prepare() {
+        append-cflags -std=gnu17
 }
 
 src_configure() { :; }

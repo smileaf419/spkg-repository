@@ -11,6 +11,11 @@ RDEPS=""
 ARCHS="x86 x86_64"
 SLOT=0
 
+## Required for building with GCC 15
+src_prepare() {
+	append-cflags -std=gnu17
+}
+
 src_configure() {
 	configure_default --sysconfdir=/etc \
 					  --libdir=/lib     \
