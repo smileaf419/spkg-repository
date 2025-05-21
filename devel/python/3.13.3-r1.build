@@ -5,6 +5,7 @@ HOMEPAGE="https://www.python.org/"
 DESCRIPTION="Python Programming Language"
 LICENSE="PSF"
 SRC_URI=("https://www.python.org/ftp/python/${PKG_VER}/Python-${PKG_VER}.tar.xz")
+PATCHES=("https://github.com/python/cpython/commit/6279eb8c076d89d3739a6edb393e43c7929b429d.patch => python-3.13.3-CVE-2025-4516.patch")
 [[ $INSTALL_DOCS == 1 ]] && SRC_URI+=("https://www.python.org/ftp/python/doc/${PKG_VER}/python-${PKG_VER}-docs-html.tar.bz2")
 [[ $VERIFY_SIG == 1 ]] && SRC_URI+=("https://www.python.org/ftp/python/${PKG_VER}/Python-${PKG_VER}.tar.xz.sig")
 B=${PKG_NV^}
