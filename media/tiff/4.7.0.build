@@ -14,5 +14,6 @@ ARCHS="x86 x86_64"
 SLOT=0
 
 src_configure() {
-	configure_default -G Ninja
+	## 4.7.0: CMAKE_POLICY_VERSION_MINIMUM needed.
+	configure_default -G Ninja -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 }
