@@ -21,6 +21,10 @@ use-enable tiff && UDEPS="media/tiff"
 ## Versioning string: ##.##.#
 VER=$(getMajorVer $PKG_VER).$(printf "%02d" $(getMinorVer $PKG_VER)).$(getMicroVer $PKG_VER)
 
+## Required for building with GCC 15
+src_prepare() {
+        append-cflags -std=gnu17
+}
 
 src_configure() {
 	## Remove unneeded libraries
