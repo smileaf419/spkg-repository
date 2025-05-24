@@ -15,7 +15,7 @@ RDEPS=""
 
 use-enable X && UDEPS="x11/libXv x11/libXvMC"
 use-enable vulkan && UDEPS+=" media/vulkan-loader devel/glslang devel/rust devel/rust-bindgen python/ply devel/cbindgen"
-use-enable gallium && CDEPS="media/libva"
+use-disabled gallium || CDEPS="media/libva"
 
 IUSE="X gallium vulkan"
 ARCHS="~x86 ~x86_64"
@@ -32,8 +32,8 @@ src_configure() {
 	fi
 	configure_default \
 		  -Dplatforms=x11,wayland \
-		  -Dgallium-drivers=$(use-enable gallium && echo auto) \
-		  -Dvulkan-drivers=$(use-enable vulkan && echo auto)   \
+		  -Dgallium-drivers=$(use-disabled gallium || echo auto) \
+		  -Dvulkan-drivers=$(use-enable vulkan && echo auto)     \
 		  -Dglvnd=enabled         \
 		  -Dvalgrind=disabled     \
 		  -Dlibunwind=disabled    \
