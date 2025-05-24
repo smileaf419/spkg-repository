@@ -8,7 +8,7 @@ SRC_URI=("https://github.com/OpenPrinting/libcupsfilters/releases/download/$PKG_
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
 DEPS="apps/poppler apps/qpdf media/fontconfig media/freetype media/lcms media/libexif media/libjpeg-turbo media/libpng media/tiff network/cups system/dbus"
-BDEPS=""
+BDEPS="apps/ghostscript-gpl apps/mupdf"
 RDEPS=""
 setBuildENV auto make
 BUILD_SEPERATE_DIR=no
