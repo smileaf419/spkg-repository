@@ -16,6 +16,7 @@ RDEPS=""
 setBuildENV meson ninja
 ARCHS="~x86 ~x86_64"
 SLOT=0
+B=libxkbcommon-xkbcommon-$PKG_VER
 
 src_configure() {
 	configure_default -Denable-docs=false
