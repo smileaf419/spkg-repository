@@ -5,13 +5,21 @@ HOMEPAGE="https://www.gtk.org"
 DESCRIPTION="GTK is a multi-platform toolkit for creating graphical user interfaces."
 LICENSE="LGPLv2.1"
 SRC_URI=("https://download.gnome.org/sources/gtk/${PKG_VER%.*}/gtk-${PKG_VER}.tar.xz")
+####
+## Apply an upstream patch affecting 3.24.49
+## https://gitlab.gnome.org/GNOME/gjs/-/issues/681
+PATCHES=(
+"https://gitlab.gnome.org/msandova/gtk/-/commit/9b3476aaf672616d28dbb525e5a6ce39d9a533de.patch => gtk-3.24.49-annotate-visibles-getter-1.patch"
+"https://gitlab.gnome.org/msandova/gtk/-/commit/a11310a40b7444b56823da6bbb44b759f2b15cc8.patch => gtk-3.24.49-annotate-visibles-getter-2.patch"
+"https://gitlab.gnome.org/msandova/gtk/-/commit/52e2b8555f56dabdb0056e1d375fdacd4081c2df.patch => gtk-3.24.49-annotate-visibles-getter-3.patch"
+)
 DEPS="apps/at-spi2-core devel/fribidi devel/glib devel/wayland media/fontconfig media/harfbuzz media/libepoxy network/cups x11/cairo x11/gdk-pixbuf x11/libX11 x11/libXcomposite x11/libXcursor x11/libXdamage x11/libXext x11/libXfixes x11/libXi x11/libXinerama x11/libxkbcommon x11/libXrandr x11/pango"
 BDEPS="x11/libxkbcommon devel/gobject-introspection"
 RDEPS=""
 ARCHS="x86 x86_64"
 SLOT=3
 IUSE="man"
-B=gtk+-$PKG_VER
+B=gtk-$PKG_VER
 setBuildENV meson ninja
 
 src_configure() {
