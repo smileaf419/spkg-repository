@@ -9,7 +9,7 @@ PATCHES=()
 DEPS="devel/glib xfce/libxfce4util"
 BDEPS="devel/vala"
 RDEPS=""
-setBuildENV auto make
+setBuildENV meson ninja
 ARCHS="x86 x86_64"
 SLOT=0
 

@@ -1,8 +1,6 @@
 ####
 ## garcon build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-# Start versioning at -r1 if patches are used.
-# non-patched packages may omit a revision, until a modification is made.
 HOMEPAGE="https://www.xfce.org https://docs.xfce.org/xfce/garcon/start https://gitlab.xfce.org/xfce/garcon/"
 DESCRIPTION="Xfce's freedesktop.org specification compatible menu implementation library"
 LICENSE="LGPLv2+ FDL-1.1+"
@@ -12,7 +10,7 @@ PATCHES=()
 DEPS="apps/at-spi2-core devel/glib media/harfbuzz system/zlib x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/pango xfce/libxfce4ui xfce/libxfce4util"
 BDEPS=""
 RDEPS=""
-setBuildENV auto make
+setBuildENV meson ninja
 ARCHS="x86 x86_64"
 SLOT=0
 
