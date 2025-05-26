@@ -1,0 +1,19 @@
+####
+## libgtop build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libgtop"
+DESCRIPTION="Library that provides top functionality to applications"
+LICENSE="GPLv2+"
+SRC_URI=("https://download.gnome.org/sources/libgtop/${PKG_VER%.*}/libgtop-$PKG_VER.tar.xz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="devel/glib x11/libXau"
+BDEPS=""
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=no
+ARCHS="x86 x86_64"
+SLOT=0
+#B=
+
+src_test() { :; }
