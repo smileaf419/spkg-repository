@@ -1,26 +1,51 @@
 ####
 ## pam build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://github.com/linux-pam/linux-pam"
+DESCRIPTION="Linux-PAM (Pluggable Authentication Modules)"
+LICENSE="BSD GPLv2"
 SRC_URI="https://github.com/linux-pam/linux-pam/releases/download/v${PKG_VER}/Linux-PAM-${PKG_VER}.tar.xz"
 BDEPS="network/libtirpc"
 RDEPS=""
 ARCHS="x86 x86_64"
 SLOT=0
 B=Linux-PAM-${PKG_VER}
+setBuildENV meson ninja
+
+src_prepare() {
+	checkKernelConfig AUDIT 1 'Auditing Support' 1
+}
 
 src_configure() {
-	sed -e /service_DATA/d \
-	    -i modules/pam_namespace/Makefile.am
-	autoreconf
+	sed -e "s/'elinks'/'lynx'/"                       \
+		-e "s/'-no-numbering', '-no-references'/      \
+			'-force-html', '-nonumbers', '-stdin'/" \
+		-i ../meson.build
 
-	configure_default \
-				--sbindir=/usr/sbin \
-				--sysconfdir=/etc \
-				--libdir=/usr/lib \
-				--enable-securedir=/usr/lib/security
+	configure_default -Ddocdir=/usr/share/doc/Linux-PAM-$PKG_VER
+}
+
+src_test() {
+	if [[ ! -e /etc/pam.d/other ]]; then
+		if [ "$(id -u)" -eq 0 ]; then
+			install -v -m755 -d /etc/pam.d
+
+			cat > /etc/pam.d/other << "EOF"
+auth     required       pam_deny.so
+account  required       pam_deny.so
+password required       pam_deny.so
+session  required       pam_deny.so
+EOF
+
+			test_default
+		else
+			echo " $DIALOG_ERROR a pam config was not found and is required to test."
+			echo " $DIALOG_ERROR This more than likely means this is a fresh install."
+			echo " $DIALOG_ERROR we cannot create one for you as this requires root access."
+		fi
+	else
+		test_default
+	fi
 }
 
 src_install() {
@@ -28,7 +53,17 @@ src_install() {
 
 	chmod -v 4755 ${D}/usr/sbin/unix_chkpwd
 
+	rm -rf "$D"/usr/lib/systemd
+
 	install -vdm755 ${D}/etc/pam.d
+
+	cat > /etc/pam.d/other << "EOF"
+auth     required       pam_deny.so
+account  required       pam_deny.so
+password required       pam_deny.so
+session  required       pam_deny.so
+EOF
+
 	cat > ${D}/etc/pam.d/system-account << "EOF"
 # Begin /etc/pam.d/system-account
 
