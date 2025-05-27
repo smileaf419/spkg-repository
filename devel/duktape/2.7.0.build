@@ -1,0 +1,30 @@
+####
+## duktape build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://duktape.org"
+DESCRIPTION="Embeddable Javascript engine"
+LICENSE="MIT"
+SRC_URI=("https://duktape.org/duktape-$PKG_VER.tar.xz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS=""
+BDEPS=""
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=no
+ARCHS="x86 x86_64"
+SLOT=0
+#B=
+
+src_configure() { :; }
+
+src_compile() {
+	sed -i 's/-Os/-O2/' Makefile.sharedlibrary
+	compile_default -f Makefile.sharedlibrary INSTALL_PREFIX=/usr
+}
+
+src_test() { :; }
+
+src_install() {
+	install_default -f Makefile.sharedlibrary INSTALL_PREFIX=/usr
+}

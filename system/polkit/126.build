@@ -1,0 +1,38 @@
+####
+## polkit build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://www.freedesktop.org/wiki/Software/polkit https://github.com/polkit-org/polkit"
+DESCRIPTION="Policy framework for controlling privileges for system-wide services"
+LICENSE="LGPLv2"
+SRC_URI=("https://github.com/polkit-org/polkit/archive/$PKG_VER/polkit-$PKG_VER.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS=""
+BDEPS=""
+RDEPS="devel/duktape accounts/polkitd"
+setBuildENV meson ninja
+ARCHS="x86 x86_64"
+SLOT=0
+#B=
+
+src_prepare() {
+	checkKernelConfig CONFIG_NAMESPACES 1 'Namespaces support' 1
+	checkKernelConfig CONFIG_USER_NS    1 'User namespace'     1
+}
+
+src_configure() {
+	configure_default -Dman=true \
+					  -Dsession_tracking=elogind \
+					  -Dsystemdsystemunitdir=/tmp \
+					  -Dtests=true
+}
+
+## Needs dbus python and dbusmock
+src_test() { :; }
+
+src_install() {
+	install_default
+
+	rm "$D"/tmp/*.service
+	rm -rf "$D"/usr/lib{sysuser,tmpfiles}.d
+}

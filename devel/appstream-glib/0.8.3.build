@@ -1,0 +1,20 @@
+####
+## AppStream Glib build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://people.freedesktop.org/~hughsient/appstream-glib/ https://github.com/hughsie/appstream-glib"
+DESCRIPTION="This library provides objects and helper methods to help reading and writing AppStream metadata."
+LICENSE="LGPLv2.1"
+SRC_URI=("https://github.com/hughsie/appstream-glib/archive/refs/tags/appstream_glib_${PKG_VER//./_}.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="devel/json-glib devel/libyaml"
+BDEPS=""
+RDEPS=""
+setBuildENV meson ninja
+ARCHS="x86 x86_64"
+SLOT=0
+B=appstream-glib-appstream_glib_${PKG_VER//./_}
+
+src_configure() {
+	configure_default -Dbuilder=false -D rpm=false -Dgtk-doc=false -Dman=false
+}
