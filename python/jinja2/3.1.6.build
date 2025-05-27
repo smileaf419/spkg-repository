@@ -12,4 +12,4 @@ setBuildENV none pip
 BUILD_SEPERATE_DIR=no
 ARCHS="x86 x86_64"
 SLOT=0
-B=${PKG_NAME^}-$PKG_VER
+#B=${PKG_NAME^}-$PKG_VER
