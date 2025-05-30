@@ -15,8 +15,8 @@ SRC_URI=("https://download.oracle.com/java/${MV}/archive/jdk-${My_Ver}_linux-x64
 DEPS="media/alsa-lib media/freetype system/zlib x11/libX11 x11/libXext x11/libXi x11/libXrender x11/libXtst"
 BDEPS=""
 RDEPS="virtual/alsa"
-ARCHS="~x86 ~x86_64"
-SLOT=22
+ARCHS="x86 x86_64"
+SLOT=24
 B=jdk-${PKG_VER}
 RESTRICT=nobin
 
