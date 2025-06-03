@@ -2,8 +2,8 @@
 ## expect build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
 HOMEPAGE="https://core.tcl.tk/expect/"
-DESCRIPTION=""
-LICENSE=""
+DESCRIPTION="tool for automating interactive applications"
+LICENSE="BSD"
 SRC_URI=("https://downloads.sourceforge.net/project/expect/Expect/$PKG_VER/expect$PKG_VER.tar.gz")
 PATCHES=("https://www.linuxfromscratch.org/patches/downloads/expect/expect-5.45.4-gcc15-1.patch")
 DEPS="devel/tcl<9.0.0"
