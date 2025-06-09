@@ -9,6 +9,6 @@ PATCHES=()
 DEPS="devel/glib x11/cairo x11/gdk-pixbuf x11/gtk+:3 xfce/garcon xfce/libxfce4ui xfce/libxfce4util xfce/xfconf"
 BDEPS=""
 RDEPS=""
-setBuildENV auto make
+setBuildENV meson ninja
 ARCHS="x86 x86_64"
 SLOT=0

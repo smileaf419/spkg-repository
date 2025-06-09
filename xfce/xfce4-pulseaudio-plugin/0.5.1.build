@@ -8,7 +8,7 @@ SRC_URI=("https://archive.xfce.org/src/panel-plugins/${PKG_NAME}/${PKG_VER%.*}/$
 DEPS=""
 BDEPS=""
 RDEPS=""
-setBuildENV auto make
+setBuildENV meson ninja
 ARCHS="x86 x86_64"
 SLOT=0
 

@@ -13,6 +13,8 @@ ARCHS="~x86 ~x86_64"
 SLOT=0
 
 src_configure() {
+	export SGML_CATALOG_FILES=/etc/xml/catalog
+	sed "s/'--nonet'/'--nonet', '--catalogs'/" -i ../docs/meson.build
 	configure_default --sysconfdir=/etc
 }
 

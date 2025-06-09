@@ -8,7 +8,7 @@ SRC_URI=("https://archive.xfce.org/src/xfce/${PKG_NAME}/${PKG_VER%.*}/${PKG_NAME
 DEPS="xfce/xfce4-panel x11/libnotify"
 BDEPS=""
 RDEPS=""
-setBuildENV auto make
+setBuildENV meson ninja
 ARCHS="x86 x86_64"
 SLOT=0
 

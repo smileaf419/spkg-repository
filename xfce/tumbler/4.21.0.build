@@ -9,7 +9,7 @@ PATCHES=()
 DEPS="apps/bzip2 apps/poppler devel/glib media/freetype media/libjpeg-turbo media/libpng network/curl system/zlib x11/cairo x11/gdk-pixbuf xfce/libxfce4util"
 BDEPS=""
 RDEPS=""
-setBuildENV auto make
+setBuildENV meson ninja
 ARCHS="x86 x86_64"
 SLOT=0
 

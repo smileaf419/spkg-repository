@@ -11,7 +11,7 @@ BDEPS=""
 # FIXME: Technically can be 1 or the other At some point if possible we
 # Should add logic like dep1 || dep2
 RDEPS="x11/gnome-icon-theme lxde/lxde-icon-theme"
-setBuildENV auto make
+setBuildENV meson ninja
 ARCHS="x86 x86_64"
 SLOT=0
 
