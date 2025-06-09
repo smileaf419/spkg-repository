@@ -1,0 +1,16 @@
+####
+## libdisplay-info build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://gitlab.freedesktop.org/emersion/libdisplay-info"
+DESCRIPTION="EDID and DisplayID library"
+LICENSE="MIT"
+SRC_URI=("https://gitlab.freedesktop.org/emersion/libdisplay-info/-/releases/$PKG_VER/downloads/libdisplay-info-$PKG_VER.tar.xz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="system/hwdata"
+BDEPS=""
+RDEPS=""
+setBuildENV meson ninja
+ARCHS="x86 x86_64"
+SLOT=0
+#B=
