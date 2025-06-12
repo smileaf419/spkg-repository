@@ -1,8 +1,5 @@
-c1505215ccd6ae5cd1cf7305b4f452e3d43e4286  2.84.0.build
-15a865b6d610ccf18d35732c934c098601e6607e  glib-2.84.0.tar.xz
-b96bf17d0802efb5ea1788a412da171b03df013d  glib-skip_warnings-1.patch
-1d804f8205f68be4e60a71b5130bebb34f330012  glib-2.84.0-introspection.patch
 bcda7a2d0a22af3684034da15421bd1cc1e6f8a7  2.84.1.build
 13eb8d09cf0f4fa6e1e28853f868dc15c69f0ddc  glib-2.84.1.tar.xz
-dd5ce0f7c3bbb2073802411f91d42b8d093cf183  2.84.2.build
+b96bf17d0802efb5ea1788a412da171b03df013d  glib-skip_warnings-1.patch
+bcda7a2d0a22af3684034da15421bd1cc1e6f8a7  2.84.2.build
 c4a8f7f24252c6427683cd1ed982ac4a143cda81  glib-2.84.2.tar.xz
