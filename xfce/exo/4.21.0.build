@@ -9,7 +9,7 @@ LICENSE="GPLv2 LGPLv2.1"
 SRC_URI=("https://archive.xfce.org/src/xfce/${PKG_NAME}/${PKG_VER%.*}/${PKG_NAME}-${PKG_VER}.tar.bz2")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
-DEPS="apps/at-spi2-core devel/glib media/harfbuzz system/zlib x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/libICE x11/libSM x11/libX11 x11/pango xfce/libxfce4ui xfce/libxfce4util"
+DEPS="apps/at-spi2-core devel/glib media/harfbuzz system/zlib x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/pango xfce/libxfce4ui xfce/libxfce4util"
 BDEPS="xfce/xfce4-dev-tools"
 RDEPS=""
 setBuildENV auto make

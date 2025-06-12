@@ -6,7 +6,7 @@ DESCRIPTION="Configuration system for the Xfce desktop environment"
 LICENSE="GPLv2+"
 SRC_URI=("https://archive.xfce.org/src/xfce/${PKG_NAME}/${PKG_VER%.*}/${PKG_NAME}-${PKG_VER}.tar.xz")
 PATCHES=()
-DEPS="apps/at-spi2-core devel/glib media/fontconfig media/harfbuzz system/zlib x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/libnotify x11/libX11 x11/libXcursor x11/libXi x11/libXrandr x11/pango xfce/exo xfce/garcon xfce/libxfce4ui xfce/libxfce4util xfce/xfconf"
+DEPS="apps/at-spi2-core devel/glib devel/wayland media/fontconfig x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/libX11 x11/libXcursor x11/libXext x11/libXi x11/libXrandr x11/libnotify x11/pango xfce/garcon xfce/libxfce4ui xfce/libxfce4util xfce/xfconf"
 BDEPS=""
 # FIXME: Technically can be 1 or the other At some point if possible we
 # Should add logic like dep1 || dep2

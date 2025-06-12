@@ -7,7 +7,7 @@ LICENSE="LGPLv2+ FDL-1.1+"
 SRC_URI=("https://archive.xfce.org/src/xfce/${PKG_NAME}/${PKG_VER%.*}/${PKG_NAME}-${PKG_VER}.tar.xz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
-DEPS="apps/at-spi2-core devel/glib media/harfbuzz system/zlib x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/pango xfce/libxfce4ui xfce/libxfce4util"
+DEPS="devel/glib x11/gtk+:3 xfce/libxfce4ui xfce/libxfce4util"
 BDEPS=""
 RDEPS=""
 setBuildENV meson ninja
