@@ -64,6 +64,7 @@ src_install() {
 }
 
 bootstrap() {
+	append-cflags -std=gnu17
 	configure_default \
 				--bindir=/bin                      \
 	            --build=$(sh support/config.guess) \
