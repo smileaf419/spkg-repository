@@ -10,7 +10,7 @@ e9e07818547472231a814af06cee24a86c62cbf6  cmake-20.1.4.src.tar.xz
 0e85a680995795d78270ea8e43ae34a5d2665f02  third-party-20.1.4.src.tar.xz
 3604d2c2ee5fe907645e089fce188b93cb499387  clang-20.1.4.src.tar.xz
 14fa5e0ea5a28b50b19bf85def4af1aa9d3394c9  compiler-rt-20.1.4.src.tar.xz
-94b0537aa74152e0447ac4b566cf1d3cb4596f69  20.1.6.build
+506fe1bdd04d7281c8e98a61e37891a9f317b1e0  20.1.6.build
 bbd1cafc1478127961a2a14dec997e045e5e3928  llvm-20.1.6.src.tar.xz
 d02c36e0bbfa622c177e70338371f944e0e6f413  cmake-20.1.6.src.tar.xz
 997c8e633f7be857d50641bcae5e5be201fa374e  third-party-20.1.6.src.tar.xz
