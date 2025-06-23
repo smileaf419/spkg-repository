@@ -26,14 +26,15 @@ ARCHS="x86 x86_64"
 SLOT=0
 B=zip${PKG_VER/./}
 
-src_configure() {
-	filter-flags -O2
-	append-cppflags -std=gnu89 -O3
-	append-cppflags -DLARGE_FILE_SUPPORT \
+src_prepare() {
+	filter-flags -O2 -pipe
+	export CC="gcc -std=gnu89"
+	append-cppflags -std=gnu89 -O3 \
+					-DLARGE_FILE_SUPPORT \
 					-DUIDGID_NOT_16BIT \
+					-DBZIP2_SUPPORT \
 					-DCRYPT \
 					-DUNICODE_SUPPORT
-	sh ./unix/configure "gcc" "-I. -DUNIX ${CFLAGS} ${CPPFLAGS}"
 
 	# Fix some hardcoded paths
 	sed -e "/^prefix/ s,/usr/local,$D/usr," \
@@ -41,8 +42,10 @@ src_configure() {
 		-i unix/Makefile
 }
 
+src_configure() { :; }
+
 src_compile() {
-	compile_default -f unix/Makefile generic
+	make $MAKEOPTS -f unix/Makefile generic CC="$CC $CFLAGS $CPPFLAGS"
 }
 
 src_test() { :; }
