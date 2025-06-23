@@ -22,9 +22,13 @@ src_configure() { :;
 	## This requires pandoc so lets just ignore them.
 	sed -e '/yt-dlp.1/s/^/#/' \
 		-e '/pandoc/s/^/#/' \
-		-e '53s/^#//' \
-		-e '53s/yt-dlp.1//' \
+		-e '54s/^#//' \
+		-e '54s/yt-dlp.1//' \
 		-i Makefile
+}
+
+src_compile() {
+	compile_default || true
 }
 
 src_test() { :; }
