@@ -1,9 +1,9 @@
 ####
 ## fcron build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="http://fcron.free.fr/"
+DESCRIPTION="A command scheduler with extended capabilities over cron and anacron"
+LICENSE="GPLv2"
 SRC_URI="http://fcron.free.fr/archives/fcron-${PKG_VER}.src.tar.gz"
 DEPS="system/libxcrypt system/readline"
 BDEPS="accounts/fcron"

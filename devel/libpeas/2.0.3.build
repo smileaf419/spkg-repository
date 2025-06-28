@@ -1,9 +1,9 @@
 ####
 ## libpeas build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libpeas"
+DESCRIPTION="A GObject plugins library"
+LICENSE="LGPLv2.1+"
 SRC_URI=("https://download.gnome.org/sources/libpeas/${PKG_VER%.*}/libpeas-${PKG_VER}.tar.xz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()

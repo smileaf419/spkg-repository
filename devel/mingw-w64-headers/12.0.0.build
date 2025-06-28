@@ -1,9 +1,9 @@
 ####
 ## MinGW-w64-headers build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://www.mingw-w64.org/"
+DESCRIPTION="Header files for building native Windows applications and libraries"
+LICENSE="GPLv3+ LGPLv3+ MIT public-domain ZPL BSD BSDv2 ISC"
 SRC_URI=("https://sourceforge.net/projects/mingw-w64/files/mingw-w64/mingw-w64-release/mingw-w64-v$PKG_VER.tar.bz2")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()

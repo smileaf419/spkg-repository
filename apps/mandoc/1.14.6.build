@@ -1,9 +1,9 @@
 ####
-## * build
+## mandoc build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://mdocml.bsd.lv/"
+DESCRIPTION="Suite of tools compiling mdoc and man"
+LICENSE="ISC"
 SRC_URI=("https://mandoc.bsd.lv/snapshots/mandoc-$PKG_VER.tar.gz")
 DEPS=""
 BDEPS=""
