@@ -7,8 +7,6 @@ ff93d9633771376f74aa6f3d1a6ec96bc26f7565  gtk-3.24.49.tar.xz
 42dfd28e23661b3666e4306db9d2984e54249b85  gtk-3.24.49-annotate-visibles-getter-1.patch
 04e74e0b76b20b360a4f1a1bcfb6b9065723c068  gtk-3.24.49-annotate-visibles-getter-2.patch
 4f84d970c4edd7524feb8195b387b83b17f9689a  gtk-3.24.49-annotate-visibles-getter-3.patch
-89684399c8ee8d155edfdc4c692d3e64c6ccbc42  4.18.4.build
-f61dcd23302bb5565506cca97c210b751981228a  gtk-4.18.4.tar.xz
 89684399c8ee8d155edfdc4c692d3e64c6ccbc42  4.18.5.build
 75c7f1e5ad9b17d835c650846a0473d2c16bdfd8  gtk-4.18.5.tar.xz
 89684399c8ee8d155edfdc4c692d3e64c6ccbc42  4.18.6.build
