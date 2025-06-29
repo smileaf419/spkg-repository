@@ -4,7 +4,7 @@
 HOMEPAGE="https://gitlab.gnome.org/GNOME/gcr"
 DESCRIPTION="library for accessing PKCS#11 modules like smart cards, in a (G)object-oriented way"
 LICENSE="GPLv2"
-SRC_URI=("https://download.gnome.org/sources/gcr/${PKG_VER%.*}/gcr-${PKG_VER}.tar.xz")
+SRC_URI=("https://download.gnome.org/sources/gcr/$(getMajorMinor $PKG_VER)/gcr-${PKG_VER}.tar.xz")
 DEPS="apps/p11-kit devel/glib devel/libgcrypt x11/gtk+:4 x11/pango"
 BDEPS=""
 RDEPS=""
