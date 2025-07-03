@@ -16,6 +16,7 @@ ABILIBS="64 x32 32"
 
 src_prepare() {
 	PY_VER=$(Installed-getPkg devel/python | getLatest | getVersion)
+	echo "Found Python: $PY_VER"
 	export PYTHON_CFLAGS=-I/usr/include/python${PY_VER%.*}
 	export PYTHON_LIBS=/usr/lib/python${PY_VER%.*}
 	echo "Set PYTHON_CFLAGS: $PYTHON_CFLAGS"
