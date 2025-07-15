@@ -15,7 +15,7 @@ PATCH_OPTS=-Np0
 DEPS=""
 BDEPS=""
 RDEPS="system/ncurses system/readline"
-ARCHS="~x86 x86_64"
+ARCHS="~x86 ~x86_64"
 SLOT=0
 B=bash-${MV}.${MiV}
 
@@ -35,10 +35,10 @@ src_configure() {
 	# Fix a hard-coded path in a test.
 	sed -i 's,/usr/bin/printf,/bin/printf,' tests/intl2.sub
 
-#				--with-installed-readline \
 	configure_default \
 				--bindir=/bin           \
 				--without-bash-malloc    \
+				--with-installed-readline \
 				--enable-history          \
 				--with-curses             \
 				bash_cv_strtold_broken=no
