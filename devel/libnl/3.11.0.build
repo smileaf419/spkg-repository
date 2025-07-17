@@ -1,0 +1,37 @@
+####
+## libnl build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE=""
+DESCRIPTION=""
+LICENSE=""
+SRC_URI=(
+"https://github.com/thom311/libnl/releases/download/libnl${PKG_VER//./_}/libnl-$PKG_VER.tar.gz"
+"https://github.com/thom311/libnl/releases/download/libnl${PKG_VER//./_}/libnl-doc-$PKG_VER.tar.gz"
+)
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS=""
+BDEPS=""
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=no
+ARCHS="x86 x86_64"
+SLOT=0
+#B=
+
+src_configure() {
+	configure_default --sysconfdir=/etc
+}
+
+src_compile() {
+	make
+}
+
+src_install() {
+	install_default
+	mkdir -vp "$D"/usr/share/doc/libnl-$PKG_VER
+	if [[ $INSTALL_DOCS == 1 ]]; then
+		tar -xf $DISTFILES/libnl-doc-$PKG_VER.tar.gz --strip-components=1 --no-same-owner \
+			-C  "$D"/usr/share/doc/libnl-$PKG_VER
+	fi
+}
