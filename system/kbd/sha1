@@ -1,5 +1,3 @@
-ae2b08d4f859ff897fa1eb13e7788196bc9a5ec1  2.7.1.build
-e677b18be7f7413ce1d5a2cba5ecb5d6952dc6e9  kbd-2.7.1.tar.xz
-44f2fb0ac18db4f717421db756db4897f88dc08c  kbd-2.7.1-backspace-1.patch
-ae2b08d4f859ff897fa1eb13e7788196bc9a5ec1  2.8.0.build
+0cfa67bda01df93ec397fb713b6392d806da024c  2.8.0.build
 15a9d1617fc708761027b18a65f6e5dbbc1dfdaf  kbd-2.8.0.tar.xz
+44f2fb0ac18db4f717421db756db4897f88dc08c  kbd-2.8.0-backspace-1.patch

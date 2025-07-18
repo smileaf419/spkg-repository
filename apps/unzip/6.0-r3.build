@@ -7,7 +7,7 @@ LICENSE="Info-ZIP"
 SRC_URI=("https://downloads.sourceforge.net/infozip/unzip${PKG_VER/./}.tar.gz")
 PATCHES=(
 "http://deb.debian.org/debian/pool/main/u/unzip/unzip_6.0-29.debian.tar.xz"
-"https://www.linuxfromscratch.org/patches/blfs/svn/unzip-6.0-gcc14-1.patch"
+#"https://www.linuxfromscratch.org/patches/blfs/svn/unzip-6.0-gcc14-1.patch"
 )
 DEPS="apps/bzip2"
 BDEPS=""
