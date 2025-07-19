@@ -13,6 +13,7 @@ setBuildENV auto make
 BUILD_SEPERATE_DIR=no
 ARCHS="x86 x86_64"
 SLOT=0
+B=$PKG_NAME
 
 src_configure() {
 	sed -i -e '/SUBDIRS/s|po4a||' Makefile.am
