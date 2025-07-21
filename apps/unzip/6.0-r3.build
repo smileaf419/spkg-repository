@@ -7,7 +7,10 @@ LICENSE="Info-ZIP"
 SRC_URI=("https://downloads.sourceforge.net/infozip/unzip${PKG_VER/./}.tar.gz")
 PATCHES=(
 "http://deb.debian.org/debian/pool/main/u/unzip/unzip_6.0-29.debian.tar.xz"
-#"https://www.linuxfromscratch.org/patches/blfs/svn/unzip-6.0-gcc14-1.patch"
+"https://gitweb.gentoo.org/repo/gentoo.git/plain/app-arch/unzip/files/unzip-6.0-format-security.patch"
+"https://gitweb.gentoo.org/repo/gentoo.git/plain/app-arch/unzip/files/unzip-6.0-no-exec-stack.patch"
+"https://gitweb.gentoo.org/repo/gentoo.git/plain/app-arch/unzip/files/unzip-6.0-fix-false-overlap-detection-on-32bit-systems.patch"
+#"https://raw.githubusercontent.com/nasbdh9/packages/7a72afeb4678f31c3b566cd520b94b9b60ccb3a8/utils/unzip/patches/012-fix-gcc15-build.patch"
 )
 DEPS="apps/bzip2"
 BDEPS=""
@@ -19,9 +22,10 @@ B=unzip60
 
 src_patch() {
 #	convmv -f cp936 -t utf-8 -r --nosmart --notest .
+	spatches debian/patches
 	patch_default
 	rm debian/patches/02-this-is-debian-unzip.patch
-	spatches debian/patches
+	sed "/gmtime/s/^.*$/   struct tm *gmtime(const time_t *), *localtime(const time_t *);/" -i unix/unxcfg.h
 }
 
 ## Required for building with GCC 15
@@ -33,7 +37,7 @@ src_configure() { :; }
 
 src_compile() {
 	# Needed for Clang 16
-	append-cppflags -std=gnu89
+#	append-cppflags -std=gnu89
 	# Linux Hosts
 	append-cppflags -DNO_LCHMOD
 	# Bzip2 support
@@ -58,7 +62,7 @@ src_compile() {
 
 	rm -r bzip2
 
-	CPPFLAGS="$CPPFLAGS" compile_default -f unix/Makefile generic
+	make -f unix/Makefile generic CPPFLAGS="$CPPFLAGS" CC="gcc -std=gnu89" 
 }
 
 src_test() { :; }
