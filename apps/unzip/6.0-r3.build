@@ -22,9 +22,9 @@ B=unzip60
 
 src_patch() {
 #	convmv -f cp936 -t utf-8 -r --nosmart --notest .
-	spatches debian/patches
-	patch_default
+	patch_unpack
 	rm debian/patches/02-this-is-debian-unzip.patch
+	patch_apply debian/patches
 	sed "/gmtime/s/^.*$/   struct tm *gmtime(const time_t *), *localtime(const time_t *);/" -i unix/unxcfg.h
 }
 
@@ -37,7 +37,7 @@ src_configure() { :; }
 
 src_compile() {
 	# Needed for Clang 16
-#	append-cppflags -std=gnu89
+	append-cppflags -std=gnu89
 	# Linux Hosts
 	append-cppflags -DNO_LCHMOD
 	# Bzip2 support
@@ -46,6 +46,8 @@ src_compile() {
 	append-cppflags -DUNICODE_SUPPORT -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE -DUSE_ICONV_MAPPING
 	# Large File support
 	append-cppflags -DLARGE_FILE_SUPPORT
+	# Extras
+	append-cppflags DACORN_FTYPE_NFS -DWILD_STOP_AT_DIR -DDATE_FORMAT=DF_YMD -DNOMEMCPY -DNO_WORKING_ISPRINT
 	export CPPFLAGS=${CXXFLAGS}
 
 	sed -i -r \
@@ -62,7 +64,7 @@ src_compile() {
 
 	rm -r bzip2
 
-	make -f unix/Makefile generic CPPFLAGS="$CPPFLAGS" CC="gcc -std=gnu89" 
+	make -f unix/Makefile generic LF2="$LDFLAGS" CF="$CPPFLAGS -I."
 }
 
 src_test() { :; }
