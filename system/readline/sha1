@@ -14,5 +14,5 @@ bf08fc0a29d87212b0b37af5c2d39d4e486c1b15  readline-8.2-010.patch
 69fd6147697405de058fa9791f7d368f0c8aecbc  readline-8.2-011.patch
 c56ddf3fe6afeb19937267f797102c8a134d8c6b  readline-8.2-012.patch
 3bc96d2659bca37d7c55ce5bd9dc37823a9a07ae  readline-8.2-013.patch
-dc5fc0cd2515ddc70a45f83653086b9f9b0dff2e  8.3.build
+b4bb9e8f245f98839eab171439cc092ad857ce7f  8.3.build
 2c05ae9350b695f69d70b47f17f092611de2081f  readline-8.3.tar.gz
