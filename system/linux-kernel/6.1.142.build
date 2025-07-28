@@ -105,11 +105,11 @@ src_install() {
 
 	## Set/update our slot's symlink
 	if [[ -e /usr/src/linux-$PKG_SLOT && ! -L /usr/src/linux-$PKG_SLOT ]]; then
-		inform " $IMPORTANT /usr/src/linux-$PKG_SLOT contains a kernel dir. A symlink will not be created!"
-		inform " $IMPORTANT You will need to manually remove it for slot symlinks to be managed."
-		inform " $IMPORTANT This is normal if upgrading from the 1st release of a new minor release."
-		inform " $IMPORTANT Ex: $PKG_SLOT -> ${PKG_SLOT}.1 - If this is the case, you may wish run:"
-		inform " $IMPORTANT  rm -r /usr/src/linux-$PKG_SLOT && ln -sf /usr/src/linux-$PKG_VER /usr/src/linux-$PKG_SLOT"
+		inform "$MSG_IMP /usr/src/linux-$PKG_SLOT contains a kernel dir. A symlink will not be created!"
+		inform "$MSG_IMP You will need to manually remove it for slot symlinks to be managed."
+		inform "$MSG_IMP This is normal if upgrading from the 1st release of a new minor release."
+		inform "$MSG_IMP Ex: $PKG_SLOT -> ${PKG_SLOT}.1 - If this is the case, you may wish run:"
+		inform "$MSG_IMP  rm -r /usr/src/linux-$PKG_SLOT && ln -sf /usr/src/linux-$PKG_VER /usr/src/linux-$PKG_SLOT"
 	fi
 
 	ln -sfv linux-$PKG_VER $D/usr/src/linux-$PKG_SLOT

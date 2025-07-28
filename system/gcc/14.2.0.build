@@ -109,9 +109,9 @@ bootstrap() {
 	local glibc=$(DB-getPkg system/glibc | getLatest | getVersion)
 	if [[ $glibc == 0 || $glibc == '' ]]; then
 		echo " * Expected version got: $glibc"
-		echo " $DIALOG_ERROR Error getting installed glibc version!"
+		echo "$MSG_ERR Error getting installed glibc version!"
 		glibc=2.38
-		echo " $IMPORTANT Defaulting to $glibc"
+		echo "$MSG_IMP Defaulting to $glibc"
 	fi
 	echo " * Using glibc: $glibc"
 	if pkg-has-flag pass1 || pkg-has-flag pass2; then

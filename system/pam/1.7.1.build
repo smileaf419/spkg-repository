@@ -39,9 +39,9 @@ EOF
 
 			test_default
 		else
-			echo " $DIALOG_ERROR a pam config was not found and is required to test."
-			echo " $DIALOG_ERROR This more than likely means this is a fresh install."
-			echo " $DIALOG_ERROR we cannot create one for you as this requires root access."
+			echo "$MSG_ERR a pam config was not found and is required to test."
+			echo "$MSG_ERR This more than likely means this is a fresh install."
+			echo "$MSG_ERR we cannot create one for you as this requires root access."
 		fi
 	else
 		test_default
