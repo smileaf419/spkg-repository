@@ -6,19 +6,31 @@ DESCRIPTION="GNU libc C Library"
 LICENSE="LGPL-2.1+ BSD HPND ISC inner-net rc PCRE"
 SRC_URI=("https://ftp.gnu.org/gnu/glibc/glibc-${PKG_VER}.tar.xz")
 [[ $VERIFY_SIG == 1 ]] && SRC_URI+=("https://ftp.gnu.org/gnu/glibc/glibc-${PKG_VER}.tar.xz.sig")
-PATCHES=(
-"https://www.linuxfromscratch.org/patches/lfs/development/glibc-${PKG_VER}-fhs-1.patch"
-)
+PATCHES=("https://www.linuxfromscratch.org/patches/lfs/development/glibc-2.42-fhs-1.patch")
 DEPS=""
 BDEPS="system/linux-headers"
 RDEPS="system/libxcrypt"
 IUSE="gd"
 use-enable gd && UDEPS="media/gd apps/bzip2 devel/expat devel/libpcre media/fontconfig media/freetype media/libpng media/libwebp system/zlib"
-ARCHS="x86 x86_64"
+ARCHS="~x86 ~x86_64"
 SLOT=0
 BUILD_SEPERATE_DIR=yes
 ABILIBS="64 x32 32"
 _SPKG_CLEAN=rm
+
+src_prepare() {
+	## Change references to /var/db which is not part of FHS and replace them
+	## with more suitable directories in /var hierarchy
+	## /var/cache/nscd for nscd
+	## /var/lib/nss_db for nss_db
+	sed -i /vardbdir/s,/db,/lib/nss_db, Makeconfig
+	sed -i /_PATH_NSCD_/s,db,cache, nscd/nscd.h
+	sed -i /_PATH_VARDB/s,db,lib/nss_db, sysdeps/generic/paths.h \
+										 sysdeps/unix/sysv/linux/paths.h
+
+	## This test fails in a partial LFS environment
+	sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile
+}
 
 src_configure() {
 	## Ensure ldconfig and sln are installed into /sbin
@@ -46,13 +58,6 @@ src_configure() {
 				 --enable-stack-protector=strong    \
 				 --disable-nscd                      \
 				 $(use-enable gd || echo --with-gd=no)
-}
-
-src_compile() {
-	compile_default
-
-	## This test fails in a partial LFS environment
-	sed '/test-installation/s@$(PERL)@echo not running@' -i ../Makefile
 }
 
 src_install() {
@@ -85,7 +90,7 @@ post_install() {
 	echo " * Installing Locales"
 	mkdir -p /usr/lib/locale
 
-	$INSTALL_PATH/locales
+	$INSTALL_PATH/bin/locales
 
 	if [ ! -e "/etc/nsswitch.conf" ]; then
 		cat > "/etc/nsswitch.conf" << "EOF"

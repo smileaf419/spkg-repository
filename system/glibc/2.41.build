@@ -90,7 +90,7 @@ post_install() {
 	echo " * Installing Locales"
 	mkdir -p /usr/lib/locale
 
-	$INSTALL_PATH/locales
+	$INSTALL_PATH/bin/locales
 
 	if [ ! -e "/etc/nsswitch.conf" ]; then
 		cat > "/etc/nsswitch.conf" << "EOF"
