@@ -64,7 +64,7 @@ src_compile() {
 
 	rm -r bzip2
 
-	make -f unix/Makefile generic LF2="$LDFLAGS" CF="$CPPFLAGS -I."
+	make -f unix/Makefile generic1 LF2="$LDFLAGS" CF="$CPPFLAGS -I."
 }
 
 src_test() { :; }
