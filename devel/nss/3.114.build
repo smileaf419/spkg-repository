@@ -35,7 +35,7 @@ src_test() {
 }
 
 src_install() {
-	cd ../dist
+	cd dist
 	install -v -m755 -d                           ${D}/usr/{lib,bin}
 	install -v -m755 Linux*/lib/*.so              ${D}/usr/lib
 	install -v -m644 Linux*/lib/{*.chk,libcrmf.a} ${D}/usr/lib
