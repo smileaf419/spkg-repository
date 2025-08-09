@@ -1,11 +1,9 @@
 ####
 ## hicolor-icon-theme build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-# Start versioning at -r1 if patches are used.
-# non-patched packages may omit a revision, until a modification is made.
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://freedesktop.org/wiki/Software/icon-theme"
+DESCRIPTION="https://freedesktop.org/wiki/Software/icon-theme"
+LICENSE="GPLv2"
 SRC_URI=("https://icon-theme.freedesktop.org/releases/hicolor-icon-theme-${PKG_VER}.tar.xz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()

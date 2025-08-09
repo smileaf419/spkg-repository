@@ -1,12 +1,12 @@
 ####
 ## xinput build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE="https://www.x.org/wiki/"
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://www.x.org/wiki/ https://gitlab.freedesktop.org/xorg/app/xinput"
+DESCRIPTION="Utility to set XInput device parameters"
+LICENSE="MIT"
 SRC_URI=("https://www.x.org/pub/individual/app/${PKG_NAME}-${PKG_VER}.tar.bz2")
 PATCHES=()
-DEPS="x11/libX11 x11/libXau x11/libXdmcp x11/libXext x11/libXi x11/libXinerama x11/libXrandr x11/libXrender x11/libxcb"
+DEPS="x11/libX11 x11/libXext x11/libXi x11/libXinerama x11/libXrandr"
 BDEPS=""
 RDEPS=""
 ARCHS="x86 x86_64"

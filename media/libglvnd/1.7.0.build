@@ -1,9 +1,9 @@
 ####
 ## libglvnd build
 ## Copyright 2023-2024 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://gitlab.freedesktop.org/glvnd/libglvnd"
+DESCRIPTION="The GL Vendor-Neutral Dispatch library"
+LICENSE="MIT"
 SRC_URI=("https://gitlab.freedesktop.org/glvnd/libglvnd/-/archive/v$PKG_VER/libglvnd-v$PKG_VER.tar.gz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()

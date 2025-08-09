@@ -1,13 +1,10 @@
 ####
 ## libnotify build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-# Start versioning at -r1 if patches are used.
-# non-patched packages may omit a revision, until a modification is made.
-HOMEPAGE=""
-DESCRIPTION=""
-LICENSE=""
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libnotify"
+DESCRIPTION="A library for sending desktop notifications"
+LICENSE="LGPLv2.1+"
 SRC_URI=("https://download.gnome.org/sources/libnotify/${PKG_VER%.*}/libnotify-${PKG_VER}.tar.xz")
-#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
 DEPS="devel/glib x11/gdk-pixbuf"
 BDEPS=""
@@ -22,15 +19,11 @@ src_configure() {
 
 src_compile() {
 	:;
-#	sed -i 's,--nonet,--nonet --catalogs,' build.ninja
-#	SGML_CATALOG_FILES=file:///etc/xml/catalog ninja
 }
 
 src_test() { :; }
 
 src_install() {
-	export SGML_CATALOG_FILES=file:///etc/xml/catalog 
-#	DESTDIR="${D}" ninja install
+	export SGML_CATALOG_FILES=file:///etc/xml/catalog
 	install_default
-#	mv -v ${D}/usr/share/doc/libnotify{,-${PKG_VER}}
 }
