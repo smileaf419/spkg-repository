@@ -1,10 +1,10 @@
 ####
 ## cd-discid build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE="http://linukz.org/cd-discid.shtml"
+HOMEPAGE="http://linukz.org/cd-discid.shtml https://github.com/taem/cd-discid"
 DESCRIPTION="Utility to get CDDB discid information from a CD-ROM disc."
 LICENSE="GPLv2"
-SRC_URI="http://linukz.org/download/cd-discid-${PKG_VER}.tar.gz"
+SRC_URI=("https://github.com/taem/cd-discid/archive/refs/tags/$PKG_VER.tar.gz")
 DEPS=""
 BDEPS=""
 RDEPS=""
