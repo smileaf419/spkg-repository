@@ -1,0 +1,25 @@
+####
+## xmlto build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://pagure.io/xmlto"
+DESCRIPTION="Script for converting XML and DocBook documents to a variety of output formats"
+LICENSE="GPLv2"
+SRC_URI=("https://releases.pagure.org/xmlto/xmlto-${PKG_VER}.tar.bz2")
+PATCHES=()
+DEPS=""
+BDEPS="apps/docbook-xsl-nons apps/docbook-dtd"
+RDEPS="www/links"
+setBuildENV auto make
+ARCHS="~x86 ~x86_64"
+SLOT=0
+
+src_configure() {
+	mv configure.{in,ac}
+	autoupdate
+	autoreconf -fiv
+
+	export LINKS="/usr/bin/links"
+	configure_default
+
+	sed -i -e 's,--nonet,--nonet --catalogs,' -e '/^SED=/a export SGML_CATALOG_FILES=file:///etc/xml/catalog' xmlto.in
+}
