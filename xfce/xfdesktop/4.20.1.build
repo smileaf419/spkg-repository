@@ -12,4 +12,10 @@ setBuildENV auto make
 ARCHS="x86 x86_64"
 SLOT=0
 
+src_prepare() {
+	## For some reason this library is not added to xfdesktop_settings?
+	## As a result we get a undefined reference to symbol 'xfce_resource_lookup'`
+	sed '/xfdesktop_settings_CFLAGS =/a$(LIBXFCE4UTIL_LIBS) \\' -i settings/Makefile.in
+}
+
 src_test() { :; }
