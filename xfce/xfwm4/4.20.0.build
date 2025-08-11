@@ -15,3 +15,7 @@ SLOT=0
 
 src_test() { :; }
 
+src_prepare() {
+	sed '651s/$/ $(LIBXFCE4UTIL_LIBS)/' -i settings-dialogs/Makefile.in
+	sed '655s/$/ $(LIBXFCE4UTIL_LIBS)/' -i settings-dialogs/Makefile.in
+}
