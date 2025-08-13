@@ -1,10 +1,10 @@
 ####
 ## libsdl2 build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE="https://github.com/libsdl-org/sdl2-compat/"
-DESCRIPTION="The Simple DirectMedia Layer Version 2"
+HOMEPAGE="https://github.com/libsdl-org/SDL/"
+DESCRIPTION="The Simple DirectMedia Layer Version 3"
 LICENSE="ZLIB"
-SRC_URI=("https://github.com/libsdl-org/sdl2-compat/releases/download/release-$PKG_VER/sdl2-compat-$PKG_VER.tar.gz")
+SRC_URI=("https://github.com/libsdl-org/SDL/releases/download/release-$PKG_VER/SDL3-$PKG_VER.tar.gz")
 DEPS=""
 BDEPS=""
 RDEPS=""
@@ -12,7 +12,7 @@ RDEPS=""
 setBuildENV cmake cmake
 ARCHS="x86 x86_64"
 SLOT=0
-B=sdl2-compat-$PKG_VER
+B=SDL3-$PKG_VER
 ABILIBS="64 x32 32"
 
 src_configure() {

@@ -13,3 +13,8 @@ CDEPS="media/mpg123"
 ARCHS="x86 x86_64"
 SLOT=0
 ABILIBS="64 x32 32"
+
+src_prepare() {
+	## Fix building with GCC 15
+	sed '/typedef enum/,/bool ;/d' -i src/ALAC/alac_{en,de}coder.c
+}

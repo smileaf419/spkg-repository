@@ -20,7 +20,9 @@ ABILIBS="64 x32 32"
 
 src_configure() {
 	mv configure.{in,ac}
-	autoreconf -fiv
+#	autoreconf -iv
+	sed -i -e 's/^\(\s*hardcode_libdir_flag_spec\s*=\).*/\1/' configure
+	sed -i -e '/define sp/s/+/ + /g' libmp3lame/i386/nasm.h
 
 	append-ldflags -ltinfow
 	CONF_FLAGS="--prefix=/usr"

@@ -1,0 +1,35 @@
+####
+## glslc from shaderc build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://github.com/google/shaderc"
+DESCRIPTION="Google's command line compiler for OpenGL Shading Language/High Level Shading Language (GLSL/HLSL) to Standard Portable Intermediate Representation (SPIR-V)"
+LICENSE="Apache-2.0"
+SRC_URI=("https://github.com/google/shaderc/archive/v$PKG_VER/shaderc-$PKG_VER.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="devel/glslang devel/spirv-tools"
+BDEPS=""
+RDEPS=""
+setBuildENV cmake ninja
+BUILD_SEPERATE_DIR=yes
+ARCHS="x86 x86_64"
+SLOT=0
+B=shaderc-$PKG_VER
+
+src_prepare() {
+	sed '/build-version/d'   -i glslc/CMakeLists.txt
+	sed '/third_party/d'     -i CMakeLists.txt
+	sed 's|SPIRV|glslang/&|' -i libshaderc_util/src/compiler.cc
+	echo '"'$PKG_VER'"' > glslc/src/build-version.inc
+}
+
+src_configure() {
+	configure_default -D SHADERC_SKIP_TESTS=ON -G Ninja
+}
+
+src_test() { :; }
+
+src_install() {
+	install -d "$D"/usr/bin
+	install -vm755 glslc/glslc "$D"/usr/bin
+}

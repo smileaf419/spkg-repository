@@ -5,7 +5,7 @@ HOMEPAGE=""
 DESCRIPTION="Virtual TErminal widget for GTK applications"
 LICENSE=""
 SRC_URI=("https://gitlab.gnome.org/GNOME/vte/-/archive/${PKG_VER}/vte-${PKG_VER}.tar.gz")
-DEPS="apps/at-spi2-core devel/glib devel/icu devel/libpcre2 network/gnutls system/zlib x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/gtk+:4 x11/pango"
+DEPS="apps/at-spi2-core devel/glib devel/icu devel/libpcre2 network/gnutls system/zlib x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/gtk+:4 x11/pango apps/lz4"
 BDEPS=""
 RDEPS=""
 setBuildENV meson ninja

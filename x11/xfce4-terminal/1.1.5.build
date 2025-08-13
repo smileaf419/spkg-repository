@@ -10,8 +10,13 @@ PATCHES=()
 DEPS="devel/glib x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/libX11 x11/pango x11/vte xfce/libxfce4ui xfce/libxfce4util xfce/xfconf"
 BDEPS=""
 RDEPS="x11/hicolor-icon-theme"
-setBuildENV auto make
+setBuildENV meson ninja
 ARCHS="x86 x86_64"
 SLOT=0
 
 src_test() { :; }
+
+src_configure() {
+	configure_default
+	sed -i -e 's,--nonet,--nonet --catalogs,' build.ninja
+}
