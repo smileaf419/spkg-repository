@@ -9,7 +9,7 @@ LICENSE="SGI-B-2.0"
 SRC_URI=("https://archive.mesa3d.org/glu/glu-$PKG_VER.tar.xz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
-DEPS="media/mesa"
+DEPS="media/libglvnd"
 BDEPS=""
 RDEPS=""
 setBuildENV meson ninja

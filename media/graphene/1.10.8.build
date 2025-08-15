@@ -5,7 +5,7 @@ HOMEPAGE="https://ebassi.github.io/graphene/"
 DESCRIPTION="Provides a thin layer of types for graphics libraries"
 LICENSE="MIT"
 SRC_URI=("https://download.gnome.org/sources/graphene/${PKG_VER%.*}/graphene-${PKG_VER}.tar.xz")
-DEPS=""
+DEPS="devel/glib"
 BDEPS=""
 RDEPS="devel/glib devel/gobject-introspection"
 setBuildENV meson ninja

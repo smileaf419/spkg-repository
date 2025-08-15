@@ -7,7 +7,7 @@ LICENSE="LGPLv2+"
 SRC_URI=("https://gstreamer.freedesktop.org/src/gst-plugins-bad/gst-plugins-bad-${PKG_VER}.tar.xz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
-DEPS="apps/bzip2 devel/glib devel/libgudev devel/libxml2 devel/nettle devel/openssl devel/wayland media/fdk-aac media/gst-plugins-base media/gstreamer media/lcms media/libaom media/libass media/libopenmpt media/libsndfile media/libva media/libwebp media/openal media/openjpeg media/opus media/sbc network/neon network/curl x11/cairo x11/gtk+:3 x11/libdrm x11/libX11 x11/pango"
+DEPS="devel/glib devel/libgudev devel/libxml2 devel/nettle devel/openssl devel/wayland media/fdk-aac media/gst-plugins-base media/gstreamer media/lcms media/libaom media/libass media/libopenmpt media/libsndfile media/libva media/libwebp media/openal media/openjpeg media/opus media/sbc media/vulkan-loader network/curl network/neon x11/cairo x11/gtk+:3 x11/libX11 x11/libdrm x11/libxcb x11/libxkbcommon x11/pango"
 BDEPS=""
 RDEPS=""
 setBuildENV meson ninja

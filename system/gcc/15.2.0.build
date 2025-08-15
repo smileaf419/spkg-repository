@@ -27,7 +27,7 @@ if [[ $MODE == 'bootstrap' ]]; then
 		SRC_URI+=("https://www.mpfr.org/mpfr-${MPFR_VER}/mpfr-${MPFR_VER}.tar.xz.asc")
 	fi
 fi
-DEPS=""
+DEPS="apps/zstd devel/gmp devel/isl devel/mpc devel/mpfr system/zlib"
 BDEPS=""
 RDEPS=""
 ARCHS="~x86 ~x86_64"
