@@ -1,8 +1,8 @@
 ####
-## openrc build
+## OpenRC build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE=""
-DESCRIPTION=""
+HOMEPAGE="https://github.com/OpenRC/openrc"
+DESCRIPTION="The OpenRC init system"
 LICENSE="BSD-2"
 SRC_URI=("https://github.com/OpenRC/openrc/archive/refs/tags/${PKG_VER}.tar.gz => openrc-${PKG_VER}.tar.gz")
 DEPS=""
