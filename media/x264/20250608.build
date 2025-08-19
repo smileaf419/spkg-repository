@@ -1,0 +1,20 @@
+####
+## x264 build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://www.videolan.org/developers/x264.html"
+DESCRIPTION="X264/AVC stream Encoder"
+LICENSE="GPLv2"
+COMMIT_SHA="b35605ace3ddf7c1a5d67a2eb553f034aef41d55"
+SRC_URI="https://code.videolan.org/videolan/x264/-/archive/${COMMIT_SHA}/x264-${COMMIT_SHA}.tar.gz => x264-${PKG_VER}.tar.gz"
+DEPS=""
+BDEPS=""
+RDEPS="devel/nasm"
+ARCHS="~x86 ~x86_64"
+SLOT=0
+B=x264-$COMMIT_SHA
+
+src_configure() {
+	configure_default --disable-cli
+}
+
+src_test() { :; }
