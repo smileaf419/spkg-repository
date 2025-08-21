@@ -11,7 +11,7 @@ SRC_URI=(
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
 DEPS="devel/libxml2 x11/libxcb"
-BDEPS=""
+BDEPS="devel/wayland-protocols"
 RDEPS=""
 setBuildENV meson ninja
 ARCHS="~x86 ~x86_64"
