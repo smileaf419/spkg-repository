@@ -6,7 +6,7 @@ DESCRIPTION="The Simple DirectMedia Layer Version 2"
 LICENSE="ZLIB"
 SRC_URI=("https://github.com/libsdl-org/sdl2-compat/releases/download/release-$PKG_VER/sdl2-compat-$PKG_VER.tar.gz")
 DEPS=""
-BDEPS=""
+BDEPS="media/libsdl3"
 RDEPS=""
 ## [[ $INSTALL_DOCS == 1 ]] && BDEPS+=" app-doc/doxygen"
 setBuildENV cmake cmake
