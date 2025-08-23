@@ -21,7 +21,7 @@ src_configure() { :; }
 src_compile() {
 	## Fix an issue causing the entire package to be rebuilt during installation
 	sed '/prep :/a\\ttouch prep' -i src/Makefile
-	compile_default ERRORS= $(use-enable doc && echo ENABLE_DOCS=0)
+	compile_default ERRORS= $(use-enable doc || echo ENABLE_DOCS=0)
 }
 
 ## Test suite is considered dangerous by LFS maintainers
@@ -29,5 +29,5 @@ src_compile() {
 src_test() { :; }
 
 src_install() {
-	install_default LIBDIR=/lib BINDIR=/bin $(use-enable doc && echo ENABLE_DOCS=0)
+	install_default LIBDIR=/lib BINDIR=/bin $(use-enable doc || echo ENABLE_DOCS=0)
 }
