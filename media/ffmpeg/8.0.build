@@ -1,0 +1,69 @@
+####
+## ffmpeg build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://ffmpeg.org/"
+DESCRIPTION="A complete, cross-platform solution to record, convert and stream audio and video."
+LICENSE="GPLv2 GPLv3 LGPLv2.1 LGPLv3"
+SRC_URI=("https://ffmpeg.org/releases/ffmpeg-${PKG_VER}.tar.xz")
+PATCHES=("https://www.linuxfromscratch.org/patches/blfs/svn/ffmpeg-7.1.1-chromium_method-1.patch")
+DEPS="apps/bzip2 apps/xz-utils devel/fribidi devel/libxml2 devel/openssl media/alsa-lib media/fdk-aac media/freetype media/libass media/libsdl2 media/libtheora media/libva media/libvorbis media/libvpx media/libwebp media/opus media/x264 media/x265 media/xvid media/lame system/zlib"
+BDEPS="devel/fribidi"
+RDEPS="media/pulseaudio"
+ARCHS="~x86 ~x86_64"
+SLOT=0
+IUSE="X bluray"
+use-enable X && UDEPS="x11/libX11 x11/libXau x11/libXdmcp x11/libXext x11/libXfixes x11/libXv x11/libdrm media/libva x11/libvdpau x11/libxcb"
+use-enable bluray && UDEPS+=" media/libbluray"
+
+src_prepare() {
+	## fix an issue caused by the latest version of x265-4.1:
+	sed -e 's/X265_BUILD >= 210/(&) \&\& (X265_BUILD < 213)/' \
+	    -i libavcodec/libx265.c
+}
+
+src_configure() {
+	sed -i 's/-lflite"/-lflite -lasound"/' configure
+
+	configure_default \
+				--enable-gpl \
+				--enable-nonfree \
+				--enable-version3 \
+				--enable-pic \
+				--disable-debug \
+				--enable-libass \
+				$(use-enable bluray && echo --enable-libbluray) \
+				--enable-libfdk-aac \
+				--enable-libfreetype \
+				--enable-libfribidi \
+				--enable-libmp3lame \
+				--enable-libopus \
+				--enable-libtheora \
+				--enable-libvorbis \
+				--enable-libvpx \
+				--enable-libwebp \
+				--enable-libx264 \
+				--enable-libx265 \
+				--enable-libxvid \
+				--enable-libxml2 \
+				--enable-openssl \
+				--ignore-tests=enhanced-flv-av1 \
+				$(use-enable X &&
+					echo "--enable-libxcb --enable-libxcb-shm --enable-libxcb-xfixes --enable-libxcb-shape" ||
+					echo "--disable-libxcb --disable-libxcb-shm --disable-libxcb-xfixes --disable-libxcb-shape")
+}
+
+src_compile() {
+	compile_default
+
+	gcc tools/qt-faststart.c -o tools/qt-faststart
+}
+
+src_test() { :; }
+
+src_install() {
+	install_default
+
+	install -v -m755 tools/qt-faststart "${D}"/usr/bin
+	install -v -m755 -d "${D}"/usr/share/doc/ffmpeg-${PKG_VER}
+	install -v -m755 doc/*.txt "${D}"/usr/share/doc/ffmpeg-${PKG_VER}
+}

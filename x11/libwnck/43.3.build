@@ -1,0 +1,17 @@
+####
+## libwnck build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://developer.gnome.org/libwnck/stable/"
+DESCRIPTION="A window navigation construction kit"
+LICENSE="LGPLv2+"
+SRC_URI=("https://download.gnome.org/sources/libwnck/${PKG_VER%.*}/libwnck-${PKG_VER}.tar.xz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="apps/at-spi2-core devel/glib x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/libX11 x11/libXrender x11/libXres x11/pango x11/startup-notification"
+BDEPS=""
+RDEPS=""
+setBuildENV meson ninja
+ARCHS="~x86 ~x86_64"
+SLOT=0
+
+src_test() { :; }

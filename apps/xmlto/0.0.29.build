@@ -10,7 +10,7 @@ DEPS=""
 BDEPS="apps/docbook-xsl-nons apps/docbook-dtd"
 RDEPS="www/links"
 setBuildENV auto make
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=0
 
 src_configure() {

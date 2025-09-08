@@ -1,7 +1,7 @@
-7b4a4b3a41425ec3b78c83bef97da527571ce4c0  25.06.0.build
-3e5381d06e71b5ffea04ba23dffa36446d740bc5  poppler-25.06.0.tar.xz
-dc2c4360fb7de80dd5e1d0b4a1e74a4709dd2daf  poppler-data-0.4.12.tar.gz
 7b4a4b3a41425ec3b78c83bef97da527571ce4c0  25.07.0.build
 c9df410f6e835478d1b57a1532abdad35fc1233f  poppler-25.07.0.tar.xz
-6645cc759599431cea92ec73acdbbdfdce51e282  25.08.0.build
+dc2c4360fb7de80dd5e1d0b4a1e74a4709dd2daf  poppler-data-0.4.12.tar.gz
+7b4a4b3a41425ec3b78c83bef97da527571ce4c0  25.08.0.build
 0017217a20385d6de1941bd2c9f346841c344974  poppler-25.08.0.tar.xz
+6645cc759599431cea92ec73acdbbdfdce51e282  25.09.0.build
+9ce61de4549a849a7a3a58dc81d7e73bc0802f21  poppler-25.09.0.tar.xz
