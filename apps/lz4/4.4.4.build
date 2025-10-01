@@ -1,0 +1,23 @@
+####
+## LZ4 build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Start versioning at -r1 if patches are used.
+## non-patched packages may omit a revision, until a modification is made.
+HOMEPAGE="https://github.com/lz4/lz4"
+DESCRIPTION="Extremely Fast Compression algorithm"
+LICENSE="BSDv2 GPLv2+"
+SRC_URI=("https://github.com/lz4/lz4/releases/download/v$PKG_VER/lz4-$PKG_VER.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS=""
+BDEPS=""
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=no
+ARCHS="~x86 ~x86_64"
+SLOT=0
+#B=
+
+src_configure() { :; }
+
+src_test() { :; }

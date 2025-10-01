@@ -9,7 +9,7 @@ SRC_URI="https://code.videolan.org/videolan/x264/-/archive/${COMMIT_SHA}/x264-${
 DEPS=""
 BDEPS=""
 RDEPS="devel/nasm"
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=0
 B=x264-$COMMIT_SHA
 
