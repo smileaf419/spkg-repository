@@ -1,0 +1,19 @@
+####
+## Enchant build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://rrthomas.github.io/enchant/ https://github.com/AbiWord/enchant"
+DESCRIPTION="Enchant Spell Checking Library"
+LICENSE="LGPLv2.1"
+SRC_URI=("https://github.com/AbiWord/enchant/archive/refs/tags/v$PKG_VER.tar.gz => enchant-$PKG_VER.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="apps/aspell devel/glib"
+BDEPS=""
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=no
+ARCHS="~x86 ~x86_64"
+SLOT=0
+
+## Tests require unittest-cpp and configure option --enable-relocatable
+src_test() { :; }

@@ -14,3 +14,4 @@ bdc66548ba3d00b253edb0d0b8367b8c5f63fff9  patch-2.7.6-CVE-2018-6952.patch
 ef5082f32491a32e6341625cb10007b976266b05  patch-2.7.6-Avoid-invalid-memory-access-in-context-format-diffs.patch
 be3b5d454d0c42f49c2ed4fd08192a05d9cb03fa  2.8.build
 2b151e08827f797636cc7741628d2147fdf8de8b  patch-2.8.tar.xz
+26aa4e94d2a36cae5a88619f2e209aac730bfe0d  3.0.1.build

@@ -1,0 +1,79 @@
+####
+## elogind build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://github.com/elogind/elogind"
+DESCRIPTION="The systemd project's logind, extracted to a standalone package"
+LICENSE="CC0-1.0 LGPLv2.1+ public-domain"
+SRC_URI=("https://github.com/elogind/elogind/archive/refs/tags/V255.22.tar.gz => elogind-$PKG_VER.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="system/pam"
+BDEPS="python/jinja2"
+RDEPS=""
+setBuildENV meson ninja
+ARCHS="~x86 ~x86_64"
+SLOT=0
+#B=
+
+src_prepare() {
+	## File systems --->
+	checkKernelConfig INOTIFY_USER 1 'Inotify support for userspace' 1
+	##   Pseudo filesystems --->
+	checkKernelConfig TMPFS 1 'Tmpfs virtual memory file system support (former shm fs)' 1
+	checkKernelConfig TMPFS_POSIX_ACL 1 'Tmpfs POSIX Access Control Lists' 1
+
+	checkKernelConfig CRYPTO 1 'Cryptographic API' 1
+	##   Crypto core or helper --->
+	checkKernelConfig CRYPTO_USER 1 'Userspace cryptographic algorithm configuration' 1
+	##   Userspace interface --->
+	checkKernelConfig CRYPTO_USER_API_HASH 1 'Hash algorithms' 1
+}
+
+src_configure() {
+	configure_default -D man=auto                            \
+					  -D docdir=/usr/share/doc/elogind-$PKG_VER \
+					  -D cgroup-controller=elogind           \
+					  -D dev-kvm-mode=0660                   \
+					  -D dbuspolicydir=/etc/dbus-1/system.d
+
+	sed 's,--nonet,--nonet --catalogs,' -i build.ninja
+}
+
+src_test() { :; }
+
+src_install() {
+	install_default
+	ln -sf libelogind.pc "$D"/usr/lib/pkgconfig/libsystemd.pc
+	ln -sfn elogind "$D"/usr/include/systemd
+
+	sed -e '/\[Login\]/a KillUserProcesses=no' \
+		-i "$D"/etc/elogind/logind.conf
+
+	mkdir -p "$D"/etc/pam.d
+	cat >> "$D"/etc/pam.d/system-session << "EOF" &&
+# Begin elogind addition
+
+session  required    pam_loginuid.so
+session  optional    pam_elogind.so
+
+# End elogind addition
+EOF
+	cat > "$D"/etc/pam.d/elogind-user << "EOF"
+# Begin /etc/pam.d/elogind-user
+
+account  required    pam_access.so
+account  include     system-account
+
+session  required    pam_env.so
+session  required    pam_limits.so
+session  required    pam_unix.so
+session  required    pam_loginuid.so
+session  optional    pam_keyinit.so force revoke
+session  optional    pam_elogind.so
+
+auth     required    pam_deny.so
+password required    pam_deny.so
+
+# End /etc/pam.d/elogind-user
+EOF
+}

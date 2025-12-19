@@ -1,0 +1,21 @@
+####
+## thunar build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://www.xfce.org https://docs.xfce.org/xfce/thunar/start https://gitlab.xfce.org/xfce/thunar/"
+DESCRIPTION="File manager for the Xfce desktop environment"
+LICENSE="GPLv2 LGPLv2.1"
+SRC_URI=("https://archive.xfce.org/src/xfce/${PKG_NAME}/${PKG_VER%.*}/${PKG_NAME}-${PKG_VER}.tar.xz")
+DEPS="apps/at-spi2-core devel/glib devel/libgudev devel/libpcre2 media/libexif x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/libICE x11/libSM x11/libX11 x11/libnotify x11/pango xfce/libxfce4ui xfce/libxfce4util xfce/xfce4-panel xfce/xfconf"
+BDEPS=""
+RDEPS="x11/hicolor-icon-theme"
+setBuildENV meson ninja
+ARCHS="~x86 ~x86_64"
+SLOT=0
+
+src_configure() {
+	export SGML_CATALOG_FILES=/etc/xml/catalog
+	sed "s/'--nonet'/'--nonet', '--catalogs'/" -i ../docs/meson.build
+	configure_default --sysconfdir=/etc
+}
+
+src_test() { :; }

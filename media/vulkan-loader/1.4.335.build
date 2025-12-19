@@ -1,0 +1,23 @@
+####
+## Vulkan Loader build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE=""
+DESCRIPTION=""
+LICENSE=""
+SRC_URI=("https://github.com/KhronosGroup/Vulkan-Loader/archive/v$PKG_VER/Vulkan-Loader-$PKG_VER.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS=""
+BDEPS="devel/vulkan-headers"
+RDEPS=""
+setBuildENV cmake ninja
+BUILD_SEPERATE_DIR=yes
+ARCHS="~x86 ~x86_64"
+SLOT=0
+B=Vulkan-Loader-$PKG_VER
+
+src_configure() {
+	configure_default -D CMAKE_SKIP_INSTALL_RPATH=ON -G Ninja
+}
+
+src_test() { :; }
