@@ -1,0 +1,29 @@
+####
+## libnotify build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://gitlab.gnome.org/GNOME/libnotify"
+DESCRIPTION="A library for sending desktop notifications"
+LICENSE="LGPLv2.1+"
+SRC_URI=("https://download.gnome.org/sources/libnotify/${PKG_VER%.*}/libnotify-${PKG_VER}.tar.xz")
+PATCHES=()
+DEPS="devel/glib x11/gdk-pixbuf"
+BDEPS=""
+RDEPS=""
+setBuildENV meson ninja
+ARCHS="~x86 ~x86_64"
+SLOT=0
+
+src_configure() {
+	configure_default -Dgtk_doc=false -Dman=false
+}
+
+src_compile() {
+	:;
+}
+
+src_test() { :; }
+
+src_install() {
+	export SGML_CATALOG_FILES=file:///etc/xml/catalog
+	install_default
+}
