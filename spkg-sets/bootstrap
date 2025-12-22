@@ -1,7 +1,7 @@
 ## Pass 1
-system/binutils[pass1,nodep]
-system/gcc[pass1,nodep]
-system/linux-headers[nodep]
+#system/binutils[pass1,nodep]
+#system/gcc[pass1,nodep]
+#system/linux-headers[nodep]
 system/glibc[nodep]
 system/gcc[libstdc++,nodep]
 ## Temporary Tools
