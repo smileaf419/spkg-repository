@@ -23,6 +23,7 @@ src_configure() {
 	## Fix the mailbox location
 	sed -e 's:#ENCRYPT_METHOD DES:ENCRYPT_METHOD YESCRYPT:' \
 		-e 's:/var/spool/mail:/var/mail:'                   \
+		-e '/PATH=/{s@/sbin:@@;s@/bin:@@}'                  \
 		-i etc/login.defs
 
 	## Enable Cracklib Support
@@ -36,7 +37,8 @@ src_configure() {
 	            --disable-static  \
 	            --with-{b,yes}crypt \
 	            --with-group-name-max-length=32 \
-	            --without-libbsd
+	            --without-libbsd \
+	            --disable-logind
 	            # --with-libcrack
 }
 

@@ -4,7 +4,8 @@
 HOMEPAGE="https://www.gnu.org/software/inetutils/"
 DESCRIPTION="GNU Networking Utils"
 LICENSE="GPLv3"
-SRC_URI=("https://ftp.gnu.org/gnu/inetutils/inetutils-v${PKG_VER}-src.tar.gz")
+#SRC_URI=("https://ftp.gnu.org/gnu/inetutils/inetutils-v${PKG_VER}-src.tar.gz")
+SRC_URI=("https://ftpmirror.gnu.org/inetutils/inetutils-${PKG_VER}.tar.gz")
 [[ $VERIFY_SIG == 1 ]] && SRC_URI+=("https://ftp.gnu.org/gnu/inetutils/inetutils-${PKG_VER}.tar.xz.sig")
 DEPS="system/libxcrypt system/ncurses system/readline"
 BDEPS="system/coreutils"
@@ -12,6 +13,11 @@ RDEPS=""
 ARCHS="~x86 ~x86_64"
 SLOT=0
 append-ldflags -ltinfow
+#B=$PKG_NAME-v$PKG_VER
+
+src_prepare() {
+	sed -i 's/def HAVE_TERMCAP_TGETENT/ 1/' telnet/telnet.c
+}
 
 src_configure() {
 	configure_default --bindir=/bin  \
