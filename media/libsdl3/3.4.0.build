@@ -20,6 +20,7 @@ src_configure() {
 	configure_default -D SDL_HIDAPI_LIBUSB=ON \
 					  -D SDL_STATIC=OFF \
 					  -D SDL_RPATH=OFF \
+					  -DSDL_X11_XSCRNSAVER=OFF \
 					  -G 'Unix Makefiles'
 }
 
