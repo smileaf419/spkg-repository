@@ -1,9 +1,6 @@
-532556b2b0dae4d4682fed2c5e6bb35026dde297  257.3.build
-6f4aef8034c073c533e69d9d2963ab9cac4fbc82  systemd-257.3.tar.gz
-6c6ec52f01ef1db309bee2a7e31bcbf35d34f18a  udev-lfs-20230728.tar.xz
-3353c0e3f0430152dc9d11718ad6800b106d3add  systemd-man-pages-257.3.tar.xz
 532556b2b0dae4d4682fed2c5e6bb35026dde297  257.8.build
 0807f84eeb6d219ae541cbab686758c744d34a9a  systemd-257.8.tar.gz
+6c6ec52f01ef1db309bee2a7e31bcbf35d34f18a  udev-lfs-20230728.tar.xz
 e851e38532903de952bc8b867b157c9085530497  systemd-man-pages-257.8.tar.xz
 0874bdd85e13529cfc6f734153e4820d9fb71458  259.build
 f3f8287ffc1992e0fe86af14e89ca8eaa2b2d1d1  systemd-259.tar.gz
