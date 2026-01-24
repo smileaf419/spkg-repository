@@ -10,7 +10,7 @@ DEPS=""
 BDEPS="devel/asio virtual/alsa media/pipewire media/taglib network/libmicrohttpd devel/libev"
 ## Optional: media-libs/libopenmpt and dev-libs/libgme
 RDEPS=""
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=0
 setBuildENV cmake
 

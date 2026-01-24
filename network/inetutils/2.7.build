@@ -10,7 +10,7 @@ SRC_URI=("https://ftpmirror.gnu.org/inetutils/inetutils-${PKG_VER}.tar.gz")
 DEPS="system/libxcrypt system/ncurses system/readline"
 BDEPS="system/coreutils"
 RDEPS=""
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=0
 append-ldflags -ltinfow
 #B=$PKG_NAME-v$PKG_VER
