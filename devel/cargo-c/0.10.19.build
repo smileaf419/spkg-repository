@@ -1,0 +1,39 @@
+####
+## cargo-c build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE=""
+DESCRIPTION=""
+LICENSE=""
+SRC_URI=("https://github.com/lu-zero/cargo-c/archive/v$PKG_VER/cargo-c-$PKG_VER.tar.gz"
+"https://github.com/lu-zero/cargo-c/releases/download/v$PKG_VER/Cargo.lock")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS=""
+BDEPS=""
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=no
+ARCHS="x86 x86_64"
+SLOT=0
+#B=
+
+src_prepare() {
+	cp $DISTFILES/Cargo.lock .
+	export LIBSSH2_SYS_USE_PKG_CONFIG=1
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+}
+
+src_configure() { :; }
+
+src_compile() {
+	cargo build --release
+}
+
+src_test() {
+	cargo test --release
+}
+
+src_install() {
+	mkdir $D/usr/bin
+	install -vm755 target/release/cargo-{capi,cbuild,cinstall,ctest} $D/usr/bin/
+}
