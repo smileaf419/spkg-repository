@@ -18,6 +18,7 @@ SLOT=0
 src_configure() {
 	configure_default -DAVIF_CODEC_AOM=ON         \
 					  -DAVIF_BUILD_GDK_PIXBUF=ON  \
+					  -DAVIF_LIBYUV=LOCAL \
 					  -G Ninja
 }
 

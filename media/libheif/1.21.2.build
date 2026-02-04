@@ -1,0 +1,21 @@
+####
+## libheif build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE=""
+DESCRIPTION=""
+LICENSE=""
+SRC_URI=("https://github.com/strukturag/libheif/releases/download/v$PKG_VER/libheif-$PKG_VER.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="media/libaom media/libjpeg-turbo media/libpng media/libsdl2 media/libwebp media/tiff system/zlib"
+BDEPS=""
+RDEPS=""
+setBuildENV cmake ninja
+BUILD_SEPERATE_DIR=yes
+ARCHS="x86 x86_64"
+SLOT=0
+#B=
+
+src_configure() {
+	configure_default -D WITH_GDK_PIXBUF=OFF -G Ninja
+}

@@ -68,7 +68,7 @@ tools = ["cargo", "clippy", "rustdoc", "rustfmt", "src"]
 vendor = true
 
 [install]
-prefix = "/opt/rustc-$PKG_VER"
+prefix = "/usr"
 docdir = "share/doc/rustc-$PKG_VER"
 
 [rust]
