@@ -1,0 +1,43 @@
+####
+## PostgreSQL build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://www.postgresql.org/"
+DESCRIPTION="PostgreSQL Relational Database Management System"
+LICENSE="POSTGRESQL GPL-2"
+SRC_URI=("https://ftp.postgresql.org/pub/source/v$PKG_VER/postgresql-$PKG_VER.tar.bz2")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="devel/icu system/readline system/zlib"
+BDEPS=""
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=no
+ARCHS="~x86 ~x86_64"
+SLOT=0
+#B=
+
+src_prepare() {
+	sed -i '/DEFAULT_PGSOCKET_DIR/s@/tmp@/run/postgresql@' src/include/pg_config_manual.h
+}
+
+src_compile() {
+	compile_default
+
+	## If we have any contrib/* programs to build
+	#make -C contrib/subdir-name
+	## or just build them all
+	make -C contrib
+}
+
+src_test() { :; }
+
+src_install() {
+	install_default
+	#make install-docs
+
+	## If we have any contrib programs to install
+	#make -C contrib/subdir-name install
+	make -C contrib install
+
+	install-init.d postgresql
+}
