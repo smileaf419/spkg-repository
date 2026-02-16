@@ -1,0 +1,26 @@
+####
+## librsvg build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://wiki.gnome.org/Projects/LibRsvg https://gitlab.gnome.org/GNOME/librsvg"
+DESCRIPTION="Scalable Vector Graphics (SVG) rendering library"
+LICENSE="LGPLv2.1+ Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD ISC MIT MPL-2.0 Unicode-3.0"
+SRC_URI=("https://download.gnome.org/sources/librsvg/${PKG_VER%.*}/librsvg-$PKG_VER.tar.xz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="python/gi-docgen python/jinja2"
+BDEPS=""
+RDEPS=""
+setBuildENV meson ninja
+ARCHS="x86 x86_64"
+SLOT=0
+#B=
+
+src_prepare() {
+	sed -e "/OUTDIR/s|,| / 'librsvg-$PKG_VER', '--no-namespace-dir',|" \
+		-e "/output/s|Rsvg-2.0|librsvg-$PKG_VER|"                      \
+		-i doc/meson.build
+}
+
+src_test() {
+	meson test -v
+}
