@@ -34,6 +34,6 @@ src_test() {
 }
 
 src_install() {
-	mkdir $D/usr/bin
+	mkdir -p $D/usr/bin
 	install -vm755 target/release/cargo-{capi,cbuild,cinstall,ctest} $D/usr/bin/
 }

@@ -8,7 +8,7 @@ SRC_URI=("https://github.com/lu-zero/cargo-c/archive/v$PKG_VER/cargo-c-$PKG_VER.
 "https://github.com/lu-zero/cargo-c/releases/download/v$PKG_VER/Cargo.lock")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
-DEPS=""
+DEPS="devel/nss devel/openssl devel/sqlite network/curl system/zlib"
 BDEPS=""
 RDEPS=""
 setBuildENV auto make
@@ -34,6 +34,6 @@ src_test() {
 }
 
 src_install() {
-	mkdir $D/usr/bin
+	mkdir -p $D/usr/bin
 	install -vm755 target/release/cargo-{capi,cbuild,cinstall,ctest} $D/usr/bin/
 }
