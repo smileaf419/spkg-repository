@@ -1,7 +1,7 @@
 ####
 ## btrfs-progs build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE="https://btrfs.wiki.kernel.org"
+HOMEPAGE="https://btrfs.docs.kernel.org/"
 DESCRIPTION="BTRFS Filesystem Utilities"
 LICENSE="GPLv2"
 SRC_URI=("https://www.kernel.org/pub/linux/kernel/people/kdave/btrfs-progs/btrfs-progs-v${PKG_VER}.tar.xz")
