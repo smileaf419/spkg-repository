@@ -13,6 +13,11 @@ ARCHS="~x86 ~x86_64"
 SLOT=0
 IUSE="doc"
 
+src_prepare() {
+	## Fixes a regression within 5.86
+	sed -i '4967,4968d' src/adapter.c
+}
+
 src_configure() {
 	checkKernelConfig CONFIG_EXPERT               1 "Standard Kernel Features"
 	checkKernelConfig CONFIG_TIMERFD              1 "  timerfd() system call"
