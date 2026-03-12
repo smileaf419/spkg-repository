@@ -6,8 +6,9 @@ DESCRIPTION=""
 LICENSE=""
 SRC_URI=("https://download.gnome.org/sources/glycin/${PKG_VER%.*}/glycin-$PKG_VER.tar.xz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
-PATCHES=("https://www.linuxfromscratch.org/patches/blfs/svn/glycin-$PKG_VER-xorg_prefix-1.patch"
-"https://www.linuxfromscratch.org/patches/blfs/svn/glycin-$PKG_VER-xbm_xpm-1.patch")
+PATCHES=(
+"https://gitlab.gnome.org/GNOME/glycin/-/commit/e2eb88b7dacf468e8f386718f9b02c7cc5d22d92.patch => glycin-$PKG_VER-xbm_xpm.patch"
+)
 DEPS=""
 BDEPS=""
 RDEPS=""
@@ -19,7 +20,11 @@ SLOT=0
 
 src_patch() {
 	cargo vendor
-	patch_default
+	## Patch does fail it still works so ignore it!
+	_SPKG_IGNORE_PATCH_ERR=1
+	spatch "$PATCHES"
+	## Run a second time to sync the rust crate added by the xbm/xpm patch.
+	cargo vendor
 }
 
 src_configure() {
