@@ -1,0 +1,34 @@
+####
+## glycin build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE=""
+DESCRIPTION=""
+LICENSE=""
+SRC_URI=("https://download.gnome.org/sources/glycin/${PKG_VER%.*}/glycin-$PKG_VER.tar.xz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=(
+"https://gitlab.gnome.org/GNOME/glycin/-/commit/e2eb88b7dacf468e8f386718f9b02c7cc5d22d92.patch => glycin-$PKG_VER-xbm_xpm.patch"
+)
+DEPS=""
+BDEPS=""
+RDEPS=""
+setBuildENV meson ninja
+BUILD_SEPERATE_DIR=yes
+ARCHS="~x86 ~x86_64"
+SLOT=0
+#B=
+
+src_patch() {
+	cargo vendor
+	## Patch does fail it still works so ignore it!
+	_SPKG_IGNORE_PATCH_ERR=1
+	spatch "$PATCHES"
+	## Run a second time to sync the rust crate added by the xbm/xpm patch.
+	cargo vendor
+}
+
+src_configure() {
+	configure_default -D libglycin-gtk4=false -D tests=false
+}
+
+src_test() { :; }
