@@ -1,0 +1,22 @@
+####
+## xfce4-terminal build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://www.xfce.org https://docs.xfce.org/apps/terminal/start https://gitlab.xfce.org/apps/xfce4-terminal/"
+DESCRIPTION="A GTK+3 terminal emulator"
+LICENSE="GPLv2+"
+SRC_URI=("https://archive.xfce.org/src/apps/${PKG_NAME}/${PKG_VER%.*}/${PKG_NAME}-${PKG_VER}.tar.xz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="apps/at-spi2-core devel/glib devel/libpcre2 x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/libX11 x11/pango x11/vte xfce/libxfce4ui xfce/libxfce4util xfce/xfconf"
+BDEPS=""
+RDEPS="x11/hicolor-icon-theme"
+setBuildENV meson ninja
+ARCHS="~x86 ~x86_64"
+SLOT=0
+
+src_test() { :; }
+
+src_configure() {
+	configure_default
+	sed -i -e 's,--nonet,--nonet --catalogs,' build.ninja
+}
