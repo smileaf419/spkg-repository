@@ -1,6 +1,4 @@
-53f97e88dc26ffd86eec2c63f5168f82f6aaaec1  19.1.0.build
-25531d8234a6ae3a87096f55d9f7ef86fb7f8ac2  libclc-19.1.0.src.tar.xz
 53f97e88dc26ffd86eec2c63f5168f82f6aaaec1  19.1.7.build
 4bd3e34616dcc8f39fb907a5ee3777206d14f48a  libclc-19.1.7.src.tar.xz
-0e638a941c4bd1098e01908fff313c0ee03b81c5  22.1.0.build
+19dcbfa4784660dc494b6cd40f0bc423a9f8d39e  22.1.0.build
 8db4e2e0f60f2bc2d181dce43c624a799c5d22e1  llvm-project-22.1.0.src.tar.xz
