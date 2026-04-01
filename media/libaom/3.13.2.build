@@ -1,0 +1,43 @@
+####
+## libaom build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE=""
+DESCRIPTION=""
+LICENSE=""
+SRC_URI=("https://storage.googleapis.com/aom-releases/libaom-${PKG_VER}.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=("https://aomedia.googlesource.com/aom/+/6d2b7f71b98bfa28e372b1f2d85f137280bdb3de%5E%21/?format=TEXT => libaom-$PKG_VER-nasm.patch")
+DEPS=""
+BDEPS="devel/nasm"
+RDEPS=""
+setBuildENV cmake ninja
+BUILD_SEPERATE_DIR=yes
+ARCHS="~x86 ~x86_64"
+SLOT=0
+
+src_patch() {
+	echo -n " * Applying patch libaom-$PKG_VER-nasm.patch (-Np1)"
+	base64 -d $DISTFILES/libaom-$PKG_VER-nasm.patch | patch -Np1 > /dev/null
+	if [[ $? == 0 ]]; then
+		echo " .. ${GREEN}Ok!$NORMAL"
+	else
+		echo " .. ${RED}Failed!$NORMAL"
+	fi
+}
+
+src_prepare() {
+	sed -i 's/aom aom_static/aom/' build/cmake/aom_install.cmake
+}
+
+src_configure() {
+	## If we want to use NASM instead of YASM set ENABLE_NASM=yes
+	configure_default -DBUILD_SHARED_LIBS=1       \
+					  -DENABLE_DOCS=no            \
+					  -G Ninja
+}
+
+src_compile() { :; }
+
+src_test() {
+	ninja runtests
+}

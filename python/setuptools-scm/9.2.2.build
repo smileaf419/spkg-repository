@@ -1,7 +1,7 @@
 ####
 ## cffi build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE="https://pypi.org/project/cffi/"
+HOMEPAGE="https://pypi.org/project/setuptools-scm/"
 DESCRIPTION="Foreign Function Interface for Python calling C code"
 LICENSE="MIT"
 SRC_URI=("https://pypi.org/packages/source/${PKG_NAME:0:1}/${PKG_NAME//-/_}/${PKG_NAME//-/_}-${PKG_VER}.tar.gz")
