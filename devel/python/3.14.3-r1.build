@@ -7,7 +7,7 @@ LICENSE="PSF"
 SRC_URI=("https://www.python.org/ftp/python/${PKG_VER}/Python-${PKG_VER}.tar.xz")
 PATCHES=(
 "https://github.com/python/cpython/commit/eb0e8be3a7e11b87d198a2c3af1ed0eccf532768.patch => python-3.14.3-CVE-2026-4224-1.patch"
-"https://github.com/python/cpython/commit/57e88c1cf95e1481b94ae57abe1010469d47a6b4 => python-3.14.3-2026-4224-2.patch"
+"https://github.com/python/cpython/commit/57e88c1cf95e1481b94ae57abe1010469d47a6b4.patch => python-3.14.3-2026-4224-2.patch"
 "https://github.com/python/cpython/commit/b0fa0748582becb607c337668b1d6e26f51ecdbf.patch => python-3.14.3-gh-143930.patch"
 )
 [[ $INSTALL_DOCS == 1 ]] && SRC_URI+=("https://www.python.org/ftp/python/doc/${PKG_VER}/python-${PKG_VER}-docs-html.tar.bz2")
