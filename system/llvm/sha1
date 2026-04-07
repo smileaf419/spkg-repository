@@ -1,9 +1,3 @@
-506fe1bdd04d7281c8e98a61e37891a9f317b1e0  21.1.8.build
-5aea9c8a3b1f1fa7ddebc2d2cc6742d4a1ee569e  llvm-21.1.8.src.tar.xz
-da308aa4c0e80835e123771ebe3e5fbfc5244a45  cmake-21.1.8.src.tar.xz
-a1a50bb1f6a02aa82ef6de5942b164061f9acbc4  third-party-21.1.8.src.tar.xz
-052b4b826aba886d0a3fada696445d2fb1ffec88  clang-21.1.8.src.tar.xz
-141a3877eedd036349feaddc0d303abeeff96b6c  compiler-rt-21.1.8.src.tar.xz
 8e77a81ab6416e9f633274e0e1d593e46da6e098  22.1.0.build
 8db4e2e0f60f2bc2d181dce43c624a799c5d22e1  llvm-project-22.1.0.src.tar.xz
 8e77a81ab6416e9f633274e0e1d593e46da6e098  22.1.1.build
