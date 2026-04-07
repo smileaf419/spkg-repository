@@ -3,3 +3,5 @@ bcda7a2d0a22af3684034da15421bd1cc1e6f8a7  2.86.4.build
 b96bf17d0802efb5ea1788a412da171b03df013d  glib-skip_warnings-1.patch
 aac1288acec5e0eb347011a0049d57d3688b5a0a  2.86.4-r1.build
 6fe4e335c5a318b87769e6d05db8b0f24c7f229e  glib-2.86.4-date-time-caching.diff
+d4ad12f94c1874cb96b8a9412126e8b224b24fac  2.86.5.build
+03242a38f6f7c6dac634ec35668f395eceeaaa6a  glib-2.86.5.tar.xz
