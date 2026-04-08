@@ -8,7 +8,7 @@ SRC_URI=("https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/v${PKG_V
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
 DEPS="devel/spirv-tools"
-BDEPS="system/llvm>21.0.0"
+BDEPS="system/llvm>22.0.0"
 RDEPS=""
 setBuildENV cmake ninja
 BUILD_SEPERATE_DIR=yes
