@@ -25,10 +25,11 @@ src_prepare() {
 	append-ldflags -lncursesw -ltinfow
 
 	## Ensure any script uses Python 3
-	grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'
+	echo -n " * Fixing python scripts.. "
+	grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/' && echo "done!" || die "failed!"
 
 	## Ensure FileCheck gets installed which is required for some test suites
-	sed 's/utility/tool/' -i llvm/utils/FileCheck/CMakeLists.txt
+	sed 's/utility/tool/' -i utils/FileCheck/CMakeLists.txt
 }
 
 src_configure() {
@@ -96,6 +97,7 @@ src_test() {
 
 src_install() {
 	install_default
+	[[ ! -e $D/usr/bin/FileCheck ]] && cp bin/FileCheck $D/usr/bin
 
 	mkdir -pv $D/etc/clang &&
 	for i in clang clang++; do
