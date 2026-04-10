@@ -3,3 +3,5 @@
 5fb76ea9118d5ea5c537eb901b4424ccced54973  nss-standalone-1.patch
 4a12def350f7e79159fcdd83de517fe0b6933a47  3.121.build
 73adeada786f569dff725dab50bb93512ee4bbcc  nss-3.121.tar.gz
+ac5842103cf3d6480e4562e8ed49c5fbe8d7d4b9  3.122.build
+5155e4d7f94013a8d03a4beeb7d5a9b82c3595ea  nss-3.122.tar.gz
