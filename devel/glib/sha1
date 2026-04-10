@@ -5,3 +5,5 @@ aac1288acec5e0eb347011a0049d57d3688b5a0a  2.86.4-r1.build
 6fe4e335c5a318b87769e6d05db8b0f24c7f229e  glib-2.86.4-date-time-caching.diff
 d4ad12f94c1874cb96b8a9412126e8b224b24fac  2.86.5.build
 03242a38f6f7c6dac634ec35668f395eceeaaa6a  glib-2.86.5.tar.xz
+d4ad12f94c1874cb96b8a9412126e8b224b24fac  2.88.0.build
+ade19b85abf1eb8f392b287523b1d80f8e6d5202  glib-2.88.0.tar.xz
