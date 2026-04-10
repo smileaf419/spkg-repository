@@ -1,0 +1,19 @@
+####
+## XML-Parser build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://metacpan.org/pod/File::ShareDir::Install"
+DESCRIPTION="Perl module for Install shared files"
+LICENSE="perl_5"
+SRC_URI="https://cpan.metacpan.org/authors/id/E/ET/ETHER/File-ShareDir-Install-$PKG_VER.tar.gz"
+B=File-ShareDir-Install-${PKG_VER}
+DEPS=""
+BDEPS=""
+RDEPS="devel/perl"
+ARCHS="~x86 ~x86_64"
+SLOT=0
+MODULE=perl
+TEST=test
+
+src_configure() {
+	perl Makefile.PL
+}
