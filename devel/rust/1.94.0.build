@@ -25,23 +25,20 @@ src_configure() {
 	mkdir -pv $D/opt/rustc-${PKG_VER}
 	ln -svfn rustc-${PKG_VER} $D/opt/rustc
 
-	cat << EOF > config.toml
-# see config.toml.example for more possible options
-# See the 8.4 book for an old example using shipped LLVM
-# e.g. if not installing clang, or using a version before 13.0
+	cat << EOF > bootstrap.toml
+# See bootstrap.toml.example for more possible options,
+# and see src/bootstrap/defaults/bootstrap.dist.toml for a few options
+# automatically set when building from a release tarball
+# (unfortunately, we have to override many of them).
 
-# Tell x.py the editors have reviewed the content of this file
+# Tell x.py that the editors have reviewed the content of this file
 # and updated it to follow the major changes of the building system,
-# so x.py will not warn us to do such a review.
+# so x.py will not warn users to review that information.
 change-id = 148671
 
 [llvm]
-# When using system llvm prefer shared libraries
+# When using the system installed copy of LLVM, prefer the shared libraries
 link-shared = true
-
-# Do not download pre-built LLVM, instead either use the system
-# LLVM or build LLVM from the shipped source.
-download-ci-llvm = false
 
 # If building the shipped LLVM source, only enable the x86 target
 # instead of all the targets supported by LLVM.
@@ -50,26 +47,21 @@ targets = "X86"
 [build]
 description = ""
 
-# omit docs to save time and space (default is to build them)
+# Omit the documentation to save time and space (the default is to build them).
 docs = false
 
-# install extended tools: cargo, clippy, etc
-extended = true
-
-# Do not query new versions of dependencies online.
+# Do not look for new versions of the dependencies online.
 locked-deps = true
 
-# Specify which extended tools (those from the default install).
+# Only install these extended tools. Cargo, clippy, rustdoc, and rustfmt
+# are installed by a default rustup installation, and rust-src is needed
+# to build the Rust code in Linux kernel (in case you need such a kernel
+# feature).
 tools = ["cargo", "clippy", "rustdoc", "rustfmt", "src"]
-
-# Use the source code shipped in the tarball for the dependencies.
-# The combination of this and the "locked-deps" entry avoids downloading
-# many crates from Internet, and makes the Rustc build more stable.
-vendor = true
 
 [install]
 prefix = "/usr"
-docdir = "share/doc/rustc-$PKG_VER"
+docdir = "share/doc/rustc-1.94.0"
 
 [rust]
 channel = "stable"
@@ -77,11 +69,6 @@ channel = "stable"
 # Enable the same optimizations as the official upstream build.
 lto = "thin"
 codegen-units = 1
-
-# Don't download compiler components from the upstream CI:
-# it's only intended for developers working on standard library
-# and tools, and it only works with the Rust Git repository.
-download-rustc = false
 
 # Don't build llvm-bitcode-linker which is only useful for the NVPTX
 # backend that we don't enable.
@@ -106,8 +93,7 @@ src_test() {
 }
 
 src_install() {
-	DESTDIR="$D" ./x.py install rustc std
-	DESTDIR="$D" ./x.py install --stage=1 cargo clippy rustfmt
+	DESTDIR="$D" ./x.py install
 
 	rm -fv $D/opt/rustc-$PKG_VER/share/doc/rustc-$PKG_VER/*.old
 	install -vm644 README.md $D/opt/rustc-$PKG_VER/share/doc/rustc-$PKG_VER
