@@ -1,4 +1,5 @@
 2b6f3251c3199d98a24541a3b46c756ef2e4762c  1.1.5.build
 9be7383f784b0ad68ccc13deba25adc0921c7e27  xfce4-terminal-1.1.5.tar.xz
-2b6f3251c3199d98a24541a3b46c756ef2e4762c  1.2.0.build
+c44eeff659b5b87b49dda2c5aa08a1964136109f  1.2.0.build
 f87b0cb05987139383ec707e2d5ee9251b6b0eaf  xfce4-terminal-1.2.0.tar.xz
+cd775b52998410227db04742a743af0690ffbe3d  xfce-terminal-guard-wayland-code.patch
