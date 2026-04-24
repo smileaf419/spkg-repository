@@ -1,14 +1,14 @@
 ####
-## pathspec build
+## editables build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE="https://pypi.org/project/pathspec/"
-DESCRIPTION="Utility library for gitignore style pattern matching of file paths."
-LICENSE="MPL2.0"
+HOMEPAGE="https://pypi.org/project/editables/"
+DESCRIPTION="Editable installations"
+LICENSE="MIT"
 SRC_URI=("https://pypi.org/packages/source/${PKG_NAME:0:1}/${PKG_NAME//_/-}/$PKG_NAME-${PKG_VER}.tar.gz")
 DEPS=""
 BDEPS=""
 RDEPS=""
-ARCHS="x86 x86_64"
+ARCHS="~x86 ~x86_64"
 SLOT=0
 MODULE=python
 setBuildENV none pip

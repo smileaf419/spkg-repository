@@ -1,9 +1,9 @@
 ####
-## cffi build
+## typogrify build
 ## Copyright 2023-2025 spkg developers, licensed under GPLv2
-HOMEPAGE="https://pypi.org/project/cffi/"
-DESCRIPTION="Foreign Function Interface for Python calling C code"
-LICENSE="MIT"
+HOMEPAGE="https://pypi.org/project/typogrify/"
+DESCRIPTION="Filters to enhance web typography, including support for Django & Jinja templates"
+LICENSE="BSD"
 SRC_URI=("https://pypi.org/packages/source/${PKG_NAME:0:1}/${PKG_NAME//_/-}/$PKG_NAME-${PKG_VER}.tar.gz")
 DEPS="python/hatchling python/smartypants"
 BDEPS=""
