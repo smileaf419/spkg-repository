@@ -4,7 +4,7 @@
 HOMEPAGE="https://docbook.org/sgml/"
 DESCRIPTION="Docbook SGML DTD"
 LICENSE="docbook"
-SRC_URI=("https://www.docbook.org/sgml/${PKG_VER}/docbook-${PKG_VER}.zip")
+SRC_URI=("https://archive.docbook.org/sgml/${PKG_VER}/docbook-${PKG_VER}.zip")
 DEPS=""
 BDEPS=""
 RDEPS="apps/sgml-common apps/unzip"

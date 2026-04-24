@@ -1,0 +1,46 @@
+####
+## docbook-xml build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://www.docbook.org/"
+DESCRIPTION="Docbook DTD for XML"
+LICENSE="docbook"
+SRC_URI="https://archive.docbook.org/xml/${PKG_VER}/docbook-${PKG_VER}.zip"
+DEPS=""
+BDEPS=""
+RDEPS="apps/unzip apps/sgml-common devel/libxml2"
+ARCHS="x86 x86_64"
+SLOT=5.0
+B="docbook-$PKG_VER"
+
+src_configure() { :; }
+
+src_compile() { :; }
+
+src_test() { :; }
+
+src_install() {
+	install -vdm755 /usr/share/xml/docbook/xml-$PKG_VER
+	cp -rv catalog.xml dtd rng sch xsd /usr/share/xml/docbook/xml-$PKG_VER
+}
+
+post_install() {
+	if [ ! -e /etc/xml/catalog ]; then
+		install -v -d -m755 /etc/xml
+		xmlcatalog --noout --create /etc/xml/catalog
+	fi
+
+	xmlcatalog --noout --add "delegatePublic"               \
+		"-//OASIS//DTD DocBook XML 5.0//EN                " \
+		"file:///usr/share/xml/docbook/xml-5.0/catalog.xml" \
+		/etc/xml/catalog
+
+	xmlcatalog --noout --add "delegateSystem"               \
+		"http://docbook.org/xml/5.0/dtd/"                   \
+		"file:///usr/share/xml/docbook/xml-5.0/catalog.xml" \
+		/etc/xml/catalog
+
+	xmlcatalog --noout --add "delegateURI"                  \
+		"http://docbook.org/xml/5.0"                        \
+		"file:///usr/share/xml/docbook/xml-5.0/catalog.xml" \
+		/etc/xml/catalog
+}

@@ -1,0 +1,11 @@
+--2026-04-24 00:09:36--  https://plex.tv/downloads/latest/5?channel=0
+Resolving plex.tv... 34.238.225.186, 35.172.142.61, 44.210.41.33
+Connecting to plex.tv|34.238.225.186|:443... connected.
+HTTP request sent, awaiting response... 504 Gateway Time-out
+Retrying.
+
+--2026-04-24 00:12:43--  (try: 2)  https://plex.tv/downloads/latest/5?channel=0
+Reusing existing connection to plex.tv:443.
+HTTP request sent, awaiting response... 502 Bad Gateway
+2026-04-24 00:12:43 ERROR 502: Bad Gateway.
+

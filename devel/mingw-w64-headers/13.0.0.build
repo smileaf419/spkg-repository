@@ -12,7 +12,7 @@ BDEPS=""
 RDEPS=""
 setBuildENV auto make
 BUILD_SEPERATE_DIR=yes
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 ABILIBS="32 64"
 SLOT=0
 B=mingw-w64-v$PKG_VER/mingw-w64-headers
