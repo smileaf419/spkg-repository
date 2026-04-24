@@ -1,6 +1,6 @@
 ####
 ## MinGW-w64-headers build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.mingw-w64.org/"
 DESCRIPTION="Header files for building native Windows applications and libraries"
 LICENSE="GPLv3+ LGPLv3+ MIT public-domain ZPL BSD BSDv2 ISC"

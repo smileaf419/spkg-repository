@@ -1,6 +1,6 @@
 ####
 ## xcb-util-wm build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://xcb.freedesktop.org/"
 DESCRIPTION="The X protocol C-language Binding (XCB) is a replacement for Xlib featuring a small footprint, latency hiding, direct access to the protocol, improved threading support, and extensibility."
 LICENSE="MIT"

@@ -1,6 +1,6 @@
 ####
 ## elogind build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://github.com/elogind/elogind"
 DESCRIPTION="The systemd project's logind, extracted to a standalone package"
 LICENSE="CC0-1.0 LGPLv2.1+ public-domain"

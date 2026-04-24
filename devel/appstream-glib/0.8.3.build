@@ -1,6 +1,6 @@
 ####
 ## AppStream Glib build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://people.freedesktop.org/~hughsient/appstream-glib/ https://github.com/hughsie/appstream-glib"
 DESCRIPTION="This library provides objects and helper methods to help reading and writing AppStream metadata."
 LICENSE="LGPLv2.1"

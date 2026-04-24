@@ -1,6 +1,6 @@
 ####
 ## make build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.gnu.org/software/make/"
 DESCRIPTION="GNU Make is a tool which controls the generation of executables and other non-source files of a program from the program's source files."
 LICENSE="GPLv3+"

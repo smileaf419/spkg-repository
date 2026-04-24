@@ -1,6 +1,6 @@
 ####
 ## libxkbcommon build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://xkbcommon.org/ https://github.com/xkbcommon/libxkbcommon"
 DESCRIPTION="keymap handling library for toolkits and window systems"
 LICENSE="MIT"

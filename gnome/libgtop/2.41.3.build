@@ -1,6 +1,6 @@
 ####
 ## libgtop build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://gitlab.gnome.org/GNOME/libgtop"
 DESCRIPTION="Library that provides top functionality to applications"
 LICENSE="GPLv2+"

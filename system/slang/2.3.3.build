@@ -1,6 +1,6 @@
 ####
 ## slang build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.jedsoft.org/slang/"
 DESCRIPTION="Multi-platform library designed to allow a developer to create robust software"
 LICENSE="GPLv2"

@@ -1,6 +1,6 @@
 ####
 ## polkit build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.freedesktop.org/wiki/Software/polkit https://github.com/polkit-org/polkit"
 DESCRIPTION="Policy framework for controlling privileges for system-wide services"
 LICENSE="LGPLv2"

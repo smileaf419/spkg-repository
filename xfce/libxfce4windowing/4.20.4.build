@@ -1,6 +1,6 @@
 ####
 ## libxfce4windowing build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.xfce.org https://gitlab.xfce.org/xfce/libxfce4windowing/"
 DESCRIPTION="Unified widget and session management libs for Xfce"
 LICENSE="LGPLv2.1+"

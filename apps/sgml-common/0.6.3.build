@@ -1,6 +1,6 @@
 ####
 ## sgml-common build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.iso.org/standard/16387.html"
 DESCRIPTION="Base ISO character entities and utilities for SGML"
 LICENSE="FDL-1.1+ MIT"

@@ -1,6 +1,6 @@
 ####
 ## libwnck build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://developer.gnome.org/libwnck/stable/"
 DESCRIPTION="A window navigation construction kit"
 LICENSE="LGPLv2+"

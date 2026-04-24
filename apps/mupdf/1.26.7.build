@@ -1,6 +1,6 @@
 ####
 ## MuPDF build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://mupdf.com/ https://git.ghostscript.com/?p=mupdf.git"
 DESCRIPTION="A lightweight PDF viewer and toolkit written in portable C"
 LICENSE="AGPL-3"

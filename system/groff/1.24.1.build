@@ -1,6 +1,6 @@
 ####
 ## groff build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.gnu.org/software/groff/"
 DESCRIPTION="A typesetting system that reads plain text input that includes formatting commands to produce output in PostScript, PDF, HTML, or DVI formats or for display to a terminal."
 LICENSE="GPLv2"

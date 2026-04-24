@@ -1,6 +1,6 @@
 ####
 ## pluggy build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://pypi.org/project/pluggy/"
 DESCRIPTION="plugin and hook calling mechanisms for python"
 LICENSE="MIT"

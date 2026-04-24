@@ -1,6 +1,6 @@
 ####
 ## gstreamer build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://gstreamer.freedesktop.org/"
 DESCRIPTION="Library for constructing graphs of media-handling components. The applications it supports range from simple Ogg/Vorbis playback, audio/video streaming to complex audio (mixing) and video (non-linear editing) processing"
 LICENSE="LGPL"

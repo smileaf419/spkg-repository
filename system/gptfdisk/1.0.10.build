@@ -1,6 +1,6 @@
 ####
 ## gptfdisk build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://www.rodsbooks.com/gdisk/"
 DESCRIPTION="GPT partition table manipulator for Linux"
 LICENSE="GPLv2"

@@ -1,6 +1,6 @@
 ####
 ## glslc from shaderc build
-## Copyright 2023-2025 spkg developers, licensed under GPLv2
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
 HOMEPAGE="https://github.com/google/shaderc"
 DESCRIPTION="Google's command line compiler for OpenGL Shading Language/High Level Shading Language (GLSL/HLSL) to Standard Portable Intermediate Representation (SPIR-V)"
 LICENSE="Apache-2.0"
