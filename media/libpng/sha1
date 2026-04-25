@@ -7,3 +7,6 @@
 8e5f353d994fefcd76ff956b4e2ce3c39b9afdeb  1.6.57.build
 866fb81e3355088bb885bb4ded39093ef80eb686  libpng-1.6.57.tar.xz
 2c66e7f8bb9363ced670ce075cb356eae457aa1a  libpng-1.6.57-apng.patch.gz
+8e5f353d994fefcd76ff956b4e2ce3c39b9afdeb  1.6.58.build
+6263409a6907d180e7b990827ca84ee944c6cc17  libpng-1.6.58.tar.xz
+3f3b28191fa53366b979fbb19b1d533fb3ab53a4  libpng-1.6.58-apng.patch.gz
