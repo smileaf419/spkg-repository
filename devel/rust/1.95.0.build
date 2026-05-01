@@ -1,0 +1,116 @@
+####
+## Rust Build
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
+HOMEPAGE="https://www.rust-lang.org/"
+DESCRIPTION="Systems programming language from Mozilla"
+LICENSE="MIT Apache-2.0 BSD BSD-1 BSD-2 BSD-4 UoI-NCSA"
+SRC_URI=("https://static.rust-lang.org/dist/rustc-${PKG_VER}-src.tar.xz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS="devel/openssl network/curl system/llvm system/zlib"
+BDEPS="network/curl"
+RDEPS=""
+setBuildENV cmake make
+BUILD_SEPERATE_DIR=no
+ARCHS="~x86 ~x86_64"
+SLOT=0
+B="rustc-${PKG_VER}-src"
+
+src_prepare() {
+	[ ! -e /usr/include/libssh2.h ] || export LIBSSH2_SYS_USE_PKG_CONFIG=1
+	[ ! -e /usr/include/sqlite3.h ] || export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+}
+
+src_configure() {
+	mkdir -pv $D/opt/rustc-${PKG_VER}
+	ln -svfn rustc-${PKG_VER} $D/opt/rustc
+
+	cat << EOF > bootstrap.toml
+# See bootstrap.toml.example for more possible options,
+# and see src/bootstrap/defaults/bootstrap.dist.toml for a few options
+# automatically set when building from a release tarball
+# (unfortunately, we have to override many of them).
+
+# Tell x.py that the editors have reviewed the content of this file
+# and updated it to follow the major changes of the building system,
+# so x.py will not warn users to review that information.
+change-id = 148671
+
+[llvm]
+# When using the system installed copy of LLVM, prefer the shared libraries
+link-shared = true
+
+# If building the shipped LLVM source, only enable the x86 target
+# instead of all the targets supported by LLVM.
+targets = "X86"
+
+[build]
+description = ""
+
+# Omit the documentation to save time and space (the default is to build them).
+docs = false
+
+# Do not look for new versions of the dependencies online.
+locked-deps = true
+
+# Only install these extended tools. Cargo, clippy, rustdoc, and rustfmt
+# are installed by a default rustup installation, and rust-src is needed
+# to build the Rust code in Linux kernel (in case you need such a kernel
+# feature).
+tools = ["cargo", "clippy", "rustdoc", "rustfmt", "src"]
+
+[install]
+prefix = "/usr"
+docdir = "share/doc/rustc-1.95.0"
+
+[rust]
+channel = "stable"
+
+# Enable the same optimizations as the official upstream build.
+lto = "thin"
+codegen-units = 1
+
+# Don't build llvm-bitcode-linker which is only useful for the NVPTX
+# backend that we don't enable.
+llvm-bitcode-linker = false
+
+[target.x86_64-unknown-linux-gnu]
+llvm-config = "/usr/bin/llvm-config"
+
+[target.i686-unknown-linux-gnu]
+llvm-config = "/usr/bin/llvm-config"
+EOF
+}
+
+src_compile() {
+	./x.py build
+}
+
+src_test() {
+	python3 ./x.py test --verbose --no-fail-fast | tee rustc-testlog
+	grep '^test result:' rustc-testlog |
+		awk '{sum1 += $4; sum2 += $6} END { print sum1 " passed; " sum2 " failed" }'
+}
+
+src_install() {
+	DESTDIR="$D" ./x.py install
+
+	rm -fv $D/opt/rustc-$PKG_VER/share/doc/rustc-$PKG_VER/*.old
+	install -vm644 README.md $D/opt/rustc-$PKG_VER/share/doc/rustc-$PKG_VER
+
+	install -vdm755 $D/usr/share/zsh/site-functions
+	ln -sfv /opt/rustc/share/zsh/site-functions/_cargo $D/usr/share/zsh/site-functions
+
+	mkdir -p $D/usr/share/bash-completion/completions
+	mv -v $D/etc/bash_completion.d/cargo $D/usr/share/bash-completion/completions
+
+	mkdir -p $D/etc/profile.d
+	cat > $D/etc/profile.d/rustc.sh << "EOF"
+pathprepend /opt/rustc/bin           PATH
+EOF
+}
+
+post_install() {
+	source /etc/profile
+}
+
