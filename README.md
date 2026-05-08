@@ -2,8 +2,6 @@
 Bash based package manager based roughly after Gentoo's Portage.
 This is intended to be a playground for learning about package management and not right now intended as a serious distribution.
 
-Join me at: https://discord.gg/DQR42sWk
-
 # To Use
 spkg-tools contains the scripts, I recommend symlinking the spkg script to a dir within your path
 
