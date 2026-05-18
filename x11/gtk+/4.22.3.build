@@ -8,7 +8,7 @@ SRC_URI=("https://download.gnome.org/sources/gtk/${PKG_VER%.*}/gtk-${PKG_VER}.ta
 DEPS="devel/fribidi devel/glib devel/wayland media/fontconfig media/graphene media/gst-plugins-bad media/gst-plugins-base media/gstreamer media/harfbuzz media/libepoxy media/libjpeg-turbo media/libpng media/tiff media/vulkan-loader network/cups x11/cairo x11/gdk-pixbuf x11/libX11 x11/libXcursor x11/libXdamage x11/libXext x11/libXfixes x11/libXi x11/libXinerama x11/libXrandr x11/libxkbcommon x11/pango"
 BDEPS="x11/libxkbcommon x11/glslc media/graphene"
 RDEPS="media/graphene media/vulkan-loader"
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=4
 B=gtk-$PKG_VER
 setBuildENV meson ninja

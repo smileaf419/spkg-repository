@@ -9,6 +9,6 @@ PATCHES=("https://cgit.gentoo.org/repo/gentoo.git/plain/x11-libs/gtksourceview/f
 DEPS="apps/at-spi2-core  devel/glib devel/libxml2 media/harfbuzz system/zlib x11/cairo x11/gdk-pixbuf x11/gtk+:3 x11/pango"
 BDEPS=""
 RDEPS=""
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=3
 B=gtksourceview-$PKG_VER
