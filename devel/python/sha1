@@ -11,3 +11,5 @@ c66c4248f8a85ac124932ad96c2e931273a56dae  python-3.14.3-gh-143930.patch
 550bd85f05ba3a75d710e716100db174f13601f6  Python-3.14.5.tar.xz
 e824b3dea41b7549e781a96673f22235a4c7fdca  python-3.14.5-docs-html.tar.bz2
 cf8f61ea51907c1b265cb7696a5882098d17c253  Python-3.14.5-openssl_4-1.patch
+2d84ff3ed9cca1754e0c2f154518ae918cb8d037  3.14.5-r1.build
+80cfa67b8bea6cf074f0829d1b7738af1eb9f301  Python-3.14.5-security_fixes-1.patch
