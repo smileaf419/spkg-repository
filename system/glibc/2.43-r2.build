@@ -8,13 +8,7 @@ SRC_URI=("https://ftp.gnu.org/gnu/glibc/glibc-${PKG_VER}.tar.xz")
 [[ $VERIFY_SIG == 1 ]] && SRC_URI+=("https://ftp.gnu.org/gnu/glibc/glibc-${PKG_VER}.tar.xz.sig")
 PATCHES=(
 "https://www.linuxfromscratch.org/patches/lfs/development/glibc-fhs-1.patch"
-"https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=d6f08d1cf027f4eb2ba289a6cc66853722d4badc;hp=ef044cc6d79c5646b521569417da890154ea1813 => glibc-2.43-CVE-2026-4046.patch"
-#"https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=9f5f18aab40ec6b61fa49a007615e6077e9a979b;hp=eb1fb45c8b2309f23ed91e3225ce84ef963f8aea => glibc-2.43-CVE-2026-4437.patch"
-#"https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=e10977481f4db4b2a3ce34fa4c3a1e26651ae312;hp=4a97c1230227db346dcfcd4c6634f6245c9f7c7e => glibc-2.43-CVE-2026-4438.patch"
-"https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=34d98aea6c1eaf7750a992bae55b2bca24898eab;hp=0df04c5b0df45a3acf219c749d34eccd6639693a => glibc-2.43-memleak.patch"
-"https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=ce1013a19;hp=60cabd0464c6722d4e1f13bbbeef191ea40ef2ef => glibc-2.43-Linux7-1.patch"
-#"https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=d1d8d271;hp=60cabd0464c6722d4e1f13bbbeef191ea40ef2ef => glibc-2.43-Linux7-2.patch"
-#"https://sourceware.org/git/?p=glibc.git;a=commitdiff_plain;h=1634cc11a5;hp=60cabd0464c6722d4e1f13bbbeef191ea40ef2ef => glibc-2.43-Linux7-3.patch"
+"https://www.linuxfromscratch.org/patches/lfs/development/glibc-2.43-upstream_fixes-1.patch"
 )
 DEPS=""
 BDEPS="system/linux-headers"
