@@ -4,25 +4,33 @@
 HOMEPAGE="https://www.rust-lang.org/"
 DESCRIPTION="Systems programming language from Mozilla"
 LICENSE="MIT Apache-2.0 BSD BSD-1 BSD-2 BSD-4 UoI-NCSA"
-SRC_URI=("https://static.rust-lang.org/dist/rustc-${PKG_VER}-src.tar.xz")
+SRC_URI=("https://static.rust-lang.org/dist/rustc-${PKG_VER}-src.tar.xz"
+"https://github.com/rust-openssl/rust-openssl/archive/refs/tags/openssl-v0.10.78.tar.gz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
 
 #This crate is only compatible with OpenSSL (version 1.0.2 through 1.1.1, or 3), or LibreSSL 3.5
 #  through 4.2.x, but a different version of OpenSSL was found. The build is now aborting
 #  due to this version mismatch.
-DEPS="devel/openssl<4 network/curl system/llvm system/zlib"
+DEPS="devel/openssl network/curl system/llvm system/zlib"
 BDEPS="network/curl"
 RDEPS=""
 setBuildENV cmake make
 BUILD_SEPERATE_DIR=no
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=0
 B="rustc-${PKG_VER}-src"
 
+src_unpack() {
+	SRC_URI=($SRC_URI)
+	unpack_default
+	unpack ${SRC_URI[1]} $B
+	mv $B/rust-openssl-openssl-v0.10.78 $B/rust-openssl-0.10.78
+}
+
 src_prepare() {
-	[ ! -e /usr/include/libssh2.h ] || export LIBSSH2_SYS_USE_PKG_CONFIG=1
-	[ ! -e /usr/include/sqlite3.h ] || export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
+	export LIBSSH2_SYS_USE_PKG_CONFIG=1
+	export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 }
 
 src_configure() {
@@ -84,6 +92,20 @@ llvm-config = "/usr/bin/llvm-config"
 [target.i686-unknown-linux-gnu]
 llvm-config = "/usr/bin/llvm-config"
 EOF
+
+	####
+	## OpenSSL binding updates
+	cat >> src/tools/cargo/Cargo.toml << EOF
+[patch.crates-io]
+openssl = { path = "../../../rust-openssl-0.10.78/openssl" }
+openssl-sys = { path = "../../../rust-openssl-0.10.78/openssl-sys" }
+EOF
+
+	sed -ri src/tools/cargo/Cargo.lock \
+		-e '/name = "openssl-sys"/,/^$/{/source|checksum/d;s/0.9.111/0.9.114/}' \
+		-e '/name = "openssl"/,/^$/{/source|checksum/d;s/0.10.75/0.10.78/}'     \
+		-e '/name = "openssl-macros"/,/^$/{/source|checksum/d}'
+
 }
 
 src_compile() {
