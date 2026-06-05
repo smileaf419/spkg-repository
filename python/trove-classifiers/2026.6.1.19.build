@@ -1,0 +1,15 @@
+####
+## trove-classifiers build
+## Copyright 2023-2026 spkg developers, licensed under GPLv2
+HOMEPAGE="https://pypi.org/project/trove-classifiers/"
+DESCRIPTION="Canonical source for classifiers on PyPI (pypi.org)."
+LICENSE="Apache Software License"
+SRC_URI=("https://files.pythonhosted.org/packages/source/${PKG_NAME:0:1}/${PKG_NAME//-/_}/${PKG_NAME//-/_}-${PKG_VER}.tar.gz")
+DEPS=""
+BDEPS=""
+RDEPS=""
+ARCHS="~x86 ~x86_64"
+SLOT=0
+MODULE=python
+setBuildENV none pip
+B=${PKG_NAME//-/_}-$PKG_VER
