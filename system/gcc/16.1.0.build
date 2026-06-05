@@ -30,7 +30,7 @@ fi
 DEPS="apps/zstd devel/gmp devel/isl devel/mpc devel/mpfr system/zlib"
 BDEPS=""
 RDEPS=""
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=0
 BUILD_SEPERATE_DIR=yes
 
