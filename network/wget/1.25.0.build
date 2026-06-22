@@ -12,6 +12,13 @@ RDEPS=""
 ARCHS="x86 x86_64"
 SLOT=0
 
+src_prepare() {
+	NEW_LINE='#if !defined OPENSSL_NO_SSL3_METHOD '
+	NEW_LINE+='&& OPENSSL_VERSION_NUMBER < 0x40000000L'
+
+	sed -i "/SSL3/c $NEW_LINE" src/openssl.c
+}
+
 src_configure() {
 	./configure --prefix=/usr      \
 	            --sysconfdir=/etc  \
