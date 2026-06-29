@@ -21,15 +21,6 @@ BUILD_SEPERATE_DIR=yes
 ABILIBS="64 x32 32"
 _SPKG_CLEAN=rm
 
-src_patch() {
-	## Fix DNS processing
-	sed -e '/while..ancount/c\  for (; ancount > 0; --ancount)'  \
-		-e '/binary_hnok..expected/s/expected_name/name_buffer/' \
-		-i resolv/nss_dns/dns-host.c
-
-	patch_default
-}
-
 src_prepare() {
 	## Change references to /var/db which is not part of FHS and replace them
 	## with more suitable directories in /var hierarchy
