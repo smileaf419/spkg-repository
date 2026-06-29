@@ -19,7 +19,7 @@ if [[ $MODE == 'bootstrap' ]]; then
 	echo " * MPC Version: $MPC_VER"
 
 	SRC_URI+=("https://ftp.gnu.org/gnu/gmp/gmp-${GMP_VER}.tar.xz")
-	SRC_URI+=("https://ftp.gnu.org/gnu/mpc/mpc-${MPC_VER}.tar.gz")
+	SRC_URI+=("https://ftp.gnu.org/gnu/mpc/mpc-${MPC_VER}.tar.xz")
 	SRC_URI+=("https://www.mpfr.org/mpfr-$MPFR_VER/mpfr-$MPFR_VER.tar.xz")
 	if [[ $VERIFY_SIG == 1 ]]; then
 		SRC_URI+=("https://ftp.gnu.org/gnu/gmp/gmp-${GMP_VER}.tar.xz.sig")
@@ -120,7 +120,7 @@ bootstrap() {
 		mv gmp{-$GMP_VER,}
 		unpack $DISTFILES/mpfr-$MPFR_VER.tar.xz
 		mv mpfr{-$MPFR_VER,}
-		unpack $DISTFILES/mpc-$MPC_VER.tar.gz
+		unpack $DISTFILES/mpc-$MPC_VER.tar.xz
 		mv mpc{-$MPC_VER,}
 		cd -
 	fi
