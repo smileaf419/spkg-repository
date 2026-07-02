@@ -6,7 +6,9 @@ DESCRIPTION="Network Time Protocol suite/programs"
 LICENSE="HPND BSD ISC"
 SRC_URI="https://downloads.nwtime.org/ntp/ntp-${PKG_VER}.tar.gz"
 PATCHES=("https://gitweb.gentoo.org/repo/gentoo.git/plain/net-misc/ntp/files/ntp-4.2.8-sntp-test-pthreads.patch"
-"https://gitweb.gentoo.org/repo/gentoo.git/plain/net-misc/ntp/files/ntp-4.2.8_p14-add_cap_ipc_lock.patch")
+"https://gitweb.gentoo.org/repo/gentoo.git/plain/net-misc/ntp/files/ntp-4.2.8_p14-add_cap_ipc_lock.patch"
+"https://www.linuxfromscratch.org/patches/blfs/svn/ntp-4.2.8p18-openssl_4-1.patch"
+)
 DEPS="devel/libevent devel/openssl system/libcap system/readline"
 BDEPS="perl/IO-Socket-SSL accounts/ntp"
 RDEPS=""
