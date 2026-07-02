@@ -5,6 +5,7 @@ HOMEPAGE="https://metacpan.org/pod/Net::SSLeay"
 DESCRIPTION="Perl bindings for OpenSSL and LibreSSL"
 LICENSE="artistic_2"
 SRC_URI="https://cpan.metacpan.org/authors/id/C/CH/CHRISN/Net-SSLeay-${PKG_VER}.tar.gz"
+PATCHES=("https://www.linuxfromscratch.org/patches/blfs/svn/Net-SSLeay-1.96-openssl4_fixes-2.patch")
 DEPS="devel/openssl system/zlib"
 BDEPS=""
 RDEPS="devel/perl"

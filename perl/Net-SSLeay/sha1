@@ -1,4 +1,5 @@
 33253f6be143f9d71a7e6e01a8ef3b62bb507cfd  1.94.build
 dd5b22da7d4214685dc54f3881370d26b6585dfb  Net-SSLeay-1.94.tar.gz
-33253f6be143f9d71a7e6e01a8ef3b62bb507cfd  1.96.build
+ebc1fd96c423c6ec016ca21a5fa23393d6796aa0  1.96.build
 21514cfac31289152aa1ce4f2f75128f26b8fb04  Net-SSLeay-1.96.tar.gz
+31f2325c5fff3816be2fa030d8161cf770fda0c0  Net-SSLeay-1.96-openssl4_fixes-2.patch
