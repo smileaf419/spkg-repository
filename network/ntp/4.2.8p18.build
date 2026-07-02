@@ -17,10 +17,17 @@ SLOT=0
 append-cppflags -fPIC -g
 append-cxxflags -D_GNU_SOURCE
 
-src_configure() {
-	## Fix an type issue (4.2.8p18)
-	sed -e "s;pthread_detach(NULL);pthread_detach(0);" -i configure sntp/configure
+src_prepare() {
+	## Build issues with glibc 2.43
+	sed -i 's/getclock/getclock memchr/'               sntp/m4/ntp_libntp.m4 &&
+	sed -i 's/pthread_detach(NULL)/pthread_detach(0)/' sntp/m4/openldap-thread-check.m4 &&
+	autoreconf -fiv
 
+	## Upstream fix to prevent a segfault
+	sed -i "/ep.*FAILED/,+4s/ep/ep2/" ntpd/ntp_io.c
+}
+
+src_configure() {
 	configure_default \
 				--bindir=/usr/sbin    \
 				--sysconfdir=/etc     \
