@@ -5,7 +5,7 @@ HOMEPAGE="https://www.rust-lang.org/"
 DESCRIPTION="Systems programming language from Mozilla"
 LICENSE="MIT Apache-2.0 BSD BSD-1 BSD-2 BSD-4 UoI-NCSA"
 SRC_URI=("https://static.rust-lang.org/dist/rustc-${PKG_VER}-src.tar.xz"
-"https://github.com/rust-openssl/rust-openssl/archive/refs/tags/openssl-v0.10.80.tar.gz")
+"https://github.com/rust-openssl/rust-openssl/archive/refs/tags/openssl-v0.10.78.tar.gz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
 
@@ -45,7 +45,7 @@ src_configure() {
 # Tell x.py that the editors have reviewed the content of this file
 # and updated it to follow the major changes of the building system,
 # so x.py will not warn users to review that information.
-change-id = 148671
+change-id = 154508
 
 [llvm]
 # When using the system installed copy of LLVM, prefer the shared libraries
@@ -72,7 +72,7 @@ tools = ["cargo", "clippy", "rustdoc", "rustfmt", "src"]
 
 [install]
 prefix = "/usr"
-docdir = "share/doc/rustc-1.95.0"
+docdir = "share/doc/rustc-1.96.0"
 
 [rust]
 channel = "stable"
@@ -96,13 +96,13 @@ EOF
 	## OpenSSL binding updates
 	cat >> src/tools/cargo/Cargo.toml << EOF
 [patch.crates-io]
-openssl = { path = "../../../rust-openssl-openssl-v0.10.80/openssl" }
-openssl-sys = { path = "../../../rust-openssl-openssl-v0.10.80/openssl-sys" }
+openssl = { path = "../../../rust-openssl-openssl-v0.10.78/openssl" }
+openssl-sys = { path = "../../../rust-openssl-openssl-v0.10.78/openssl-sys" }
 EOF
 
 	sed -ri src/tools/cargo/Cargo.lock \
-		-e '/name = "openssl-sys"/,/^$/{/source|checksum/d;s/0.9.111/0.9.116/}' \
-		-e '/name = "openssl"/,/^$/{/source|checksum/d;s/0.10.75/0.10.80/}'     \
+		-e '/name = "openssl-sys"/,/^$/{/source|checksum/d;s/0.9.112/0.9.114/}' \
+		-e '/name = "openssl"/,/^$/{/source|checksum/d;s/0.10.76/0.10.78/}'     \
 		-e '/name = "openssl-macros"/,/^$/{/source|checksum/d}'
 
 }
