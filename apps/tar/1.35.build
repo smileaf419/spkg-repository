@@ -5,6 +5,7 @@ HOMEPAGE="https://www.gnu.org/software/tar/"
 DESCRIPTION="GNU Tar archive"
 LICENSE="GPLv3+"
 SRC_URI=("https://ftp.gnu.org/gnu/tar/tar-${PKG_VER}.tar.xz")
+PATCHES=("https://gitweb.gentoo.org/repo/gentoo.git/plain/app-arch/tar/files/tar-1.35-acl-2.4.0.patch?id=6731e63c549adf1b2f99f593880f0b4b00fcb9f4 => tar-1.35-acl-2.4.0.patch")
 [[ $VERIFY_SIG == 1 ]] && SRC_URI+=("https://ftp.gnu.org/gnu/tar/tar-${PKG_VER}.tar.xz.sig")
 DEPS="system/acl"
 BDEPS=""
