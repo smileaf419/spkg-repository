@@ -19,7 +19,7 @@ src_configure() {
 	autoreconf -fiv
 
 	export LINKS="/usr/bin/links"
-	configure_default
 
 	sed -i -e 's,--nonet,--nonet --catalogs,' -e '/^SED=/a export SGML_CATALOG_FILES=file:///etc/xml/catalog' xmlto.in
+	configure_default
 }
