@@ -1,4 +1,5 @@
 6b497bcfbbef195d54f6ddbae1014a81bb949fef  1.13.1.build
 f487d1e7f5e362b8971e23e354d9eb4bdc51e453  xkbcommon-1.13.1.tar.gz
-6b497bcfbbef195d54f6ddbae1014a81bb949fef  1.13.2.build
+6a43929afa9cb47196dbc2555f97bc8e06b11ac6  1.13.2.build
 12344c74f0a73321bdf4a8fe24d71848c32fbff1  xkbcommon-1.13.2.tar.gz
+86d80ba1243a657558f515b62b117fd292cd8b7e  libxkbcommon-1.13.2-upstream_fix-1.patch

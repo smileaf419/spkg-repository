@@ -4,12 +4,9 @@
 HOMEPAGE="https://xkbcommon.org/ https://github.com/xkbcommon/libxkbcommon"
 DESCRIPTION="keymap handling library for toolkits and window systems"
 LICENSE="MIT"
-#"https://xkbcommon.org/download/libxkbcommon-${PKG_VER}.tar.xz"
-SRC_URI=(
-"https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-$PKG_VER.tar.gz"
-)
+SRC_URI=("https://github.com/xkbcommon/libxkbcommon/archive/refs/tags/xkbcommon-$PKG_VER.tar.gz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
-PATCHES=()
+PATCHES=("https://www.linuxfromscratch.org/patches/blfs/svn/libxkbcommon-1.13.2-upstream_fix-1.patch")
 DEPS="devel/libxml2 x11/libxcb"
 BDEPS="devel/wayland-protocols"
 RDEPS=""
