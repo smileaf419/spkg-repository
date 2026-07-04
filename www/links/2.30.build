@@ -16,6 +16,10 @@ setBuildENV auto make
 ARCHS="x86 x86_64"
 SLOT=0
 
+src_prepare() {
+	sed '/*strchr/s/cast_const_char //g' -i ftp.c
+}
+
 src_configure() {
 	./configure --prefix=/usr --mandir=/usr/share/man --enable-graphics
 }
