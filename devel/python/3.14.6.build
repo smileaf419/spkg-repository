@@ -6,7 +6,7 @@ DESCRIPTION="Python Programming Language"
 LICENSE="PSF"
 SRC_URI=("https://www.python.org/ftp/python/${PKG_VER}/Python-${PKG_VER}.tar.xz")
 PATCHES=(
-"https://www.linuxfromscratch.org/patches/lfs/development/Python-3.14.6-openssl_4-1.patch"
+"https://www.linuxfromscratch.org/patches/lfs/development/Python-3.14.6-consolidated_fixes-1.patch"
 )
 [[ $INSTALL_DOCS == 1 ]] && SRC_URI+=("https://www.python.org/ftp/python/doc/${PKG_VER}/python-${PKG_VER}-docs-html.tar.bz2")
 [[ $VERIFY_SIG == 1 ]] && SRC_URI+=("https://www.python.org/ftp/python/${PKG_VER}/Python-${PKG_VER}.tar.xz.sig")
