@@ -1,0 +1,18 @@
+####
+## labwc build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://github.com/labwc/labwc"
+DESCRIPTION="A Wayland window-stacking compositor"
+LICENSE="GPLv2"
+SRC_URI=("https://github.com/labwc/labwc/archive/refs/tags/$PKG_VER.tar.gz => labwc-$PKG_VER.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS=""
+BDEPS=""
+RDEPS=""
+setBuildENV meson ninja
+ARCHS="x86 x86_64"
+SLOT=0
+#B=
+
+src_test() { :; }
