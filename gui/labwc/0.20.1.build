@@ -7,7 +7,7 @@ LICENSE="GPLv2"
 SRC_URI=("https://github.com/labwc/labwc/archive/refs/tags/$PKG_VER.tar.gz => labwc-$PKG_VER.tar.gz")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
-DEPS=""
+DEPS="devel/glib devel/libxml2 devel/wayland media/lcms media/libdisplay-info media/libglvnd media/libpng media/mesa media/vulkan-loader system/eudev x11/cairo x11/libdrm x11/libxcb x11/libxkbcommon x11/pango x11/pixman x11/xcb-util-renderutil"
 BDEPS=""
 RDEPS=""
 setBuildENV meson ninja
