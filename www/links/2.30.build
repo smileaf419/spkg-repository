@@ -9,7 +9,7 @@ LICENSE="GPLv2"
 SRC_URI=("http://links.twibright.com/download/links-${PKG_VER}.tar.bz2")
 #[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
 PATCHES=()
-DEPS="apps/bzip2 apps/xz-utils apps/zstd devel/libev devel/openssl media/fontconfig media/freetype media/libjpeg-turbo media/libpng media/libwebp media/tiff system/zlib x11/libX11"
+DEPS="apps/brotli apps/xz-utils apps/zstd devel/libevent devel/openssl media/libavif media/libjpeg-turbo media/libpng media/libwebp media/tiff system/zlib x11/libX11"
 BDEPS=""
 RDEPS=""
 setBuildENV auto make
@@ -18,6 +18,12 @@ SLOT=0
 
 src_prepare() {
 	sed '/*strchr/s/cast_const_char //g' -i ftp.c
+	sed -i \
+		-e '/AC_PROG_CXX/s:dnl ::' \
+		-e 's:AM_CONFIG_HEADER:AC_CONFIG_HEADERS:' \
+		configure.in
+	mv configure.in configure.ac
+	autoreconf -fiv
 }
 
 src_configure() {
