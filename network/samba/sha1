@@ -3,3 +3,5 @@ fe8107ca7c97047d31fe0b6b0fcd9428ef155cd5  4.24.1.build
 0d6347833a78ebb96f1368afb4c3b9e1feee1276  samba-4.21.4-testfix.patch
 fe8107ca7c97047d31fe0b6b0fcd9428ef155cd5  4.24.3.build
 2243c61ed1d5abd5c23c5a52037fde24518357fc  samba-4.24.3.tar.gz
+32addc9f01c6d7795a9e1dadb8bb1c82a3ea7b7b  4.24.4.build
+ed0d7cd44eaf0dd88cde13c325e519c59cafc77d  samba-4.24.4.tar.gz
