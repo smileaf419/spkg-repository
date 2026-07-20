@@ -8,7 +8,7 @@ SRC_URI="https://github.com/libass/libass/releases/download/${PKG_VER}/libass-${
 DEPS="apps/brotli apps/bzip2 devel/fribidi media/fontconfig media/freetype media/harfbuzz media/libpng system/zlib"
 BDEPS="devel/fribidi media/harfbuzz"
 RDEPS=""
-ARCHS="~x86 ~x86_64"
+ARCHS="x86 x86_64"
 SLOT=0
 
 src_test() { :; }
