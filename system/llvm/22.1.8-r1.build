@@ -21,6 +21,12 @@ IUSE="doc gcc"
 # use-enable doc && UDEPS="sphinx recommonmark doxygen"
 [[ $ENABLE_TESTS == 1 ]] && UDEPS+=" network/rsync python/psutil"
 
+src_patch() {
+	pushd ..
+	patch_default
+	popd
+}
+
 src_prepare() {
 	append-ldflags -lncursesw -ltinfow
 
