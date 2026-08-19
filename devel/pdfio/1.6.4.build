@@ -1,0 +1,19 @@
+####
+## pdfio build
+## Copyright 2023-2025 spkg developers, licensed under GPLv2
+HOMEPAGE="https://github.com/michaelrsweet/pdfio"
+DESCRIPTION="PDFio is a simple C library for reading and writing PDF files."
+LICENSE="Apache-2.0"
+SRC_URI=("https://github.com/michaelrsweet/pdfio/releases/download/v$PKG_VER/pdfio-$PKG_VER.tar.gz")
+#[[ $VERIFY_SIG == 1 ]] && SRC_URI+=("")
+PATCHES=()
+DEPS=""
+BDEPS=""
+RDEPS=""
+setBuildENV auto make
+BUILD_SEPERATE_DIR=no
+ARCHS="x86 x86_64"
+SLOT=0
+#B=
+
+src_test() { :; }
