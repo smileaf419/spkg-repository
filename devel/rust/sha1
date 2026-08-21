@@ -3,3 +3,5 @@
 86a333caad0c6771b7eb771c81bda206b61e792d  openssl-v0.10.78.tar.gz
 487df6fbd411a604e70a608d4dded87542f56ad5  1.97.1.build
 5082bcea4fb67c64f936dc29346603cc4003c183  rustc-1.97.1-src.tar.xz
+efd0d60728ac58c1eaea5941fab5bec0b87927d1  1.98.0.build
+b86d4859b7a9d1b0c36b6bf73844454be9e5788e  rustc-1.98.0-src.tar.xz
